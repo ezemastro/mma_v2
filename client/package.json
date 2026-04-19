@@ -1,0 +1,33 @@
+{
+  "name": "client",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/markdoc": "^0.15.11",
+    "@astrojs/react": "^5.0.3",
+    "@keystatic/astro": "^5.0.6",
+    "@keystatic/core": "^0.5.50",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.0.0",
+    "astro-icon": "^1.1.5",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.7.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}
