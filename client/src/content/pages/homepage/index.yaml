@@ -1,0 +1,101 @@
+header:
+  title: Marcelo Mastropietro
+  subtitle: Ingeniería
+  logo: header/logo.png
+  background: header/background.webp
+sections:
+  - discriminant: stats
+    value:
+      calculated: 800000
+      projects: 750
+      years: 30
+      clients: 200
+  - discriminant: cards
+    value:
+      title: Nuestros Diferenciales
+      content:
+        - title: 30 AÑOS DE EXPERIENCIA
+          icon: home
+          link: {}
+        - title: CERTIFICADO ISO 9001
+          icon: home
+          link: {}
+        - title: EXCELENCIA, CUMPLIMIENTO, ASESORAMIENTO
+          icon: home
+          link: {}
+      image: sections/1/value/image.png
+  - discriminant: cards
+    value:
+      title: Servicios
+      subtitle: Para Arquitectos y Empresas
+      content:
+        - title: Diseño y Cálculo Estructural
+          icon: home
+          link: {}
+        - title: Cálculo Carteles Publicitarios
+          icon: home
+          link: {}
+        - title: Pericias Técnicas
+          icon: home
+          link: {}
+        - title: Inspección y/o Verificación Estructuras Ejecutadas
+          icon: home
+          link: {}
+  - discriminant: cards
+    value:
+      title: Curriculum
+      subtitle: Ing. Marcelo Mastropietro
+      content:
+        - title: Docente
+          icon: home
+          link: {}
+        - title: Escritor de un libro
+          icon: home
+          link:
+            href: >-
+              https://articulo.mercadolibre.com.ar/MLA-722507965-el-hormigon-para-arquitectos-ed-nobuko-_JM
+            label: Ver en Mercado Libre
+        - title: Diseño de un programa de cálculo
+          icon: home
+          link:
+            href: /software
+            label: Ver programa
+        - title: Creador de contenido en Youtube
+          icon: home
+          link:
+            href: https://www.youtube.com/@marcelomastropietro
+            label: Ver canal
+  - discriminant: text
+    value:
+      title: Ing. Marcelo Mastropietro
+      link: {}
+      image: sections/4/value/image.jpg
+  - discriminant: text
+    value:
+      title: Un Libro para Arquitectos
+      subtitle: Escrito por el Ing. Marcelo Mastropietro
+      link:
+        href: >-
+          https://articulo.mercadolibre.com.ar/MLA-722507965-el-hormigon-para-arquitectos-ed-nobuko-_JM
+        label: Ver en Mercado Libre
+      image: sections/5/value/image.jpg
+  - discriminant: text
+    value:
+      title: MMA en la Revista CARAS
+      subtitle: Reportaje al Ing. Marcelo Mastropietro
+      link:
+        href: >-
+          https://caras.perfil.com/noticias/caras-like/diseno-y-calculo-estructural.phtml
+        label: Mira la nota en CARAS
+      image: sections/6/value/image.jpg
+  - discriminant: text
+    value:
+      title: Política de Calidad
+      link: {}
+  - discriminant: clients
+    value:
+      title: Clientes
+      subtitle: Ellos ya confían en nosotros
+      content:
+        - name: A+R Arquitectos
+          logo: sections/8/value/content/0/logo.jpg
