@@ -1,5 +1,5 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
-import { selectIcon } from "./src/schemas/icons";
+import { iconCollectionSchema, iconRelationship } from "./src/schemas/icons";
 
 const link = fields.object(
   {
@@ -43,7 +43,7 @@ export default config({
                     {
                       title: fields.text({ label: "Título" }),
                       description: fields.markdoc({ label: "Descripción" }),
-                      icon: selectIcon,
+                      icon: iconRelationship,
                       link,
                     },
                     { label: "Tarjeta" },
@@ -126,5 +126,14 @@ export default config({
       },
     }),
   },
-  collections: {},
+  collections: {
+    icons: collection({
+      label: "Iconos",
+      path: "src/content/globals/icons/*",
+      format: { data: "yaml" },
+      slugField: "key",
+      columns: ["key", "iconifyName"],
+      schema: iconCollectionSchema,
+    }),
+  },
 });
