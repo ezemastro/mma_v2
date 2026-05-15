@@ -1,0 +1,30 @@
+---
+import Section from "../common/Section.astro";
+import type { Entry } from "@keystatic/core/reader";
+import keystaticConfig from "../../../keystatic.config";
+import MarkdocRender from "../common/MarkdocRender.astro";
+
+type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
+
+type Props = Extract<
+  HomepageEntry["sections"][number],
+  { discriminant: "cards" }
+>["value"];
+
+const { title, subtitle, content } = Astro.props;
+---
+
+<Section title={title} subtitle={subtitle}>
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {
+      content.map((card) => (
+        <div class="tarjeta bg-white rounded-lg shadow-md p-6">
+          <h3 class="tarjeta-titulo text-xl font-semibold mb-2">
+            {card.title}
+          </h3>
+          <MarkdocRender content={card.description} />
+        </div>
+      ))
+    }
+  </div>
+</Section>
