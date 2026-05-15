@@ -1,0 +1,41 @@
+---
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../keystatic.config";
+import Hero from "../components/sections/Hero.astro";
+import Cards from "../components/sections/Cards.astro";
+import Stats from "../components/sections/Stats.astro";
+import Clients from "../components/sections/Clients.astro";
+import Layout from "../layouts/Layout.astro";
+import Text from "../components/sections/Text.astro";
+
+const reader = createReader(process.cwd(), keystaticConfig);
+
+const homeData = await reader.singletons.homepage.read();
+
+if (!homeData) return Astro.redirect("/404");
+---
+
+<Layout title={homeData.header.title}>
+  <Hero
+    title={homeData.header.title}
+    subtitle={homeData.header.subtitle}
+    background={homeData.header.background}
+  />
+
+  {
+    homeData.sections.map((section) => {
+      switch (section.discriminant) {
+        case "cards":
+          return <Cards {...section.value} />;
+        case "stats":
+          return <Stats {...section.value} />;
+        case "clients":
+          return <Clients {...section.value} />;
+        case "text":
+          return <Text {...section.value} />;
+        default:
+          return null;
+      }
+    })
+  }
+</Layout>
