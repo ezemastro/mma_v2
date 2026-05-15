@@ -1,0 +1,35 @@
+---
+import Section from "../common/Section.astro";
+import type { Entry } from "@keystatic/core/reader";
+import keystaticConfig from "../../../keystatic.config";
+
+type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
+
+type Props = Extract<
+  HomepageEntry["sections"][number],
+  { discriminant: "stats" }
+>["value"];
+
+const { calculated, projects, years, clients } = Astro.props;
+---
+
+<Section title="Estadísticas">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+    <div>
+      <p class="text-4xl font-bold text-slate-900">{calculated}</p>
+      <p class="mt-2 text-lg text-slate-600">Horas calculadas</p>
+    </div>
+    <div>
+      <p class="text-4xl font-bold text-slate-900">{projects}</p>
+      <p class="mt-2 text-lg text-slate-600">Proyectos completados</p>
+    </div>
+    <div>
+      <p class="text-4xl font-bold text-slate-900">{years}</p>
+      <p class="mt-2 text-lg text-slate-600">Años de experiencia</p>
+    </div>
+    <div>
+      <p class="text-4xl font-bold text-slate-900">{clients}</p>
+      <p class="mt-2 text-lg text-slate-600">Clientes satisfechos</p>
+    </div>
+  </div>
+</Section>
