@@ -1,6 +1,7 @@
-import { config, fields, collection, singleton } from "@keystatic/core";
+import { config,  collection, } from "@keystatic/core";
 import { iconCollectionSchema } from "./src/schemas/icons";
 import { homepageSchema } from "./src/schemas/homepage";
+import { footerSchema } from "./src/schemas/footer";
 
 export default config({
   storage: {
@@ -8,26 +9,7 @@ export default config({
   },
   singletons: {
     homepage: homepageSchema,
-    footer: singleton({
-      label: "Pie de página",
-      path: "src/content/globals/footer/",
-      schema: {
-        phone: fields.object(
-          {
-            title: fields.text({ label: "Título" }),
-            number: fields.text({ label: "Número de teléfono" }),
-          },
-          { label: "Teléfono" },
-        ),
-        email: fields.object(
-          {
-            title: fields.text({ label: "Título" }),
-            address: fields.text({ label: "Dirección de correo electrónico" }),
-          },
-          { label: "Correo electrónico" },
-        ),
-      },
-    }),
+    footer: footerSchema,
   },
   collections: {
     icons: collection({
