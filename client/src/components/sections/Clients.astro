@@ -1,0 +1,30 @@
+---
+import Section from "../common/Section.astro";
+import type { Entry } from "@keystatic/core/reader";
+import keystaticConfig from "../../../keystatic.config";
+
+type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
+
+type Props = Extract<
+  HomepageEntry["sections"][number],
+  { discriminant: "clients" }
+>["value"];
+
+const { title, subtitle, content } = Astro.props;
+---
+
+<Section title={title} subtitle={subtitle}>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    {
+      content.map((client) => (
+        <div class="flex items-center justify-center p-4 bg-gray-100 rounded-lg">
+          <img
+            src={client.logo}
+            alt={client.name}
+            class="max-h-12 object-contain"
+          />
+        </div>
+      ))
+    }
+  </div>
+</Section>
