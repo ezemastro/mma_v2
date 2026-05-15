@@ -1,0 +1,46 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  link?: {
+    href: string;
+    label: string;
+  };
+}
+
+const { title, subtitle, link } = Astro.props;
+---
+
+<section class={`py-16 md:py-24 px-4`}>
+  <div class="max-w-7xl mx-auto border-t border-slate-200 pt-12">
+    {
+      title && (
+        <div class="mb-12 text-center max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+            {title}
+          </h2>
+          {subtitle && (
+            <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+              {subtitle}
+            </p>
+          )}
+        </div>
+      )
+    }
+
+    {
+      link && (
+        <div class="mt-8 text-center">
+          <a
+            href={link.href}
+            class="inline-block bg-slate-900 text-white py-3 px-6 rounded-lg hover:bg-slate-700 transition-colors"
+          >
+            {link.label}
+          </a>
+        </div>
+      )
+    }
+
+    <slot />
+  </div>
+</section>
