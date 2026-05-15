@@ -1,0 +1,30 @@
+---
+import Section from "../common/Section.astro";
+import type { Entry } from "@keystatic/core/reader";
+import keystaticConfig from "../../../keystatic.config";
+import MarkdocRender from "../common/MarkdocRender.astro";
+
+type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
+
+type Props = Extract<
+  HomepageEntry["sections"][number],
+  { discriminant: "text" }
+>["value"];
+
+const { content, image, link, title, subtitle } = Astro.props;
+---
+
+<Section title={title} subtitle={subtitle} link={link}>
+  <div class="flex items-center gap-8 lg:flex-row">
+    {
+      image && (
+        <img
+          src={image}
+          alt={title}
+          class="w-full rounded-lg object-cover lg:w-auto"
+        />
+      )
+    }
+    <MarkdocRender content={content} />
+  </div>
+</Section>
