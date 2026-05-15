@@ -1,0 +1,28 @@
+---
+import Markdoc from "@markdoc/markdoc";
+import type { Node } from "@markdoc/markdoc";
+
+interface Props {
+  // Definimos el tipo de la función que retorna la promesa de Keystatic
+  content: () => Promise<{ node: Node }>;
+}
+
+const { content } = Astro.props;
+
+let htmlDescription = "";
+
+if (content && typeof content === "function") {
+  // 1. Resolvemos la promesa para obtener el AST (nodo)
+  const { node } = await content();
+
+  // 2. Transformamos el nodo al árbol de ejecución
+  const renderableTree = Markdoc.transform(node);
+
+  // 3. Renderizamos a HTML puro
+  htmlDescription = Markdoc.renderers.html(renderableTree);
+}
+---
+
+<div class="tarjeta-descripcion prose prose-slate max-w-none text-left">
+  <Fragment set:html={htmlDescription} />
+</div>
