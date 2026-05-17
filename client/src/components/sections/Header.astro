@@ -12,7 +12,8 @@ const { title, subtitle, logo, background } = Astro.props.content;
 ---
 
 <header
-  class="relative overflow-hidden flex items-center justify-center min-h-[80vh] bg-white"
+  class="relative overflow-hidden flex items-center justify-center min-h-[90vh] bg-white"
+  style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);"
 >
   {
     background && (
@@ -24,7 +25,7 @@ const { title, subtitle, logo, background } = Astro.props.content;
       />
     )
   }
-  <div class="relative z-10 text-center px-4 flex flex-col items-center gap-4">
+  <div class="relative z-10 text-center px-4 flex flex-col items-center gap-4 mb-20">
     {
       logo && (
         <img
