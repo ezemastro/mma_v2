@@ -1,0 +1,46 @@
+---
+import type { Entry } from "@keystatic/core/reader";
+import type keystaticConfig from "../../../keystatic.config";
+
+type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
+
+interface Props {
+  content: HomepageEntry["header"];
+}
+
+const { title, subtitle, logo, background } = Astro.props.content;
+---
+
+<header
+  class="relative overflow-hidden flex items-center justify-center min-h-[80vh] bg-white"
+>
+  {
+    background && (
+      <img
+        src={background}
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover opacity-20"
+        loading="eager"
+      />
+    )
+  }
+  <div class="relative z-10 text-center px-4 flex flex-col items-center gap-4">
+    {
+      logo && (
+        <img
+          src={logo}
+          alt={"Logo de " + title}
+          class="max-h-80 w-full object-contain mb-10"
+        />
+      )
+    }
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-dark">
+      {title}
+    </h1>
+    {
+      subtitle && (
+        <p class="text-2xl md:text-4xl font-semibold text-primary">{subtitle}</p>
+      )
+    }
+  </div>
+</header>

@@ -1,7 +1,7 @@
 ---
 import { createReader } from "@keystatic/core/reader";
 import keystaticConfig from "../../keystatic.config";
-import Hero from "../components/sections/Hero.astro";
+import Header from "../components/sections/Header.astro";
 import Cards from "../components/sections/Cards.astro";
 import Stats from "../components/sections/Stats.astro";
 import Clients from "../components/sections/Clients.astro";
@@ -16,11 +16,7 @@ if (!homeData) return Astro.redirect("/404");
 ---
 
 <Layout title={homeData.header.title}>
-  <Hero
-    title={homeData.header.title}
-    subtitle={homeData.header.subtitle}
-    background={homeData.header.background}
-  />
+  <Header content={homeData.header} />
 
   {
     homeData.sections.map((section) => {
