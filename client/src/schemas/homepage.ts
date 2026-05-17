@@ -1,6 +1,7 @@
 import { fields, singleton } from "@keystatic/core";
 import { iconRelationship } from "./icons";
 import { link } from "./link";
+import { astroImage } from "./image";
 
 export const homepageSchema = singleton({
   label: "Página de inicio",
@@ -10,8 +11,8 @@ export const homepageSchema = singleton({
       {
         title: fields.text({ label: "Title" }),
         subtitle: fields.text({ label: "Subtitle" }),
-        logo: fields.image({ label: "Logo" }),
-        background: fields.image({ label: "Imagen de fondo" }),
+        logo: astroImage("Logo"),
+        background: astroImage("Imagen de fondo"),
       },
       {
         label: "Encabezado",
@@ -41,7 +42,7 @@ export const homepageSchema = singleton({
                 itemLabel: (item) => item.fields.title.value || "Tarjeta",
               },
             ),
-            image: fields.image({ label: "Imagen extra" }),
+            image: astroImage("Imagen extra"),
           }),
         },
         text: {
@@ -52,7 +53,7 @@ export const homepageSchema = singleton({
             subtitle: fields.text({ label: "Subtítulo" }),
             link,
             content: fields.markdoc({ label: "Contenido" }),
-            image: fields.image({ label: "Imagen" }),
+            image: astroImage(),
           }),
         },
         stats: {
@@ -77,7 +78,7 @@ export const homepageSchema = singleton({
             content: fields.array(
               fields.object({
                 name: fields.text({ label: "Nombre del cliente" }),
-                logo: fields.image({ label: "Logo del cliente" }),
+                logo: astroImage("Logo del cliente"),
               }),
               {
                 label: "Clientes",
