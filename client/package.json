@@ -15,6 +15,7 @@
     "@astrojs/check": "^0.9.8",
     "@astrojs/markdoc": "^0.15.11",
     "@astrojs/react": "^5.0.3",
+    "@iconify-json/material-symbols": "^1.2.73",
     "@keystatic/astro": "^5.0.6",
     "@keystatic/core": "^0.5.50",
     "@markdoc/markdoc": "^0.5.7",
