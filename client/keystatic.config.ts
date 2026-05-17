@@ -1,4 +1,4 @@
-import { config,  collection, } from "@keystatic/core";
+import { config, collection } from "@keystatic/core";
 import { iconCollectionSchema } from "./src/schemas/icons";
 import { homepageSchema } from "./src/schemas/homepage";
 import { footerSchema } from "./src/schemas/footer";
