@@ -19,19 +19,19 @@ const { calculated, projects, years, clients, isFirst } = Astro.props;
 <Section title="Estadísticas" isFirst={isFirst}>
   <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
     <div>
-      <p class="text-4xl font-bold">{calculated}</p>
+      <p class="text-4xl font-bold text-primary">{calculated}</p>
       <p class="mt-2 text-lg text-muted">Obras calculadas</p>
     </div>
     <div>
-      <p class="text-4xl font-bold">{projects}</p>
+      <p class="text-4xl font-bold text-primary">{projects}</p>
       <p class="mt-2 text-lg text-muted">Proyectos completados</p>
     </div>
     <div>
-      <p class="text-4xl font-bold">{years}</p>
+      <p class="text-4xl font-bold text-primary">{years}</p>
       <p class="mt-2 text-lg text-muted">Años de experiencia</p>
     </div>
     <div>
-      <p class="text-4xl font-bold">{clients}</p>
+      <p class="text-4xl font-bold text-primary">{clients}</p>
       <p class="mt-2 text-lg text-muted">Clientes satisfechos</p>
     </div>
   </div>
