@@ -86,6 +86,7 @@ sections:
         href: >-
           https://caras.perfil.com/noticias/caras-like/diseno-y-calculo-estructural.phtml
         label: Mira la nota en CARAS
+      image: /cms/sections/6/value/image.webp
   - discriminant: text
     value:
       title: Política de Calidad
