@@ -13,21 +13,20 @@ type Props = Extract<
   isFirst?: boolean;
 };
 
-
 const { content, image, link, title, subtitle, isFirst } = Astro.props;
 ---
 
 <Section title={title} subtitle={subtitle} link={link} isFirst={isFirst}>
-  <div class="flex items-center gap-8 lg:flex-row">
-    {
-      image && (
-        <img
-          src={image}
-          alt={title}
-          class="w-full rounded-lg object-cover lg:w-auto"
-        />
-      )
-    }
-    <MarkdocRender content={content} />
-  </div>
+  {
+    image ? (
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+        <img src={image} alt={title} class="w-full h-auto" />
+        <MarkdocRender content={content} />
+      </div>
+    ) : (
+      <div class="max-w-4xl mx-auto text-center">
+        <MarkdocRender content={content} />
+      </div>
+    )
+  }
 </Section>
