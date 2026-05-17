@@ -1,0 +1,21 @@
+---
+import { Icon as AstroIcon } from "astro-icon/components";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../../keystatic.config";
+
+interface Props {
+  name: string;
+  class?: string;
+  size?: number;
+}
+
+const { name, class: className, size } = Astro.props;
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const icons = await reader.collections.icons.all();
+const iconMap = new Map(icons.map((icon) => [icon.slug, icon.entry.iconifyName]));
+
+const iconifyName = iconMap.get(name) || name;
+---
+
+<AstroIcon name={iconifyName} class={className} size={size} />
