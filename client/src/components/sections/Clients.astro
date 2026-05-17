@@ -8,12 +8,15 @@ type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
 type Props = Extract<
   HomepageEntry["sections"][number],
   { discriminant: "clients" }
->["value"];
+>["value"] & {
+  isFirst?: boolean;
+};
 
-const { title, subtitle, content } = Astro.props;
+
+const { title, subtitle, content, isFirst } = Astro.props;
 ---
 
-<Section title={title} subtitle={subtitle}>
+<Section title={title} subtitle={subtitle} isFirst={isFirst}>
   <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
     {
       content.map((client) => (

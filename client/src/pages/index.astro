@@ -19,16 +19,16 @@ if (!homeData) return Astro.redirect("/404");
   <Header content={homeData.header} />
 
   {
-    homeData.sections.map((section) => {
+    homeData.sections.map((section, index) => {
       switch (section.discriminant) {
         case "cards":
-          return <Cards {...section.value} />;
+          return <Cards {...section.value} isFirst={index === 0} />;
         case "stats":
-          return <Stats {...section.value} />;
+          return <Stats {...section.value} isFirst={index === 0} />;
         case "clients":
-          return <Clients {...section.value} />;
+          return <Clients {...section.value} isFirst={index === 0} />;
         case "text":
-          return <Text {...section.value} />;
+          return <Text {...section.value} isFirst={index === 0} />;
         default:
           return null;
       }

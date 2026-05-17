@@ -6,13 +6,14 @@ interface Props {
     href: string;
     label: string;
   };
+  isFirst?: boolean;
 }
 
-const { title, subtitle, link } = Astro.props;
+const { title, subtitle, link, isFirst } = Astro.props;
 ---
 
-<section class={`py-16 md:py-24 px-4`}>
-  <div class="max-w-7xl mx-auto border-t border-slate-200 pt-12">
+<section class:list={[{ 'pt-8 md:pt-12': isFirst, 'py-16 md:py-24': !isFirst }, 'px-4']}>
+  <div class:list={[{ 'border-t-0 pt-0': isFirst, 'border-t border-slate-200 pt-12': !isFirst }, 'max-w-7xl mx-auto']}>
     {
       title && (
         <div class="mb-12 text-center max-w-3xl mx-auto">

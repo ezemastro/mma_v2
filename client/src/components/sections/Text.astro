@@ -9,12 +9,15 @@ type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
 type Props = Extract<
   HomepageEntry["sections"][number],
   { discriminant: "text" }
->["value"];
+>["value"] & {
+  isFirst?: boolean;
+};
 
-const { content, image, link, title, subtitle } = Astro.props;
+
+const { content, image, link, title, subtitle, isFirst } = Astro.props;
 ---
 
-<Section title={title} subtitle={subtitle} link={link}>
+<Section title={title} subtitle={subtitle} link={link} isFirst={isFirst}>
   <div class="flex items-center gap-8 lg:flex-row">
     {
       image && (
