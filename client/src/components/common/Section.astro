@@ -12,16 +12,16 @@ interface Props {
 const { title, subtitle, link, isFirst } = Astro.props;
 ---
 
-<section class:list={[{ 'pt-8 md:pt-12': isFirst, 'py-16 md:py-24': !isFirst }, 'px-4']}>
+<section class:list={[{ 'pt-0 md:pt-0': isFirst, 'py-16 md:py-24': !isFirst }, 'px-4']}>
   <div class:list={[{ 'border-t-0 pt-0': isFirst, 'border-t border-slate-200 pt-12': !isFirst }, 'max-w-7xl mx-auto']}>
     {
       title && (
         <div class="mb-12 text-center max-w-3xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
             {title}
           </h2>
           {subtitle && (
-            <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+            <p class="mt-4 text-lg text-muted leading-relaxed">
               {subtitle}
             </p>
           )}
