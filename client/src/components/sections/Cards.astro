@@ -3,6 +3,7 @@ import Section from "../common/Section.astro";
 import type { Entry } from "@keystatic/core/reader";
 import keystaticConfig from "../../../keystatic.config";
 import MarkdocRender from "../common/MarkdocRender.astro";
+import Icon from "../common/Icon.astro";
 
 type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
 
@@ -20,13 +21,52 @@ const { title, subtitle, content, isFirst } = Astro.props;
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
     {
       content.map((card) => (
-        <div class="tarjeta bg-white rounded-lg shadow-md p-6">
-          <h3 class="tarjeta-titulo text-xl font-semibold mb-2">
-            {card.title}
-          </h3>
+        <div class="card p-6 flex flex-col items-center text-center h-full">
+          <Icon name={card.icon} class="size-24 mb-4 text-primary" />
+          <h3 class="card-title text-xl font-semibold">{card.title}</h3>
+          <div class="w-16 h-1 rounded-full bg-primary my-3" />
           <MarkdocRender content={card.description} />
         </div>
       ))
     }
   </div>
 </Section>
+
+<script is:inline>
+  function alignTitles() {
+    const titles = document.querySelectorAll('.card-title');
+    if (!titles.length) return;
+
+    const cards = Array.from(titles).map(t => t.closest('.card'));
+    const rows = [];
+
+    titles.forEach((title, i) => {
+      const top = cards[i].getBoundingClientRect().top;
+      let row = rows.find(r => Math.abs(r.top - top) < 1);
+      if (!row) {
+        row = { top, titles: [] };
+        rows.push(row);
+      }
+      row.titles.push(title);
+    });
+
+    titles.forEach(t => {
+      t.style.height = '';
+      t.style.display = '';
+      t.style.alignItems = '';
+    });
+
+    rows.forEach(row => {
+      const maxH = Math.max(...row.titles.map(t => t.getBoundingClientRect().height));
+      row.titles.forEach(t => {
+        t.style.height = maxH + 'px';
+        t.style.display = 'flex';
+        t.style.alignItems = 'center';
+        t.style.justifyContent = 'center';
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', alignTitles);
+  window.addEventListener('resize', alignTitles);
+</script>
