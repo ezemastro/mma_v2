@@ -4,7 +4,7 @@ export const iconCollectionSchema = {
   key: fields.slug({
     name: {
       label: "Nombre amigable",
-      description: "Nombre visible en el CMS.",
+      description: "Nombre visible en el CMS para identificar el icono.",
       validation: { isRequired: true },
     },
     slug: {
@@ -25,10 +25,9 @@ export const iconCollectionSchema = {
   }),
 };
 
-export const iconRelationship = fields.relationship({
+export const iconField = fields.relationship({
   label: "Icono",
+  description: "Selecciona un icono de la colección de iconos.",
   collection: "icons",
-  description:
-    "Selecciona un icono guardado en la coleccion Iconos. Si no existe, crealo primero.",
   validation: { isRequired: true },
 });

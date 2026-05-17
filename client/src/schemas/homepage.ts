@@ -1,5 +1,5 @@
 import { fields, singleton } from "@keystatic/core";
-import { iconRelationship } from "./icons";
+import { iconField } from "./icons";
 import { link } from "./link";
 import { astroImage } from "./image";
 
@@ -32,7 +32,7 @@ export const homepageSchema = singleton({
                 {
                   title: fields.text({ label: "Título" }),
                   description: fields.markdoc({ label: "Descripción" }),
-                  icon: iconRelationship,
+                  icon: iconField,
                   link,
                 },
                 { label: "Tarjeta" },
