@@ -106,6 +106,46 @@ content (obras included) from `/keystatic` without touching code.
       dial is 3, no scroll-triggered or JS-driven animation was added, so there's nothing to gate); a
       few client logos in the existing migrated data render faint/blank against the grayscale card
       background (pre-existing T2 data quality, not touched here).
+- [x] T4b Polish pass from the T4 capture review. Commits `770a464` (style) and `4d89231` (data).
+      Checks observed: `npm run build` green (~37-50s depending on cache); `npx astro check` 0 errors
+      (same pre-existing hint). Headless chromium captures of `/` at 1440x900 and 390x844 (both full-page
+      and first-viewport), `/obras` at both sizes, and one detail page; read back directly. CLS: home
+      1440 0.0054, home 390 0, `/obras` 1440 0.029, `/obras` 390 0, detail 1440 0.00064 -- all well under
+      0.1, no horizontal overflow on any capture (`sw === cw`).
+      Fixed: hero dropped its full-viewport min-height (now pt-8/pb-10 desktop normal padding), headline
+      confirmed 2 lines at 1440 (dropped the md:text-5xl bump, text-4xl fits "No existe proyecto de /
+      arquitectura sin estructura." in 2 lines within the narrower 5/12 text column), photo column widened
+      to 7/12 with a 4:3 crop; nav logo replaced the unreadable nav-logo.webp wordmark with the mark-only
+      asset recovered from v1 `public/images/logo.png` (deleted, unused elsewhere) plus real HTML text
+      "Marcelo Mastropietro" / "Ingeniería"; obras titles re-migrated (see data commit) so cards/detail
+      pages show titulo + a muted ubicacion line instead of baked-in location text; featured obras excludes
+      the hero's own obra and gained accessible prev/next buttons + edge fade; Section.astro now supports
+      a `tono` field (editable per block in Keystatic) alternating a soft `#f7f7f7` background instead of
+      a hairline, applied to Diferenciales/Curriculum/Política de Calidad/CTA final; Servicios and
+      Curriculum no longer share a layout (Servicios: left-aligned icon+title 2x2, no orange bars;
+      Curriculum: new `franja` cards variant, a compact 4-column link strip) with Bio moved between them;
+      Diferenciales ISO image capped at 300px and centered; Bio split into 4 paragraphs at sentence
+      boundaries (content edit, same words) with its photo now stretched to match the text block's height;
+      Publicaciones covers now sit in a 4:3 contain box (read larger) and the "A LA VENTA EN" block
+      tightened to one line; Clientes tiles are smaller, white, bordered, un-grayscaled (logos were
+      disappearing against grayscale+light backgrounds) and the literal duplicate "A+R arquitectos" entry
+      was removed; `/obras`' active "Todas" chip count is readable now (`group-aria-pressed:text-white/80`
+      instead of a hardcoded muted gray) and the chip row/search/selects got a right-edge fade and
+      matched mobile widths.
+      Real bug found and fixed: `MarkdocRender.astro` hardcoded `text-left` on its wrapper unconditionally,
+      which is why the final CTA's body copy wasn't centering under its already-centered title even though
+      the parent wrapper had `text-center` -- removed, so it now inherits alignment like normal.
+      `migrate-obras.mjs` now splits the CSV's single "titulo" column into a short titulo + a separate
+      ubicacion (paren-aware split so a location group's own internal hyphen doesn't get cut), moving a
+      parenthetical that lands in a location segment to the end of titulo instead (brand/building names
+      describe the obra, not the place). Slugs still derive from the ORIGINAL raw CSV title (unchanged
+      line), so re-running this idempotent script changed 436/458 obras' titulo/ubicacion without moving
+      or renaming a single folder -- verified the hero's `heroObra: estadio-ferrocarril-oeste-tribunas-
+      caballito` relationship and Keystatic's `slugField: titulo` collection config both still resolve
+      correctly (titulo != slugify(titulo) for most obras now; Keystatic reads/writes by folder name, not
+      by regenerating the slug from title on every load, so this is safe -- only an editor manually
+      clicking "regenerate slug" in the Keystatic UI after editing titulo would create a mismatch, which
+      is expected/acceptable per the task brief).
 - [ ] T5 `/software`, `/descarga`, `/contacto`, 404.
 - [ ] T6 SEO + docs: sitemap, robots, JSON-LD, redirects; `docs/EDITAR-CONTENIDO.md` (client guide) and
       `docs/DEPLOY.md` (Cloudflare + GitHub app + DNS).
