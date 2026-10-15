@@ -49,8 +49,11 @@ content (obras included) from `/keystatic` without touching code.
 
 ## Tasks
 
-- [ ] T1 Foundation: Astro 7 upgrade, adapter + Keystatic storage switch, Layout (SEO meta, OG, GTM,
-      self-hosted Raleway), Nav, Footer, settings singleton.
+- [x] T1 Foundation: Astro 7 upgrade, adapter + Keystatic storage switch, Layout (SEO meta, OG, GTM,
+      self-hosted Raleway), Nav, Footer, settings singleton. Commit `f7cfd6f`.
+      Checks observed: `npm run build` green (97 images optimized, static /, /404,
+      Keystatic admin on-demand); `npx astro check` 0 errors (1 pre-existing hint); dev smoke test
+      `/` 200, `/keystatic` 200, unknown route 404.
 - [ ] T2 Obras content model + migration script (CSV -> Keystatic entries, downscaled images, categories).
 - [ ] T3 `/obras` page (uniform grid, no CLS, filter chips + client filter + sort, URL state) and
       `/obras/[slug]` detail pages.
