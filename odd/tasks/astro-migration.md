@@ -42,10 +42,16 @@ content (obras included) from `/keystatic` without touching code.
   All pages prerendered; only Keystatic routes run on the server.
 - Keystatic storage: `local` in dev, `github` in production (env-driven), repo `ezemastro/mma_v2`,
   `pathPrefix: client`.
-- Obra images live in `src/assets/` so Astro `<Image>` emits sized, responsive, lazy webp/avif.
+- Obra images live colocated with their entry (`src/content/obras/<slug>/portada.webp`, referenced as
+  the relative path `./portada.webp`) so Astro's content-collection `image()` helper emits sized,
+  responsive, lazy webp/avif. CMS (homepage) images live separately under `src/assets/cms/`, resolved
+  through `src/lib/cms-image.ts` since those are read via Keystatic's reader, not a content collection.
   Originals are downscaled once during migration (max 2000 px long edge) to keep repo and builds light.
-- Category tags normalized (e.g. "barrio privado"/"barrios privados", "losas postesadas" typo).
-- Featured obras on the home are an explicit `destacada` flag, not "first 8 CSV rows".
+- Category tags normalized: 22 raw tags -> 20 clean `categorias` (merged "barrio privado"/"barrios
+  privados" and the "losas postesadas" typo into "losas postensadas"; see
+  `client/scripts/migrate-obras.mjs` for the full mapping).
+- Featured obras on the home are an explicit `destacada` flag (+ `orden`), not "first 8 CSV rows",
+  though the migration seeds it from the first 8 CSV rows to preserve today's selection.
 
 ## Tasks
 
@@ -54,7 +60,13 @@ content (obras included) from `/keystatic` without touching code.
       Checks observed: `npm run build` green (97 images optimized, static /, /404,
       Keystatic admin on-demand); `npx astro check` 0 errors (1 pre-existing hint); dev smoke test
       `/` 200, `/keystatic` 200, unknown route 404.
-- [ ] T2 Obras content model + migration script (CSV -> Keystatic entries, downscaled images, categories).
+- [x] T2 Obras content model + migration script (CSV -> Keystatic entries, downscaled images, categories).
+      Commits `bf97e30` (schemas/config/script) and `589c64d` (migrated data).
+      Checks observed: `npm run build` green (9.2 MB dist, ~9.4s); `npx astro check` 0 errors;
+      temporary `getCollection('obras')` probe returned 455 entries matching the script's own report,
+      sample obra's portada emitted as an optimized responsive webp in `dist/`.
+      Migrated 455/461 obras (131.5 MB -> 64.4 MB images); 6 rows have no matching source image even
+      after fixing ~20 typo'd/mis-cased filenames (see script header); 20 categorias, 0 unmapped tags.
 - [ ] T3 `/obras` page (uniform grid, no CLS, filter chips + client filter + sort, URL state) and
       `/obras/[slug]` detail pages.
 - [ ] T4 Home: new hero, featured obras section, port remaining sections with refined styling.
@@ -81,4 +93,4 @@ content (obras included) from `/keystatic` without touching code.
 
 ## Next step
 
-T1.
+T3.
