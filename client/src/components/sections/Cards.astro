@@ -17,16 +17,20 @@ type Props = Extract<
   id?: string;
 };
 
-const { id, title, subtitle, content, image, variante, isFirst } = Astro.props;
+const { id, title, subtitle, content, image, variante, tono, isFirst } = Astro.props;
 const extraImage = resolveCmsImage(image);
 ---
 
-<Section id={id} title={title} subtitle={subtitle} isFirst={isFirst}>
+<Section id={id} title={title} subtitle={subtitle} isFirst={isFirst} tone={tono}>
   {
     variante === "imagen-lista" ? (
       <div class="grid items-center gap-10 md:grid-cols-2">
         {extraImage && (
-          <Image src={extraImage} alt={title} class="w-full rounded-[var(--radius)] object-contain" />
+          <Image
+            src={extraImage}
+            alt={title}
+            class="mx-auto w-full max-w-[300px] rounded-[var(--radius)] object-contain md:mx-0"
+          />
         )}
         <ul class="flex flex-col gap-8">
           {content.map((card) => (
@@ -40,19 +44,38 @@ const extraImage = resolveCmsImage(image);
           ))}
         </ul>
       </div>
-    ) : (
-      <div class="grid gap-6 sm:grid-cols-2">
+    ) : variante === "franja" ? (
+      <ul class="grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
         {content.map((card) => (
-          <div class="flex flex-col items-center gap-3 p-6 text-center">
-            <Icon name={card.icon} class="size-16 text-primary" />
-            <h3 class="text-lg font-semibold text-dark">{card.title}</h3>
-            <div class="h-1 w-12 rounded-full bg-primary" />
+          <li class="flex flex-col gap-2 border-t border-slate-200 pt-4">
+            <Icon name={card.icon} class="size-7 text-primary" />
+            <h3 class="font-semibold text-dark">{card.title}</h3>
             <MarkdocRender content={card.description} />
             {card.link?.href && card.link?.label && (
-              <a href={card.link.href} class="mt-1 text-sm font-semibold text-primary hover:text-primary-dark">
+              <a href={card.link.href} class="mt-auto text-sm font-semibold text-primary hover:text-primary-dark">
                 {card.link.label}
               </a>
             )}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <div class="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        {content.map((card) => (
+          <div class="flex items-start gap-4 text-left">
+            <Icon name={card.icon} class="size-10 shrink-0 text-primary" />
+            <div>
+              <h3 class="font-semibold text-dark">{card.title}</h3>
+              <MarkdocRender content={card.description} />
+              {card.link?.href && card.link?.label && (
+                <a
+                  href={card.link.href}
+                  class="mt-1 inline-block text-sm font-semibold text-primary hover:text-primary-dark"
+                >
+                  {card.link.label}
+                </a>
+              )}
+            </div>
           </div>
         ))}
       </div>

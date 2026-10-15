@@ -21,48 +21,53 @@ const inputClasses =
   "rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-dark placeholder:text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25";
 
 const chipClasses =
-  "shrink-0 rounded-[var(--radius)] border border-slate-200 px-4 py-2 text-sm font-semibold text-dark transition-colors hover:border-primary hover:text-primary aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-white";
+  "group shrink-0 rounded-[var(--radius)] border border-slate-200 px-4 py-2 text-sm font-semibold text-dark transition-colors hover:border-primary hover:text-primary aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-white";
+
+const countClasses = "text-muted group-aria-pressed:text-white/80";
 ---
 
 <div class="mb-8 flex flex-col gap-4">
-  <div class="flex flex-wrap gap-3">
+  <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
     <label class="sr-only" for="obras-search">Buscar obra</label>
     <input
       id="obras-search"
       type="search"
       placeholder="Buscar por título, cliente o ubicación"
-      class:list={[inputClasses, "min-w-[14rem] flex-1"]}
+      class:list={[inputClasses, "w-full sm:min-w-[14rem] sm:flex-1"]}
     />
 
     <label class="sr-only" for="obras-cliente">Cliente</label>
-    <select id="obras-cliente" class:list={[inputClasses, "cursor-pointer"]}>
+    <select id="obras-cliente" class:list={[inputClasses, "w-full cursor-pointer sm:w-auto"]}>
       <option value="">Todos los clientes</option>
       {clientes.map((cliente) => <option value={cliente}>{cliente}</option>)}
     </select>
 
     <label class="sr-only" for="obras-orden">Ordenar por</label>
-    <select id="obras-orden" class:list={[inputClasses, "cursor-pointer"]}>
+    <select id="obras-orden" class:list={[inputClasses, "w-full cursor-pointer sm:w-auto"]}>
       <option value="recientes">Más recientes</option>
       <option value="antiguas">Más antiguas</option>
       <option value="superficie">Mayor superficie</option>
     </select>
   </div>
 
-  <div
-    class="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-    role="group"
-    aria-label="Filtrar por categoría"
-  >
-    <button type="button" data-categoria-chip="" aria-pressed="true" class={chipClasses}>
-      Todas <span class="text-muted">({total})</span>
-    </button>
-    {
-      categorias.map((categoria) => (
-        <button type="button" data-categoria-chip={categoria.slug} aria-pressed="false" class={chipClasses}>
-          {categoria.label} <span class="text-muted">({categoria.count})</span>
-        </button>
-      ))
-    }
+  <div class="relative">
+    <div
+      class="flex gap-2 overflow-x-auto pb-1 pr-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      role="group"
+      aria-label="Filtrar por categoría"
+    >
+      <button type="button" data-categoria-chip="" aria-pressed="true" class={chipClasses}>
+        Todas <span class={countClasses}>({total})</span>
+      </button>
+      {
+        categorias.map((categoria) => (
+          <button type="button" data-categoria-chip={categoria.slug} aria-pressed="false" class={chipClasses}>
+            {categoria.label} <span class={countClasses}>({categoria.count})</span>
+          </button>
+        ))
+      }
+    </div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent" />
   </div>
 
   <div class="flex items-center justify-between gap-4 text-sm text-muted">

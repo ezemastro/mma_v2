@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import navLogo from "../../assets/brand/nav-logo.webp";
+import logoMark from "../../assets/brand/logo-mark.png";
 
 interface Props {
   /** Renders the nav without a background, for a hero it floats over. */
@@ -29,8 +29,12 @@ const isActive = (href: string) =>
       : "bg-white/90 backdrop-blur-sm shadow-sm",
   ]}
 >
-  <a href="/" aria-label="Ir a la página principal" class="flex h-full items-center py-2">
-    <Image src={navLogo} alt="Marcelo Mastropietro Atelier" class="h-full w-auto object-contain" />
+  <a href="/" aria-label="Ir a la página principal" class="flex h-full items-center gap-2.5 py-2">
+    <Image src={logoMark} alt="" class="h-8 w-auto md:h-9" />
+    <span class="flex flex-col leading-none">
+      <span class="text-sm font-semibold text-dark md:text-base">Marcelo Mastropietro</span>
+      <span class="text-[11px] font-medium text-primary md:text-xs">Ingeniería</span>
+    </span>
   </a>
 
   <ul class="hidden md:flex h-full items-center gap-2">

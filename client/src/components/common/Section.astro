@@ -8,22 +8,26 @@ interface Props {
     label: string;
   };
   isFirst?: boolean;
+  /** "muted" gives the section a soft tinted background instead of a top hairline. */
+  tone?: "default" | "muted";
 }
 
-const { id, title, subtitle, link, isFirst } = Astro.props;
+const { id, title, subtitle, link, isFirst, tone = "default" } = Astro.props;
+const isMuted = tone === "muted";
 ---
 
 <section
   id={id}
-  class:list={[{ "pt-0 md:pt-0": isFirst, "py-16 md:py-24": !isFirst }, "px-4", "scroll-mt-16"]}
+  class:list={[
+    "px-4 scroll-mt-16",
+    isFirst ? "pb-16 md:pb-20" : "py-16 md:py-20",
+    isMuted && "bg-[#f7f7f7]",
+  ]}
 >
   <div
     class:list={[
-      {
-        "border-t-0 pt-0": isFirst,
-        "border-t border-slate-200 pt-12": !isFirst,
-      },
-      "max-w-7xl mx-auto",
+      "mx-auto max-w-7xl",
+      !isFirst && !isMuted && "border-t border-slate-200 pt-8",
     ]}
   >
     {

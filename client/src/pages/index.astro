@@ -31,7 +31,7 @@ if (!homeData) return Astro.redirect("/404");
           return (
             <>
               <Stats {...section.value} id={id} isFirst={index === 0} />
-              <FeaturedObras />
+              <FeaturedObras excludeSlug={homeData.header.heroObra} />
             </>
           );
         case "clients":

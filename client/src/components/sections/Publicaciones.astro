@@ -30,8 +30,8 @@ const { id, title, content, isFirst } = Astro.props;
         return (
           <article class="flex flex-col gap-4">
             {image && (
-              <div class="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-[var(--radius)] bg-slate-50 p-6">
-                <Image src={image} alt={item.title} class="max-h-full w-auto object-contain" />
+              <div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[var(--radius)] bg-slate-50 p-3">
+                <Image src={image} alt={item.title} class="h-full w-full object-contain" />
               </div>
             )}
             <div>

@@ -9,11 +9,13 @@ import { astroImage } from "./image";
 const cardsVariante = fields.select({
   label: "Variante de diseño",
   description:
-    "Cuadrícula: tarjetas en grilla. Imagen + lista: una imagen grande (ej. certificado) junto a los" +
-    " ítems apilados, sin tarjetas repetidas.",
+    "Cuadrícula: tarjetas en grilla, alineadas a la izquierda. Imagen + lista: una imagen grande (ej." +
+    " certificado) junto a los ítems apilados. Franja compacta: franja de 4 columnas con ícono, título," +
+    " una línea y enlace, para listados cortos de enlaces.",
   options: [
     { label: "Cuadrícula", value: "grid" },
     { label: "Imagen + lista", value: "imagen-lista" },
+    { label: "Franja compacta (4 columnas)", value: "franja" },
   ],
   defaultValue: "grid",
 });
@@ -26,6 +28,18 @@ const textVariante = fields.select({
     { label: "Lista numerada en 2 columnas", value: "lista-numerada" },
   ],
   defaultValue: "simple",
+});
+
+// Shared by every section block: lets the client alternate a soft tinted
+// background instead of a hairline between sections, for visual rhythm.
+const sectionTone = fields.select({
+  label: "Fondo de la sección",
+  description: "Suave: fondo gris muy claro, sin línea divisoria arriba.",
+  options: [
+    { label: "Claro (por defecto)", value: "default" },
+    { label: "Suave", value: "muted" },
+  ],
+  defaultValue: "default",
 });
 
 export const homepageSchema = singleton({
@@ -66,6 +80,7 @@ export const homepageSchema = singleton({
             title: fields.text({ label: "Título" }),
             subtitle: fields.text({ label: "Subtítulo" }),
             variante: cardsVariante,
+            tono: sectionTone,
             content: fields.array(
               fields.object(
                 {
@@ -91,6 +106,7 @@ export const homepageSchema = singleton({
             title: fields.text({ label: "Título" }),
             subtitle: fields.text({ label: "Subtítulo" }),
             variante: textVariante,
+            tono: sectionTone,
             link,
             content: fields.markdoc({ label: "Contenido" }),
             image: astroImage(),

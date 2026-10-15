@@ -43,6 +43,7 @@ const galeriaFull = await Promise.all(galeria.map((image) => getImage({ src: ima
       <a href="/obras" class="text-sm font-semibold text-primary hover:text-primary-dark">&larr; Volver a obras</a>
 
       <h1 class="mt-6 text-3xl font-bold tracking-tight text-dark md:text-4xl">{titulo}</h1>
+      {ubicacion && <p class="mt-2 text-lg text-muted">{ubicacion}</p>}
 
       <div class="mt-8 overflow-hidden rounded-[var(--radius)] bg-slate-100">
         <Image

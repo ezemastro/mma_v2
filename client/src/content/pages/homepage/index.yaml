@@ -17,6 +17,7 @@ sections:
     value:
       title: Nuestros Diferenciales
       variante: imagen-lista
+      tono: muted
       image: /src/assets/cms/sections/1/value/image.png
       content:
         - title: 30 años de experiencia
@@ -46,11 +47,18 @@ sections:
         - title: Inspección y/o Verificación Estructuras Ejecutadas
           icon: inspeccion-verificacion
           link: {}
+  - discriminant: text
+    value:
+      title: Ing. Marcelo Mastropietro
+      variante: simple
+      link: {}
+      image: /src/assets/cms/sections/4/value/image.webp
   - discriminant: cards
     value:
       title: Curriculum
       subtitle: Ing. Marcelo Mastropietro
-      variante: grid
+      variante: franja
+      tono: muted
       content:
         - title: Docente
           icon: sombrero-escolar
@@ -71,12 +79,6 @@ sections:
           link:
             href: https://www.youtube.com/@marcelomastropietro
             label: Ver canal
-  - discriminant: text
-    value:
-      title: Ing. Marcelo Mastropietro
-      variante: simple
-      link: {}
-      image: /src/assets/cms/sections/4/value/image.webp
   - discriminant: publicaciones
     value:
       title: Publicaciones
@@ -99,6 +101,7 @@ sections:
     value:
       title: Política de Calidad
       variante: lista-numerada
+      tono: muted
       link: {}
   - discriminant: clients
     value:
@@ -107,8 +110,6 @@ sections:
       content:
         - name: A+R Arquitectos
           logo: /src/assets/cms/sections/7/value/content/0/logo.jpg
-        - name: A+R arquitectos
-          logo: /src/assets/cms/sections/7/value/content/1/logo.jpg
         - name: Abadgadano arquitectos
           logo: /src/assets/cms/sections/7/value/content/2/logo.jpg
         - name: Acontec
@@ -291,6 +292,7 @@ sections:
     value:
       title: Conversemos tu próximo proyecto
       variante: simple
+      tono: muted
       link:
         href: /contacto
         label: Contacto

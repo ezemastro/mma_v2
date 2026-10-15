@@ -16,17 +16,25 @@ type Props = Extract<
   id?: string;
 };
 
-const { id, content, image, link, title, subtitle, variante, isFirst } = Astro.props;
+const { id, content, image, link, title, subtitle, variante, tono, isFirst } = Astro.props;
 const resolvedImage = resolveCmsImage(image);
 const isListaNumerada = variante === "lista-numerada";
 ---
 
-<Section id={id} title={title} subtitle={subtitle} link={link} isFirst={isFirst}>
+<Section id={id} title={title} subtitle={subtitle} link={link} isFirst={isFirst} tone={tono}>
   {
     resolvedImage ? (
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
-        <Image src={resolvedImage} alt={title} class="w-full h-auto rounded-[var(--radius)]" />
-        <MarkdocRender content={content} />
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-stretch max-w-4xl mx-auto">
+        <div class="overflow-hidden rounded-[var(--radius)]">
+          <Image
+            src={resolvedImage}
+            alt={title}
+            class="h-56 w-full object-cover sm:h-72 lg:h-full"
+          />
+        </div>
+        <div class="flex flex-col justify-center">
+          <MarkdocRender content={content} />
+        </div>
       </div>
     ) : (
       <div

@@ -208,6 +208,81 @@ function mapCategories(rawCategorias, failures, rowNumber) {
   return slugs;
 }
 
+/** Splits `str` on every occurrence of `sep` that is NOT inside a
+ * parenthesized group, so a location like "Baradero (Centro de Robótica,
+ * Automatización y Sensores)" never gets split on a comma/hyphen that
+ * happens to sit inside its own parentheses. */
+function splitOutsideParens(str, sep) {
+  const parts = [];
+  let depth = 0;
+  let current = "";
+  let i = 0;
+  while (i < str.length) {
+    const ch = str[i];
+    if (ch === "(") depth += 1;
+    if (ch === ")") depth = Math.max(0, depth - 1);
+    if (depth === 0 && str.startsWith(sep, i)) {
+      parts.push(current);
+      current = "";
+      i += sep.length;
+      continue;
+    }
+    current += ch;
+    i += 1;
+  }
+  parts.push(current);
+  return parts;
+}
+
+/** Normalizes "( foo )" -> "(foo)", collapsing whitespace just inside the
+ * parentheses left by rows like "( Local Mostaza)" or "(Jardín  Nº 928 )". */
+function cleanParens(str) {
+  return str.replace(/\(\s*([^()]*?)\s*\)/g, (_match, inner) => `(${inner.replace(/\s+/g, " ").trim()})`);
+}
+
+/**
+ * Splits the CSV's raw "titulo" column (address + location, loosely
+ * " - "-delimited) into a short `titulo` and a separate `ubicacion`.
+ *
+ * Rules (see client/odd/tasks/astro-migration.md T4b item 3 for the worked
+ * examples this was built against):
+ *  - The first " - "-separated segment becomes `titulo`.
+ *  - Remaining segments join with ", " into `ubicacion`.
+ *  - A parenthesized group that lands in a *location* segment (e.g. a
+ *    local's brand name, "San Isidro (Local Mostaza)") describes the obra,
+ *    not the place, so it moves to the end of `titulo` instead.
+ *  - Rows with no " - " separator keep the whole (cleaned) string as
+ *    `titulo` and get no `ubicacion` (e.g. "Peajes autopista AUSUR").
+ */
+function splitTituloUbicacion(rawTitulo) {
+  const collapsed = cleanParens(rawTitulo.replace(/\s+/g, " ").trim());
+  const segments = splitOutsideParens(collapsed, " - ")
+    .map((segment) => segment.trim())
+    .filter(Boolean);
+
+  if (segments.length === 0) return { titulo: collapsed, ubicacion: "" };
+
+  let titulo = segments[0];
+  const locationSegments = segments.slice(1);
+  const cleanedLocationSegments = [];
+  let movedParen = null;
+
+  for (const segment of locationSegments) {
+    const match = segment.match(/\(([^()]*)\)/);
+    if (match && !movedParen) {
+      movedParen = `(${match[1].trim()})`;
+      const withoutParen = segment.replace(match[0], "").replace(/\s+/g, " ").trim();
+      if (withoutParen) cleanedLocationSegments.push(withoutParen);
+    } else {
+      cleanedLocationSegments.push(segment);
+    }
+  }
+
+  if (movedParen) titulo = `${titulo} ${movedParen}`;
+
+  return { titulo, ubicacion: cleanedLocationSegments.join(", ") };
+}
+
 function uniqueSlug(base, used) {
   let slug = base;
   let suffix = 2;
@@ -292,9 +367,15 @@ async function main() {
       continue;
     }
 
+    // Slug stays derived from the ORIGINAL full CSV title (not the split
+    // titulo below) so existing folder names -- and anything that already
+    // references them, like the homepage's hero obra relationship -- never
+    // change when this idempotent script is re-run.
     const slug = uniqueSlug(slugify(titulo), usedSlugs);
     const entryDir = path.join(OBRAS_OUT, slug);
     await mkdir(entryDir, { recursive: true });
+
+    const { titulo: splitTitulo, ubicacion: splitUbicacion } = splitTituloUbicacion(titulo);
 
     const { before, after } = await resizeImage(sourceImagePath, path.join(entryDir, "portada.webp"));
     totalBefore += before;
@@ -311,11 +392,11 @@ async function main() {
     const isFeatured = index < FEATURED_COUNT;
 
     const data = {
-      titulo,
+      titulo: splitTitulo,
       anio: Number.isFinite(anio) ? anio : null,
       cliente: clientes,
       superficie: Number.isFinite(superficie) ? superficie : null,
-      ubicacion: "",
+      ubicacion: splitUbicacion,
       categorias: mapCategories(rawCategorias, categoryFailures, rowNumber),
       descripcion: descripcionParts.join("\n\n"),
       portada: "./portada.webp",

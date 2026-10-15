@@ -20,18 +20,14 @@ const { id, title, subtitle, content, isFirst } = Astro.props;
 ---
 
 <Section id={id} title={title} subtitle={subtitle} isFirst={isFirst}>
-  <div class="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+  <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
     {
       content.map((client) => {
         const logo = resolveCmsImage(client.logo);
         return (
-          <div class="flex aspect-square items-center justify-center rounded-[var(--radius)] border border-slate-100 bg-slate-50 p-3">
+          <div class="flex aspect-[3/2] items-center justify-center rounded-[var(--radius)] border border-slate-200 bg-white p-3 transition-colors hover:border-primary/40">
             {logo && (
-              <Image
-                src={logo}
-                alt={client.name}
-                class="max-h-10 w-auto object-contain grayscale transition-all duration-300 hover:grayscale-0"
-              />
+              <Image src={logo} alt={client.name} class="max-h-[75%] max-w-[75%] w-auto object-contain" />
             )}
           </div>
         );

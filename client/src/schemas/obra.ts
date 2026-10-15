@@ -39,7 +39,7 @@ export const obraSchema = {
   }),
   ubicacion: fields.text({
     label: "Ubicación",
-    description: "Opcional, se completa a futuro.",
+    description: "Localidad o barrio de la obra, ej: \"San Isidro\" o \"Puertos del Lago, Escobar\".",
     validation: { isRequired: false },
   }),
   categorias: fields.multiRelationship({
