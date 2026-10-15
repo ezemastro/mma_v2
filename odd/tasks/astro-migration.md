@@ -67,8 +67,17 @@ content (obras included) from `/keystatic` without touching code.
       sample obra's portada emitted as an optimized responsive webp in `dist/`.
       Migrated 455/461 obras (131.5 MB -> 64.4 MB images); 6 rows have no matching source image even
       after fixing ~20 typo'd/mis-cased filenames (see script header); 20 categorias, 0 unmapped tags.
-- [ ] T3 `/obras` page (uniform grid, no CLS, filter chips + client filter + sort, URL state) and
-      `/obras/[slug]` detail pages.
+- [x] T3 `/obras` page (uniform grid, no CLS, filter chips + client filter + sort, URL state) and
+      `/obras/[slug]` detail pages. Commit `b1ed36d`.
+      Checks observed: `npm run build` green (2m49s total, first build generating all obra image
+      widths; `dist/client/obras/index.html` 512 KB, 458 obra detail pages + index under
+      `dist/client/obras/`); `npx astro check` 0 errors (same pre-existing hint as T1/T2).
+      Headless chromium captures: `/obras` desktop 1440 and mobile 390 (via iframe harness, grid
+      renders 1/2/3/4 cols correctly, chips scroll horizontally on mobile), `/obras/?categoria=cines`
+      deep link (confirms client filter script runs on load: count updates to "2 obras", chip and
+      "Limpiar filtros" reflect state), `/obras/estadio-ferrocarril-oeste-tribunas-caballito/` detail
+      desktop (real photo, facts list, categoria links, related obras grid; this obra has no galeria
+      so the lightbox section correctly doesn't render).
 - [ ] T4 Home: new hero, featured obras section, port remaining sections with refined styling.
 - [ ] T5 `/software`, `/descarga`, `/contacto`, 404.
 - [ ] T6 SEO + docs: sitemap, robots, JSON-LD, redirects; `docs/EDITAR-CONTENIDO.md` (client guide) and
