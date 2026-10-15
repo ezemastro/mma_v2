@@ -1,0 +1,13 @@
+titulo: Parque Logístico Tortugas ( Milgor )
+anio: 2021
+cliente: F4 Construcciones
+superficie: 2500
+ubicacion: ""
+categorias:
+  - galpones
+  - estructura-metalica
+descripcion: Estructura mixta, de grandes luces,losas premoldeadas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

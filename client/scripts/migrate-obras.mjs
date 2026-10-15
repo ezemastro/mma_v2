@@ -76,6 +76,15 @@ const FILENAME_OVERRIDES = new Map([
   ["an213.webp", "albanueva213.webp"], // CSV used a truncated filename
   ["cañada12.webp", "lacañada12.webp"], // missing "la" prefix
   ["galicia411,png.webp", "galicia411.webp"], // stray ",png"
+  ["laalameda446.webp", "lalameda446.webp"], // missing "a"
+  ["milgor.webp", "mirgor.webp"], // the client is Mirgor
+  ["mornghi.webp", "mornaghi.webp"], // typo: missing "a"
+]);
+
+// Rows whose CSV filename exists but points at another obra's photo.
+// Keyed by the trimmed CSV title.
+const TITLE_IMAGE_OVERRIDES = new Map([
+  ["Santa Bárbara 2002 - Tigre", "santabarbara2002.webp"], // CSV reused santabarbara1103.webp
 ]);
 
 // --- Category normalization -------------------------------------------
@@ -273,7 +282,8 @@ async function main() {
       continue;
     }
 
-    const actualFilename = FILENAME_OVERRIDES.get(imagen) ?? imagen;
+    const actualFilename =
+      TITLE_IMAGE_OVERRIDES.get(titulo) ?? FILENAME_OVERRIDES.get(imagen) ?? imagen;
     const sourceImagePath = path.join(IMAGES_DIR, actualFilename);
     try {
       await stat(sourceImagePath);
