@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "migrate:obras": "node scripts/migrate-obras.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
@@ -41,6 +42,8 @@
     "eslint-plugin-astro": "^1.7.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript-eslint": "^8.58.2"
+    "sharp": "^0.35.5",
+    "typescript-eslint": "^8.58.2",
+    "yaml": "^2.9.1"
   }
 }

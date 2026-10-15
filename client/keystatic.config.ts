@@ -2,6 +2,8 @@ import { config, collection } from "@keystatic/core";
 import { iconCollectionSchema } from "./src/schemas/icons";
 import { homepageSchema } from "./src/schemas/homepage";
 import { settingsSchema } from "./src/schemas/settings";
+import { categoriaSchema } from "./src/schemas/categoria";
+import { obraSchema } from "./src/schemas/obra";
 
 // Local storage lets the Keystatic admin write directly to the filesystem,
 // which only works in dev (there is no writable filesystem once deployed).
@@ -39,6 +41,23 @@ export default config({
       slugField: "key",
       columns: ["key", "iconifyName"],
       schema: iconCollectionSchema,
+    }),
+    categorias: collection({
+      label: "Categorías",
+      path: "src/content/categorias/*",
+      format: { data: "yaml" },
+      slugField: "nombre",
+      columns: ["nombre", "etiqueta"],
+      schema: categoriaSchema,
+    }),
+    obras: collection({
+      label: "Obras",
+      path: "src/content/obras/*/",
+      format: { data: "yaml" },
+      slugField: "titulo",
+      columns: ["titulo", "anio", "cliente"],
+      previewUrl: "/obras/{slug}",
+      schema: obraSchema,
     }),
   },
 });
