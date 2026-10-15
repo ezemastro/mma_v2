@@ -3,6 +3,8 @@ import Section from "../common/Section.astro";
 import type { Entry } from "@keystatic/core/reader";
 import keystaticConfig from "../../../keystatic.config";
 import MarkdocRender from "../common/MarkdocRender.astro";
+import { Image } from "astro:assets";
+import { resolveCmsImage } from "../../lib/cms-image";
 
 type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
 
@@ -14,13 +16,14 @@ type Props = Extract<
 };
 
 const { content, image, link, title, subtitle, isFirst } = Astro.props;
+const resolvedImage = resolveCmsImage(image);
 ---
 
 <Section title={title} subtitle={subtitle} link={link} isFirst={isFirst}>
   {
-    image ? (
+    resolvedImage ? (
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
-        <img src={image} alt={title} class="w-full h-auto" />
+        <Image src={resolvedImage} alt={title} class="w-full h-auto" />
         <MarkdocRender content={content} />
       </div>
     ) : (

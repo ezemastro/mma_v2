@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource-variable/raleway";
 
 @theme {
   --color-primary: #E07611;
@@ -7,10 +8,12 @@
   --color-muted: #626262;
   --color-dark: #444444;
   --color-text: var(--color-dark);
+  --font-sans: "Raleway Variable", "Raleway", system-ui, sans-serif;
 }
 
 @layer base {
   body {
     color: var(--color-text);
+    font-family: var(--font-sans);
   }
 }

@@ -3,8 +3,14 @@ import Markdoc from "@markdoc/markdoc";
 import type { Node } from "@markdoc/markdoc";
 
 interface Props {
-  // Definimos el tipo de la función que retorna la promesa de Keystatic
-  content: () => Promise<{ node: Node }>;
+  // Keystatic's fields.markdoc() resolver returns its AST node typed
+  // against its own (older, nested) @markdoc/markdoc install, which is a
+  // structurally-identical but nominally different type from the
+  // `@markdoc/markdoc` used here to render it. `unknown` sidesteps that
+  // dependency-duplication mismatch without weakening anything we actually
+  // check (we immediately hand it to Markdoc.transform, which is untyped
+  // enough to accept it).
+  content: () => Promise<{ node: unknown }>;
 }
 
 const { content } = Astro.props;
@@ -16,7 +22,7 @@ if (content && typeof content === "function") {
   const { node } = await content();
 
   // 2. Transformamos el nodo al árbol de ejecución
-  const renderableTree = Markdoc.transform(node);
+  const renderableTree = Markdoc.transform(node as Node);
 
   // 3. Renderizamos a HTML puro
   htmlDescription = Markdoc.renderers.html(renderableTree);

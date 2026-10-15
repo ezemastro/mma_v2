@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+import { reader } from "../../lib/keystatic-reader";
+
+const settings = await reader.singletons.settings.read();
+
+const year = new Date().getFullYear();
+const copyright = (settings?.footer.copyright ?? "").replace(
+  "{year}",
+  String(year),
+);
+---
+
+<footer class="border-t border-slate-200 bg-white px-6 py-12 md:px-12">
+  <div class="mx-auto flex max-w-5xl flex-col items-center gap-8 text-center md:flex-row md:justify-evenly md:text-left">
+    <div class="flex flex-col items-center gap-2 md:items-start">
+      <p class="font-semibold">{settings?.footer.telefonoTexto}</p>
+      <div class="flex items-center gap-3">
+        <Icon name="material-symbols:call-outline" class="size-6 text-primary" />
+        <a href={`tel:${settings?.contacto.telefonoNumero}`} class="hover:text-primary">
+          {settings?.contacto.telefonoTexto}
+        </a>
+        <a
+          href={`https://wa.me/${settings?.contacto.whatsappNumero}`}
+          aria-label="Enviar mensaje por WhatsApp"
+          title="Enviar mensaje por WhatsApp"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+        >
+          <Icon name="simple-icons:whatsapp" class="size-4" />
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center gap-2 md:items-start">
+      <p class="font-semibold">{settings?.footer.emailTexto}</p>
+      <div class="flex items-center gap-3">
+        <Icon name="material-symbols:mail-outline" class="size-6 text-primary" />
+        <a href={`mailto:${settings?.contacto.email}`} class="hover:text-primary">
+          {settings?.contacto.email}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto mt-10 max-w-3xl text-center text-balance text-sm text-muted">
+    <p>{copyright}</p>
+  </div>
+</footer>

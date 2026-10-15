@@ -1,0 +1,24 @@
+contacto:
+  telefonoTexto: (+54) 9 11 4157-6009
+  telefonoNumero: '+5491141576009'
+  whatsappNumero: '5491141576009'
+  email: consultas@mastropietro.com.ar
+  direccionTexto: Puertos del Lago, Escobar, Buenos Aires, Argentina
+  mapaLat: -34.345508
+  mapaLng: -58.734555
+  formularioDestino: marcelomastropietro@gmail.com
+redes:
+  youtubeUrl: https://www.youtube.com/@marcelomastropietro
+  libroMercadoLibreUrl: >-
+    https://articulo.mercadolibre.com.ar/MLA-722507965-el-hormigon-para-arquitectos-ed-nobuko-_JM
+footer:
+  telefonoTexto: ¿Querés una respuesta rápida? Llamanos ahora.
+  emailTexto: ¿Tenés alguna consulta? Mandanos un correo.
+  copyright: >-
+    © {year} Mastropietro. Todos los derechos reservados. Diseño y Desarrollo
+    Ezequiel Mastropietro.
+seo:
+  descripcionPorDefecto: >-
+    Marcelo Mastropietro, Ingeniería Civil, Calculista y Cálculo Estructural.
+  googleSiteVerification: Iji7L_0ZBKRUrl_fKFf7Qosw-j8QL6vT39A_ntNr4SQ
+gtmId: GTM-PN23B6M8

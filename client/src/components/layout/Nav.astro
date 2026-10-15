@@ -1,0 +1,106 @@
+---
+import { Image } from "astro:assets";
+import navLogo from "../../assets/brand/nav-logo.webp";
+
+interface Props {
+  /** Renders the nav without a background, for a hero it floats over. */
+  transparent?: boolean;
+}
+
+const { transparent = false } = Astro.props;
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/obras", label: "Obras" },
+  { href: "/software", label: "Software" },
+  { href: "/contacto", label: "Contacto" },
+];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+---
+
+<nav
+  class:list={[
+    "sticky top-0 z-50 flex h-16 max-h-18 items-center justify-between px-6 md:px-12",
+    transparent
+      ? "bg-transparent"
+      : "bg-white/90 backdrop-blur-sm shadow-sm",
+  ]}
+>
+  <a href="/" aria-label="Ir a la página principal" class="flex h-full items-center py-2">
+    <Image src={navLogo} alt="Marcelo Mastropietro Atelier" class="h-full w-auto object-contain" />
+  </a>
+
+  <ul class="hidden md:flex h-full items-center gap-2">
+    {
+      links.map((link) => (
+        <li class="relative h-full">
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? "page" : undefined}
+            class:list={[
+              "group relative flex h-full items-center px-3 text-lg font-semibold text-dark transition-colors",
+              { "text-primary": isActive(link.href) },
+            ]}
+          >
+            {link.label}
+            <span
+              class:list={[
+                "absolute bottom-0 left-1/2 h-0.5 -translate-x-1/2 bg-primary transition-all duration-150",
+                isActive(link.href) ? "w-full" : "w-0 group-hover:w-full",
+              ]}
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <details class="md:hidden relative">
+    <summary
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      class="list-none cursor-pointer rounded p-2 text-dark [&::-webkit-details-marker]:hidden"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
+      </svg>
+    </summary>
+    <ul class="absolute right-0 top-full mt-2 flex w-48 flex-col gap-1 rounded-lg bg-white p-3 shadow-lg">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              class:list={[
+                "block rounded px-3 py-2 text-base font-semibold text-dark hover:bg-slate-50",
+                { "text-primary": isActive(link.href) },
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+</nav>
+
+<script is:inline>
+  // Keep aria-expanded in sync with the native <details> open state and
+  // close the mobile menu when a link inside it is clicked.
+  document.querySelectorAll("nav details").forEach((details) => {
+    const summary = details.querySelector("summary");
+    details.addEventListener("toggle", () => {
+      summary?.setAttribute("aria-expanded", String(details.open));
+    });
+    details.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        details.open = false;
+      });
+    });
+  });
+</script>

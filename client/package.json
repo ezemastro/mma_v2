@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.22.0"
   },
   "scripts": {
     "dev": "astro dev",
@@ -13,21 +13,26 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
-    "@astrojs/markdoc": "^0.15.11",
-    "@astrojs/react": "^5.0.3",
+    "@astrojs/cloudflare": "^14.4.0",
+    "@astrojs/markdoc": "^2.1.0",
+    "@astrojs/react": "^7.1.0",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/raleway": "^5.3.0",
     "@iconify-json/material-symbols": "^1.2.73",
-    "@keystatic/astro": "^5.0.6",
-    "@keystatic/core": "^0.5.50",
+    "@iconify-json/simple-icons": "^1.2.100",
+    "@keystatic/astro": "^6.0.0",
+    "@keystatic/core": "^0.6.9",
     "@markdoc/markdoc": "^0.5.7",
-    "@tailwindcss/vite": "^4.2.2",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.0.0",
-    "astro-icon": "^1.1.5",
+    "astro": "^7.4.0",
+    "astro-icon": "^1.2.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "tailwindcss": "^4.2.2",
-    "typescript": "^5.9.3"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.151.0"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^8.58.2",

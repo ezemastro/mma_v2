@@ -1,6 +1,8 @@
 ---
 import type { Entry } from "@keystatic/core/reader";
 import type keystaticConfig from "../../../keystatic.config";
+import { Image } from "astro:assets";
+import { resolveCmsImage } from "../../lib/cms-image";
 
 type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
 
@@ -9,6 +11,8 @@ interface Props {
 }
 
 const { title, subtitle, logo, background } = Astro.props.content;
+const logoImage = resolveCmsImage(logo);
+const backgroundImage = resolveCmsImage(background);
 ---
 
 <header
@@ -16,9 +20,9 @@ const { title, subtitle, logo, background } = Astro.props.content;
   style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);"
 >
   {
-    background && (
-      <img
-        src={background}
+    backgroundImage && (
+      <Image
+        src={backgroundImage}
         alt=""
         class="absolute inset-0 w-full h-full object-cover opacity-20"
         loading="eager"
@@ -27,9 +31,9 @@ const { title, subtitle, logo, background } = Astro.props.content;
   }
   <div class="relative z-10 text-center px-4 flex flex-col items-center gap-4 mb-20">
     {
-      logo && (
-        <img
-          src={logo}
+      logoImage && (
+        <Image
+          src={logoImage}
           alt={"Logo de " + title}
           class="max-h-80 w-full object-contain mb-10"
         />

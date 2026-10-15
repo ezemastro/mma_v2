@@ -1,15 +1,35 @@
 import { config, collection } from "@keystatic/core";
 import { iconCollectionSchema } from "./src/schemas/icons";
 import { homepageSchema } from "./src/schemas/homepage";
-import { footerSchema } from "./src/schemas/footer";
+import { settingsSchema } from "./src/schemas/settings";
+
+// Local storage lets the Keystatic admin write directly to the filesystem,
+// which only works in dev (there is no writable filesystem once deployed).
+// In production we read/write through the GitHub App instead. We key off
+// PUBLIC_KEYSTATIC_GITHUB_APP_SLUG (present only when the GitHub app env
+// vars are configured) rather than import.meta.env.PROD alone, so a local
+// production build without those vars still falls back to `local` and
+// `npm run build` keeps working without any GitHub secrets.
+const useGitHubStorage =
+  import.meta.env.PROD && !!import.meta.env.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG;
 
 export default config({
-  storage: {
-    kind: "local",
+  storage: useGitHubStorage
+    ? {
+        kind: "github",
+        repo: "ezemastro/mma_v2",
+        // The Astro app lives in client/, not at the repo root.
+        pathPrefix: "client",
+      }
+    : {
+        kind: "local",
+      },
+  ui: {
+    brand: { name: "Mastropietro Ingeniería" },
   },
   singletons: {
     homepage: homepageSchema,
-    footer: footerSchema,
+    settings: settingsSchema,
   },
   collections: {
     icons: collection({

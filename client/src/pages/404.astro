@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Página no encontrada">
+  <div class="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-4 text-center">
+    <p class="text-6xl font-bold text-primary">404</p>
+    <h1 class="text-2xl font-semibold">No encontramos esta página</h1>
+    <p class="max-w-md text-muted">
+      El contenido que buscás no existe o fue movido. Volvé al inicio para
+      seguir navegando.
+    </p>
+    <a
+      href="/"
+      class="mt-2 inline-block rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
+    >
+      Volver al inicio
+    </a>
+  </div>
+</Layout>

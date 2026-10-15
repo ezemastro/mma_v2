@@ -1,19 +1,97 @@
 ---
 import "../styles/global.css";
+import Nav from "../components/layout/Nav.astro";
+import Footer from "../components/layout/Footer.astro";
+import { reader } from "../lib/keystatic-reader";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Renders the nav without a background, e.g. over a full-bleed hero. */
+  transparentNav?: boolean;
+  /** Absolute URL to a specific og:image; falls back to the site logo. */
+  ogImage?: string;
+}
+
+const { title, description, transparentNav = false, ogImage } = Astro.props;
+
+const settings = await reader.singletons.settings.read();
+
+const siteName = "Marcelo Mastropietro";
+const pageTitle = title === siteName ? title : `${title} | ${siteName}`;
+const pageDescription = description || settings?.seo.descripcionPorDefecto || "";
+// Astro.site is not reliably usable here: while the Cloudflare adapter
+// prerenders in its workerd sandbox it can resolve to an empty string
+// rather than undefined, which still fails `new URL(path, "")`. Anchor to
+// the configured site URL (astro.config.mjs `site`) directly instead.
+const siteUrl = "https://mastropietro.com.ar";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const resolvedOgImage = new URL(ogImage || "/favicon.png", siteUrl).toString();
+const gtmId = settings?.gtmId;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es-AR">
   <head>
+    {
+      gtmId && (
+        <script
+          is:inline
+          set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`}
+        />
+      )
+    }
+
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+
+    <title>{pageTitle}</title>
+    {pageDescription && <meta name="description" content={pageDescription} />}
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    {
+      settings?.seo.googleSiteVerification && (
+        <meta
+          name="google-site-verification"
+          content={settings.seo.googleSiteVerification}
+        />
+      )
+    }
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    {pageDescription && <meta property="og:description" content={pageDescription} />}
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={resolvedOgImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    {pageDescription && <meta name="twitter:description" content={pageDescription} />}
+    <meta name="twitter:image" content={resolvedOgImage} />
   </head>
   <body>
-    <slot />
+    {
+      gtmId && (
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+          />
+        </noscript>
+      )
+    }
+
+    <Nav transparent={transparentNav} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
 
