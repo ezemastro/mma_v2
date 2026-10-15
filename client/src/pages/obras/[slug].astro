@@ -1,0 +1,242 @@
+---
+import { getCollection } from "astro:content";
+import { Image, getImage } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import ObraCard from "../../components/obras/ObraCard.astro";
+
+export async function getStaticPaths() {
+  const obras = await getCollection("obras");
+  return obras.map((obra) => ({ params: { slug: obra.id }, props: { obra } }));
+}
+
+const { obra } = Astro.props;
+const { titulo, anio, cliente, superficie, ubicacion, categorias, descripcion, portada, galeria } = obra.data;
+
+const categoriasCollection = await getCollection("categorias");
+const categoriaLabels = new Map(categoriasCollection.map((categoria) => [categoria.id, categoria.data.etiqueta]));
+
+// Keystatic stores the description as plain paragraphs separated by a blank
+// line (see src/schemas/obra.ts); split on that instead of rendering
+// markdown/markdoc, since the field is plain text.
+const paragraphs = descripcion
+  .split(/\n\s*\n/)
+  .map((paragraph) => paragraph.trim())
+  .filter(Boolean);
+
+const allObras = await getCollection("obras");
+const firstCategoria = categorias[0];
+const relatedObras = firstCategoria
+  ? allObras
+      .filter((other) => other.id !== obra.id && other.data.categorias.includes(firstCategoria))
+      .sort((a, b) => b.data.anio - a.data.anio)
+      .slice(0, 4)
+  : [];
+
+const description = paragraphs[0] ?? `${titulo}, ${cliente}, ${anio}.`;
+const ogImage = await getImage({ src: portada, width: 1200 });
+const galeriaFull = await Promise.all(galeria.map((image) => getImage({ src: image, width: 1600 })));
+---
+
+<Layout title={titulo} description={description} ogImage={ogImage.src}>
+  <article class="px-4 pb-20 pt-10 md:px-12">
+    <div class="mx-auto max-w-5xl">
+      <a href="/obras" class="text-sm font-semibold text-primary hover:text-primary-dark">&larr; Volver a obras</a>
+
+      <h1 class="mt-6 text-3xl font-bold tracking-tight text-dark md:text-4xl">{titulo}</h1>
+
+      <div class="mt-8 overflow-hidden rounded-[var(--radius)] bg-slate-100">
+        <Image
+          src={portada}
+          alt={titulo}
+          width={1280}
+          widths={[640, 960, 1280, 1600]}
+          sizes="(min-width: 1024px) 896px, 100vw"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="h-auto w-full object-cover"
+        />
+      </div>
+
+      <div class="mt-10 grid gap-10 md:grid-cols-[2fr_1fr]">
+        <div class="max-w-none space-y-4 text-dark/90 leading-relaxed">
+          {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+
+        <dl class="grid grid-cols-2 gap-5 self-start rounded-[var(--radius)] border border-slate-200 p-6 text-sm md:grid-cols-1">
+          <div>
+            <dt class="font-semibold text-dark">Año</dt>
+            <dd class="text-muted">{anio}</dd>
+          </div>
+          {
+            cliente && (
+              <div>
+                <dt class="font-semibold text-dark">Cliente</dt>
+                <dd class="text-muted">{cliente}</dd>
+              </div>
+            )
+          }
+          {
+            superficie && (
+              <div>
+                <dt class="font-semibold text-dark">Superficie</dt>
+                <dd class="text-muted">{superficie} m²</dd>
+              </div>
+            )
+          }
+          {
+            ubicacion && (
+              <div>
+                <dt class="font-semibold text-dark">Ubicación</dt>
+                <dd class="text-muted">{ubicacion}</dd>
+              </div>
+            )
+          }
+          {
+            categorias.length > 0 && (
+              <div class="col-span-2 md:col-span-1">
+                <dt class="font-semibold text-dark">Categorías</dt>
+                <dd class="mt-1.5 flex flex-wrap gap-2">
+                  {categorias.map((slug) => (
+                    <a
+                      href={`/obras?categoria=${slug}`}
+                      class="rounded-[var(--radius)] border border-slate-200 px-2.5 py-1 text-xs font-semibold text-dark hover:border-primary hover:text-primary"
+                    >
+                      {categoriaLabels.get(slug) ?? slug}
+                    </a>
+                  ))}
+                </dd>
+              </div>
+            )
+          }
+        </dl>
+      </div>
+
+      {
+        galeria.length > 0 && (
+          <section class="mt-14">
+            <h2 class="text-xl font-semibold text-dark">Galería</h2>
+            <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+              {galeria.map((image, index) => (
+                <button
+                  type="button"
+                  data-gallery-open={index}
+                  aria-label={`Ver imagen ${index + 1} en grande`}
+                  class="aspect-[4/3] cursor-pointer overflow-hidden rounded-[var(--radius)] bg-slate-100"
+                >
+                  <Image
+                    src={image}
+                    alt=""
+                    width={480}
+                    height={360}
+                    widths={[240, 360, 480]}
+                    sizes="(min-width: 768px) 22vw, 45vw"
+                    loading="lazy"
+                    decoding="async"
+                    class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </button>
+              ))}
+            </div>
+
+            <dialog
+              id="obra-lightbox"
+              aria-label={`Galería de ${titulo}`}
+              data-sources={JSON.stringify(galeriaFull.map((image) => image.src))}
+              class="w-[90vw] max-w-4xl rounded-[var(--radius)] p-0 backdrop:bg-black/70"
+            >
+              <div class="relative bg-black">
+                <button
+                  type="button"
+                  data-gallery-close
+                  aria-label="Cerrar galería"
+                  class="absolute right-3 top-3 z-10 flex size-9 items-center justify-center rounded-full bg-white/90 text-dark hover:bg-white"
+                >
+                  ✕
+                </button>
+                <button
+                  type="button"
+                  data-gallery-prev
+                  aria-label="Imagen anterior"
+                  class="absolute left-3 top-1/2 z-10 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-dark hover:bg-white"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  data-gallery-next
+                  aria-label="Imagen siguiente"
+                  class="absolute right-3 top-1/2 z-10 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-dark hover:bg-white"
+                >
+                  ›
+                </button>
+                <img id="obra-lightbox-img" alt={titulo} class="mx-auto max-h-[80vh] w-full object-contain" />
+              </div>
+            </dialog>
+          </section>
+        )
+      }
+
+      {
+        relatedObras.length > 0 && (
+          <section class="mt-16 border-t border-slate-200 pt-12">
+            <h2 class="text-xl font-semibold text-dark">Obras relacionadas</h2>
+            <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+              {relatedObras.map((related) => (
+                <ObraCard obra={related} />
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      <section class="mt-16 rounded-[var(--radius)] bg-slate-50 px-6 py-10 text-center">
+        <h2 class="text-xl font-semibold text-dark">¿Tenés un proyecto estructural?</h2>
+        <p class="mt-2 text-muted">Contanos los detalles y te ayudamos a definir el cálculo ideal.</p>
+        <a
+          href="/contacto"
+          class="mt-5 inline-block rounded-[var(--radius)] bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
+        >
+          Contacto
+        </a>
+      </section>
+    </div>
+  </article>
+</Layout>
+
+<script>
+  const dialog = document.getElementById("obra-lightbox") as HTMLDialogElement | null;
+  const img = document.getElementById("obra-lightbox-img") as HTMLImageElement | null;
+
+  if (dialog && img) {
+    const sources: string[] = JSON.parse(dialog.dataset.sources || "[]");
+    let current = 0;
+
+    function show(index: number) {
+      current = (index + sources.length) % sources.length;
+      img!.src = sources[current];
+    }
+
+    document.querySelectorAll<HTMLButtonElement>("[data-gallery-open]").forEach((button) => {
+      button.addEventListener("click", () => {
+        show(Number(button.dataset.galleryOpen));
+        dialog.showModal();
+      });
+    });
+
+    dialog.querySelector("[data-gallery-close]")?.addEventListener("click", () => dialog.close());
+    dialog.querySelector("[data-gallery-prev]")?.addEventListener("click", () => show(current - 1));
+    dialog.querySelector("[data-gallery-next]")?.addEventListener("click", () => show(current + 1));
+
+    // Close when the click lands on the backdrop (outside the dialog's own box).
+    dialog.addEventListener("click", (event) => {
+      const rect = dialog.getBoundingClientRect();
+      const inside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+      if (!inside) dialog.close();
+    });
+  }
+</script>

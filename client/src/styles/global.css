@@ -9,6 +9,9 @@
   --color-dark: #444444;
   --color-text: var(--color-dark);
   --font-sans: "Raleway Variable", "Raleway", system-ui, sans-serif;
+  /* Single radius token for the whole site (images, cards, buttons, chips,
+     inputs). Keep every rounded-[var(--radius)] usage in sync with this. */
+  --radius: 0.375rem;
 }
 
 @layer base {

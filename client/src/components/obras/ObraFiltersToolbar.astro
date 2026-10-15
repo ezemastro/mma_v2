@@ -1,0 +1,74 @@
+---
+// Renders server-side with every option available; all actual filtering
+// happens client-side (see the <script> in src/pages/obras/index.astro)
+// over the data-* attributes on each ObraCard. This component only owns
+// markup + a11y wiring, not filtering logic.
+interface CategoriaOption {
+  slug: string;
+  label: string;
+  count: number;
+}
+
+interface Props {
+  categorias: CategoriaOption[];
+  clientes: string[];
+  total: number;
+}
+
+const { categorias, clientes, total } = Astro.props;
+
+const inputClasses =
+  "rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-dark placeholder:text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25";
+
+const chipClasses =
+  "shrink-0 rounded-[var(--radius)] border border-slate-200 px-4 py-2 text-sm font-semibold text-dark transition-colors hover:border-primary hover:text-primary aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-white";
+---
+
+<div class="mb-8 flex flex-col gap-4">
+  <div class="flex flex-wrap gap-3">
+    <label class="sr-only" for="obras-search">Buscar obra</label>
+    <input
+      id="obras-search"
+      type="search"
+      placeholder="Buscar por título, cliente o ubicación"
+      class:list={[inputClasses, "min-w-[14rem] flex-1"]}
+    />
+
+    <label class="sr-only" for="obras-cliente">Cliente</label>
+    <select id="obras-cliente" class:list={[inputClasses, "cursor-pointer"]}>
+      <option value="">Todos los clientes</option>
+      {clientes.map((cliente) => <option value={cliente}>{cliente}</option>)}
+    </select>
+
+    <label class="sr-only" for="obras-orden">Ordenar por</label>
+    <select id="obras-orden" class:list={[inputClasses, "cursor-pointer"]}>
+      <option value="recientes">Más recientes</option>
+      <option value="antiguas">Más antiguas</option>
+      <option value="superficie">Mayor superficie</option>
+    </select>
+  </div>
+
+  <div
+    class="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    role="group"
+    aria-label="Filtrar por categoría"
+  >
+    <button type="button" data-categoria-chip="" aria-pressed="true" class={chipClasses}>
+      Todas <span class="text-muted">({total})</span>
+    </button>
+    {
+      categorias.map((categoria) => (
+        <button type="button" data-categoria-chip={categoria.slug} aria-pressed="false" class={chipClasses}>
+          {categoria.label} <span class="text-muted">({categoria.count})</span>
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="flex items-center justify-between gap-4 text-sm text-muted">
+    <p id="obras-count" aria-live="polite">{total} obras</p>
+    <button type="button" data-clear-filters class="hidden font-semibold text-primary hover:text-primary-dark">
+      Limpiar filtros
+    </button>
+  </div>
+</div>

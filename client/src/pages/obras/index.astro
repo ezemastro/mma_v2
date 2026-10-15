@@ -1,0 +1,192 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ObraCard from "../../components/obras/ObraCard.astro";
+import ObraFiltersToolbar from "../../components/obras/ObraFiltersToolbar.astro";
+
+const allObras = await getCollection("obras");
+const categoriasCollection = await getCollection("categorias");
+
+// Default order: newest first. Array#sort is stable, so obras that share a
+// year keep their original (alphabetical-by-slug) relative order.
+const obras = [...allObras].sort((a, b) => b.data.anio - a.data.anio);
+
+const categoriaCounts = new Map<string, number>();
+for (const obra of obras) {
+  for (const slug of obra.data.categorias) {
+    categoriaCounts.set(slug, (categoriaCounts.get(slug) ?? 0) + 1);
+  }
+}
+
+const categoriaOptions = categoriasCollection
+  .map((categoria) => ({
+    slug: categoria.id,
+    label: categoria.data.etiqueta,
+    count: categoriaCounts.get(categoria.id) ?? 0,
+  }))
+  .filter((categoria) => categoria.count > 0)
+  .sort((a, b) => a.label.localeCompare(b.label, "es"));
+
+const clientes = [...new Set(obras.map((obra) => obra.data.cliente).filter(Boolean))].sort((a, b) =>
+  a.localeCompare(b, "es"),
+);
+---
+
+<Layout
+  title="Obras"
+  description={`${obras.length} obras de ingeniería estructural calculadas y dirigidas por el Ing. Marcelo Mastropietro.`}
+>
+  <section class="px-4 pb-20 pt-12 md:px-12">
+    <div class="mx-auto max-w-7xl">
+      <header class="mb-10 max-w-2xl">
+        <h1 class="text-3xl font-bold tracking-tight text-dark md:text-4xl">Obras</h1>
+        <p class="mt-3 text-lg text-muted">
+          {obras.length} proyectos de cálculo estructural, de edificios residenciales a grandes obras públicas.
+        </p>
+      </header>
+
+      <ObraFiltersToolbar categorias={categoriaOptions} clientes={clientes} total={obras.length} />
+
+      <p
+        id="obras-empty"
+        hidden
+        class="rounded-[var(--radius)] border border-slate-200 bg-slate-50 px-6 py-16 text-center text-dark"
+      >
+        No encontramos obras con estos filtros.
+        <button type="button" data-clear-filters class="ml-1 font-semibold text-primary hover:text-primary-dark">
+          Limpiar filtros
+        </button>
+      </p>
+
+      <div id="obras-grid" class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {
+          obras.map((obra, index) => (
+            <ObraCard obra={obra} eager={index < 4} priority={index === 0} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  type SortOrder = "recientes" | "antiguas" | "superficie";
+
+  interface FilterState {
+    categoria: string;
+    cliente: string;
+    q: string;
+    orden: SortOrder;
+  }
+
+  const grid = document.getElementById("obras-grid") as HTMLElement;
+  const cards = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-obra-card]"));
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-categoria-chip]"));
+  const clienteSelect = document.getElementById("obras-cliente") as HTMLSelectElement;
+  const searchInput = document.getElementById("obras-search") as HTMLInputElement;
+  const ordenSelect = document.getElementById("obras-orden") as HTMLSelectElement;
+  const countEl = document.getElementById("obras-count") as HTMLElement;
+  const emptyState = document.getElementById("obras-empty") as HTMLElement;
+  const clearButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-clear-filters]"));
+
+  function readStateFromUrl(): FilterState {
+    const params = new URLSearchParams(location.search);
+    const orden = params.get("orden");
+    return {
+      categoria: params.get("categoria") || "",
+      cliente: params.get("cliente") || "",
+      q: params.get("q") || "",
+      orden: orden === "antiguas" || orden === "superficie" ? orden : "recientes",
+    };
+  }
+
+  function writeStateToUrl(state: FilterState) {
+    const params = new URLSearchParams();
+    if (state.categoria) params.set("categoria", state.categoria);
+    if (state.cliente) params.set("cliente", state.cliente);
+    if (state.q) params.set("q", state.q);
+    if (state.orden !== "recientes") params.set("orden", state.orden);
+    const query = params.toString();
+    history.replaceState(null, "", query ? `${location.pathname}?${query}` : location.pathname);
+  }
+
+  function readCurrentUiState(): FilterState {
+    const activeChip = chips.find((chip) => chip.getAttribute("aria-pressed") === "true");
+    return {
+      categoria: activeChip?.dataset.categoriaChip || "",
+      cliente: clienteSelect.value,
+      q: searchInput.value,
+      orden: (ordenSelect.value as SortOrder) || "recientes",
+    };
+  }
+
+  function sortCards(orden: SortOrder) {
+    const sorted = [...cards].sort((a, b) => {
+      if (orden === "antiguas") {
+        return Number(a.dataset.anio) - Number(b.dataset.anio);
+      }
+      if (orden === "superficie") {
+        return (Number(b.dataset.superficie) || 0) - (Number(a.dataset.superficie) || 0);
+      }
+      return Number(b.dataset.anio) - Number(a.dataset.anio);
+    });
+    for (const card of sorted) grid.appendChild(card);
+  }
+
+  function applyState(state: FilterState) {
+    for (const chip of chips) {
+      chip.setAttribute("aria-pressed", String((chip.dataset.categoriaChip || "") === state.categoria));
+    }
+    clienteSelect.value = state.cliente;
+    searchInput.value = state.q;
+    ordenSelect.value = state.orden;
+
+    const query = state.q.trim().toLowerCase();
+    let visibleCount = 0;
+
+    for (const card of cards) {
+      const categorias = (card.dataset.categorias || "").split(",");
+      const matchesCategoria = !state.categoria || categorias.includes(state.categoria);
+      const matchesCliente = !state.cliente || card.dataset.cliente === state.cliente;
+      const matchesSearch = !query || (card.dataset.search || "").includes(query);
+      const visible = matchesCategoria && matchesCliente && matchesSearch;
+      card.hidden = !visible;
+      if (visible) visibleCount += 1;
+    }
+
+    sortCards(state.orden);
+
+    countEl.textContent = `${visibleCount} ${visibleCount === 1 ? "obra" : "obras"}`;
+    const hasActiveFilters = Boolean(state.categoria || state.cliente || state.q || state.orden !== "recientes");
+    for (const button of clearButtons) button.classList.toggle("hidden", !hasActiveFilters);
+    emptyState.hidden = visibleCount !== 0;
+    grid.hidden = visibleCount === 0;
+
+    writeStateToUrl(state);
+  }
+
+  for (const chip of chips) {
+    chip.addEventListener("click", () => {
+      const state = readCurrentUiState();
+      state.categoria = chip.dataset.categoriaChip || "";
+      applyState(state);
+    });
+  }
+
+  clienteSelect.addEventListener("change", () => applyState({ ...readCurrentUiState(), cliente: clienteSelect.value }));
+  ordenSelect.addEventListener("change", () =>
+    applyState({ ...readCurrentUiState(), orden: ordenSelect.value as SortOrder }),
+  );
+
+  let searchDebounce: ReturnType<typeof setTimeout>;
+  searchInput.addEventListener("input", () => {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => applyState({ ...readCurrentUiState(), q: searchInput.value }), 150);
+  });
+
+  for (const button of clearButtons) {
+    button.addEventListener("click", () => applyState({ categoria: "", cliente: "", q: "", orden: "recientes" }));
+  }
+
+  applyState(readStateFromUrl());
+</script>
