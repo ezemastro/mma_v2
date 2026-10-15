@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import ObraCard from "../obras/ObraCard.astro";
+
+// Replaces v1's auto-rotating TripleCarousel: a manual horizontal
+// scroll-snap row (no autoplay) of the obras marked `destacada` in
+// Keystatic, ordered by their `orden` field. The first one renders larger,
+// a small asymmetric touch instead of N identical tiles.
+const featured = (await getCollection("obras", (obra) => obra.data.destacada)).sort(
+  (a, b) => (a.data.orden ?? 0) - (b.data.orden ?? 0),
+);
+---
+
+{
+  featured.length > 0 && (
+    <section class="px-4 py-16 md:px-12 md:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-10 flex items-end justify-between gap-4">
+          <h2 class="text-3xl font-bold tracking-tight text-dark md:text-4xl">Obras destacadas</h2>
+          <a href="/obras" class="hidden shrink-0 font-semibold text-primary hover:text-primary-dark sm:block">
+            Ver todas las obras
+          </a>
+        </div>
+
+        <div class="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {featured.map((obra, index) => (
+            <div class:list={["shrink-0 snap-start", index === 0 ? "w-[300px] sm:w-[420px]" : "w-[260px] sm:w-[300px]"]}>
+              <ObraCard obra={obra} eager={index < 2} priority={index === 0} />
+            </div>
+          ))}
+        </div>
+
+        <a href="/obras" class="mt-6 block text-center font-semibold text-primary hover:text-primary-dark sm:hidden">
+          Ver todas las obras
+        </a>
+      </div>
+    </section>
+  )
+}

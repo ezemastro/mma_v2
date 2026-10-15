@@ -1,0 +1,52 @@
+---
+import Section from "../common/Section.astro";
+import type { Entry } from "@keystatic/core/reader";
+import keystaticConfig from "../../../keystatic.config";
+import MarkdocRender from "../common/MarkdocRender.astro";
+import { Image } from "astro:assets";
+import { resolveCmsImage } from "../../lib/cms-image";
+
+type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
+
+type Props = Extract<
+  HomepageEntry["sections"][number],
+  { discriminant: "publicaciones" }
+>["value"] & {
+  isFirst?: boolean;
+  id?: string;
+};
+
+// Two publications side by side, instead of each one getting its own
+// image+text split section (which would make 3 consecutive split sections
+// together with the Bio block right above this one).
+const { id, title, content, isFirst } = Astro.props;
+---
+
+<Section id={id} title={title} isFirst={isFirst}>
+  <div class="grid gap-10 sm:grid-cols-2">
+    {
+      content.map((item) => {
+        const image = resolveCmsImage(item.image);
+        return (
+          <article class="flex flex-col gap-4">
+            {image && (
+              <div class="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-[var(--radius)] bg-slate-50 p-6">
+                <Image src={image} alt={item.title} class="max-h-full w-auto object-contain" />
+              </div>
+            )}
+            <div>
+              <h3 class="text-lg font-semibold text-dark">{item.title}</h3>
+              {item.subtitle && <p class="text-sm text-muted">{item.subtitle}</p>}
+            </div>
+            <MarkdocRender content={item.description} />
+            {item.link?.href && item.link?.label && (
+              <a href={item.link.href} class="text-sm font-semibold text-primary hover:text-primary-dark">
+                {item.link.label}
+              </a>
+            )}
+          </article>
+        );
+      })
+    }
+  </div>
+</Section>

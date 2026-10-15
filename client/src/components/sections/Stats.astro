@@ -10,29 +10,29 @@ type Props = Extract<
   { discriminant: "stats" }
 >["value"] & {
   isFirst?: boolean;
+  id?: string;
 };
 
 
-const { calculated, projects, years, clients, isFirst } = Astro.props;
+const { id, calculated, projects, years, clients, isFirst } = Astro.props;
+
+const items = [
+  { value: `${(calculated ?? 0).toLocaleString("es-AR")} m²`, label: "Calculados" },
+  { value: projects, label: "Proyectos realizados" },
+  { value: `${years} años`, label: "De experiencia" },
+  { value: clients, label: "Clientes satisfechos" },
+];
 ---
 
-<Section title="Estadísticas" isFirst={isFirst}>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-    <div>
-      <p class="text-4xl font-bold text-primary">{calculated}</p>
-      <p class="mt-2 text-lg text-muted">Obras calculadas</p>
-    </div>
-    <div>
-      <p class="text-4xl font-bold text-primary">{projects}</p>
-      <p class="mt-2 text-lg text-muted">Proyectos completados</p>
-    </div>
-    <div>
-      <p class="text-4xl font-bold text-primary">{years}</p>
-      <p class="mt-2 text-lg text-muted">Años de experiencia</p>
-    </div>
-    <div>
-      <p class="text-4xl font-bold text-primary">{clients}</p>
-      <p class="mt-2 text-lg text-muted">Clientes satisfechos</p>
-    </div>
+<Section id={id} isFirst={isFirst}>
+  <div class="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
+    {
+      items.map((item) => (
+        <div>
+          <p class="text-3xl font-bold text-primary md:text-4xl">{item.value}</p>
+          <p class="mt-2 text-sm text-muted md:text-base">{item.label}</p>
+        </div>
+      ))
+    }
   </div>
 </Section>

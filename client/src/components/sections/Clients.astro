@@ -12,21 +12,26 @@ type Props = Extract<
   { discriminant: "clients" }
 >["value"] & {
   isFirst?: boolean;
+  id?: string;
 };
 
 
-const { title, subtitle, content, isFirst } = Astro.props;
+const { id, title, subtitle, content, isFirst } = Astro.props;
 ---
 
-<Section title={title} subtitle={subtitle} isFirst={isFirst}>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<Section id={id} title={title} subtitle={subtitle} isFirst={isFirst}>
+  <div class="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
     {
       content.map((client) => {
         const logo = resolveCmsImage(client.logo);
         return (
-          <div class="flex items-center justify-center p-4 bg-gray-100 rounded-lg">
+          <div class="flex aspect-square items-center justify-center rounded-[var(--radius)] border border-slate-100 bg-slate-50 p-3">
             {logo && (
-              <Image src={logo} alt={client.name} class="max-h-12 object-contain" />
+              <Image
+                src={logo}
+                alt={client.name}
+                class="max-h-10 w-auto object-contain grayscale transition-all duration-300 hover:grayscale-0"
+              />
             )}
           </div>
         );

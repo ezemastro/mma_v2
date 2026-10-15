@@ -13,21 +13,30 @@ type Props = Extract<
   { discriminant: "text" }
 >["value"] & {
   isFirst?: boolean;
+  id?: string;
 };
 
-const { content, image, link, title, subtitle, isFirst } = Astro.props;
+const { id, content, image, link, title, subtitle, variante, isFirst } = Astro.props;
 const resolvedImage = resolveCmsImage(image);
+const isListaNumerada = variante === "lista-numerada";
 ---
 
-<Section title={title} subtitle={subtitle} link={link} isFirst={isFirst}>
+<Section id={id} title={title} subtitle={subtitle} link={link} isFirst={isFirst}>
   {
     resolvedImage ? (
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
-        <Image src={resolvedImage} alt={title} class="w-full h-auto" />
+        <Image src={resolvedImage} alt={title} class="w-full h-auto rounded-[var(--radius)]" />
         <MarkdocRender content={content} />
       </div>
     ) : (
-      <div class="max-w-4xl mx-auto text-center">
+      <div
+        class:list={[
+          "mx-auto max-w-4xl",
+          isListaNumerada
+            ? "md:[&_ol]:columns-2 md:[&_ol]:gap-x-12 [&_ol]:list-decimal [&_ol]:marker:font-semibold [&_ol]:marker:text-primary [&_li]:mb-4 [&_li]:pl-2 [&_li]:break-inside-avoid"
+            : "text-center",
+        ]}
+      >
         <MarkdocRender content={content} />
       </div>
     )

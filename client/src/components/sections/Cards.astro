@@ -4,6 +4,8 @@ import type { Entry } from "@keystatic/core/reader";
 import keystaticConfig from "../../../keystatic.config";
 import MarkdocRender from "../common/MarkdocRender.astro";
 import Icon from "../common/Icon.astro";
+import { Image } from "astro:assets";
+import { resolveCmsImage } from "../../lib/cms-image";
 
 type HomepageEntry = Entry<(typeof keystaticConfig)["singletons"]["homepage"]>;
 
@@ -12,61 +14,48 @@ type Props = Extract<
   { discriminant: "cards" }
 >["value"] & {
   isFirst?: boolean;
+  id?: string;
 };
 
-const { title, subtitle, content, isFirst } = Astro.props;
+const { id, title, subtitle, content, image, variante, isFirst } = Astro.props;
+const extraImage = resolveCmsImage(image);
 ---
 
-<Section title={title} subtitle={subtitle} isFirst={isFirst}>
-  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {
-      content.map((card) => (
-        <div class="card p-6 flex flex-col items-center text-center h-full">
-          <Icon name={card.icon} class="size-24 mb-4 text-primary" />
-          <h3 class="card-title text-xl font-semibold">{card.title}</h3>
-          <div class="w-16 h-1 rounded-full bg-primary my-3" />
-          <MarkdocRender content={card.description} />
-        </div>
-      ))
-    }
-  </div>
-</Section>
-
-<script is:inline>
-  function alignTitles() {
-    const titles = document.querySelectorAll('.card-title');
-    if (!titles.length) return;
-
-    const cards = Array.from(titles).map(t => t.closest('.card'));
-    const rows = [];
-
-    titles.forEach((title, i) => {
-      const top = cards[i].getBoundingClientRect().top;
-      let row = rows.find(r => Math.abs(r.top - top) < 1);
-      if (!row) {
-        row = { top, titles: [] };
-        rows.push(row);
-      }
-      row.titles.push(title);
-    });
-
-    titles.forEach(t => {
-      t.style.height = '';
-      t.style.display = '';
-      t.style.alignItems = '';
-    });
-
-    rows.forEach(row => {
-      const maxH = Math.max(...row.titles.map(t => t.getBoundingClientRect().height));
-      row.titles.forEach(t => {
-        t.style.height = maxH + 'px';
-        t.style.display = 'flex';
-        t.style.alignItems = 'center';
-        t.style.justifyContent = 'center';
-      });
-    });
+<Section id={id} title={title} subtitle={subtitle} isFirst={isFirst}>
+  {
+    variante === "imagen-lista" ? (
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        {extraImage && (
+          <Image src={extraImage} alt={title} class="w-full rounded-[var(--radius)] object-contain" />
+        )}
+        <ul class="flex flex-col gap-8">
+          {content.map((card) => (
+            <li class="flex items-start gap-4">
+              <Icon name={card.icon} class="size-10 shrink-0 text-primary" />
+              <div>
+                <h3 class="font-semibold text-dark">{card.title}</h3>
+                <MarkdocRender content={card.description} />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ) : (
+      <div class="grid gap-6 sm:grid-cols-2">
+        {content.map((card) => (
+          <div class="flex flex-col items-center gap-3 p-6 text-center">
+            <Icon name={card.icon} class="size-16 text-primary" />
+            <h3 class="text-lg font-semibold text-dark">{card.title}</h3>
+            <div class="h-1 w-12 rounded-full bg-primary" />
+            <MarkdocRender content={card.description} />
+            {card.link?.href && card.link?.label && (
+              <a href={card.link.href} class="mt-1 text-sm font-semibold text-primary hover:text-primary-dark">
+                {card.link.label}
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    )
   }
-
-  document.addEventListener('DOMContentLoaded', alignTitles);
-  window.addEventListener('resize', alignTitles);
-</script>
+</Section>

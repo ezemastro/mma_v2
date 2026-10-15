@@ -1,5 +1,6 @@
 ---
 interface Props {
+  id?: string;
   title?: string;
   subtitle?: string;
   link?: {
@@ -9,11 +10,12 @@ interface Props {
   isFirst?: boolean;
 }
 
-const { title, subtitle, link, isFirst } = Astro.props;
+const { id, title, subtitle, link, isFirst } = Astro.props;
 ---
 
 <section
-  class:list={[{ "pt-0 md:pt-0": isFirst, "py-16 md:py-24": !isFirst }, "px-4"]}
+  id={id}
+  class:list={[{ "pt-0 md:pt-0": isFirst, "py-16 md:py-24": !isFirst }, "px-4", "scroll-mt-16"]}
 >
   <div
     class:list={[
@@ -35,19 +37,19 @@ const { title, subtitle, link, isFirst } = Astro.props;
       )
     }
 
+    <slot />
+
     {
       link && link.href && link.label && (
         <div class="mt-8 text-center">
           <a
             href={link.href}
-            class="inline-block bg-slate-900 text-white py-3 px-6 rounded-lg hover:bg-slate-700 transition-colors"
+            class="inline-block rounded-[var(--radius)] bg-primary px-6 py-3 text-white transition-colors hover:bg-primary-dark"
           >
             {link.label}
           </a>
         </div>
       )
     }
-
-    <slot />
   </div>
 </section>

@@ -1,11 +1,13 @@
 ---
 import { reader } from "../lib/keystatic-reader";
-import Header from "../components/sections/Header.astro";
+import Hero from "../components/sections/Hero.astro";
 import Cards from "../components/sections/Cards.astro";
 import Stats from "../components/sections/Stats.astro";
 import Clients from "../components/sections/Clients.astro";
 import Layout from "../layouts/Layout.astro";
 import Text from "../components/sections/Text.astro";
+import Publicaciones from "../components/sections/Publicaciones.astro";
+import FeaturedObras from "../components/sections/FeaturedObras.astro";
 
 const homeData = await reader.singletons.homepage.read();
 
@@ -13,19 +15,31 @@ if (!homeData) return Astro.redirect("/404");
 ---
 
 <Layout title={homeData.header.title}>
-  <Header content={homeData.header} />
+  <Hero
+    headline={homeData.header.headline}
+    subtext={homeData.header.subtext}
+    heroObra={homeData.header.heroObra}
+  />
 
   {
     homeData.sections.map((section, index) => {
+      const id = `seccion-${index}`;
       switch (section.discriminant) {
         case "cards":
-          return <Cards {...section.value} isFirst={index === 0} />;
+          return <Cards {...section.value} id={id} isFirst={index === 0} />;
         case "stats":
-          return <Stats {...section.value} isFirst={index === 0} />;
+          return (
+            <>
+              <Stats {...section.value} id={id} isFirst={index === 0} />
+              <FeaturedObras />
+            </>
+          );
         case "clients":
-          return <Clients {...section.value} isFirst={index === 0} />;
+          return <Clients {...section.value} id={id} isFirst={index === 0} />;
         case "text":
-          return <Text {...section.value} isFirst={index === 0} />;
+          return <Text {...section.value} id={id} isFirst={index === 0} />;
+        case "publicaciones":
+          return <Publicaciones {...section.value} id={id} isFirst={index === 0} />;
         default:
           return null;
       }
