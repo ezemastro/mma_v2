@@ -78,7 +78,34 @@ content (obras included) from `/keystatic` without touching code.
       "Limpiar filtros" reflect state), `/obras/estadio-ferrocarril-oeste-tribunas-caballito/` detail
       desktop (real photo, facts list, categoria links, related obras grid; this obra has no galeria
       so the lightbox section correctly doesn't render).
-- [ ] T4 Home: new hero, featured obras section, port remaining sections with refined styling.
+- [x] T4 Home: new hero, featured obras section, port remaining sections with refined styling.
+      Commit `90563e4`.
+      Checks observed: `npm run build` green (~33s once obra images are cached from T3); `npx astro
+      check` 0 errors (same pre-existing hint). Headless chromium review: desktop hero at a realistic
+      1440x900 viewport (confirmed it fits the first viewport without the min-h-[100dvh] section being
+      artificially inflated by an oversized capture window); mobile hero at 390x844; a full top-to-
+      bottom sweep of every section on desktop (1440 wide, 900px-tall slices via a same-origin iframe
+      harness with scripted scrollTo, written into dist/ and removed afterward) and a shorter mobile
+      sweep. Caught and fixed two issues from reading the captures: the final CTA band's button was
+      rendering above its own body copy (reordered Section.astro to put the link after the slot), and
+      T4 point 3 (featured obras) was missing entirely on the first pass, added as `FeaturedObras.astro`
+      after re-reading the task list against the rendered page.
+      Design: hero is an asymmetric split (headline/subtext/CTAs left, real portada of
+      `estadio-ferrocarril-oeste-tribunas-caballito` right, caption built from the obra's own
+      titulo/descripcion) via new `header.headline`/`subtext`/`heroObra` fields; old `header.logo`/
+      `background` fields and `Header.astro` removed (fully superseded). Featured obras is a manual
+      scroll-snap row (no autoplay) of the 8 `destacada` obras sorted by `orden`, first card wider.
+      Diferenciales uses a new `imagen-lista` cards variant (ISO certificate left, stacked icon+text
+      items right) instead of 3 identical cards. Libro + Revista CARAS merged into one new
+      `publicaciones` block shown side by side so Bio/Libro/Revista don't stack 3 image+text splits in
+      a row. Política de Calidad uses a new `lista-numerada` text variant (2-column numbered list, no
+      hairline rows). Added 9 new icon entries (one per card, previously all shared a placeholder) and
+      a single `--radius` token reused by every new/touched component. Zero eyebrows used anywhere.
+      Pre-flight items consciously left unticked: no dark-mode variant (brief explicitly says
+      redesign-preserve, v1 is light-only); no reduced-motion handling beyond CSS transitions (motion
+      dial is 3, no scroll-triggered or JS-driven animation was added, so there's nothing to gate); a
+      few client logos in the existing migrated data render faint/blank against the grayscale card
+      background (pre-existing T2 data quality, not touched here).
 - [ ] T5 `/software`, `/descarga`, `/contacto`, 404.
 - [ ] T6 SEO + docs: sitemap, robots, JSON-LD, redirects; `docs/EDITAR-CONTENIDO.md` (client guide) and
       `docs/DEPLOY.md` (Cloudflare + GitHub app + DNS).
@@ -102,4 +129,4 @@ content (obras included) from `/keystatic` without touching code.
 
 ## Next step
 
-T3.
+T5.
