@@ -1,0 +1,12 @@
+titulo: Hernandarias 332 - Lomas del Mirador
+anio: 2022
+cliente: Arq. Martín Palladino
+superficie: 1000
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

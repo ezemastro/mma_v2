@@ -1,0 +1,12 @@
+titulo: Luis Saenz Peña 170 - CABA
+anio: 2017
+cliente: Arq. Daniela De Vittorio
+superficie: 100
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Reforma casa antigua, refuerzos por demolición de paredes portantes.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

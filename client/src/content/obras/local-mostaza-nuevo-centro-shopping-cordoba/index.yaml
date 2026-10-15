@@ -1,0 +1,13 @@
+titulo: Local Mostaza Nuevo Centro Shopping - Córdoba
+anio: 2023
+cliente: Mostaza y Pan SA
+superficie: 150
+ubicacion: ""
+categorias:
+  - local-comercial
+  - estructura-metalica
+descripcion: Entrepiso metálico nuevo para local de cómidas.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

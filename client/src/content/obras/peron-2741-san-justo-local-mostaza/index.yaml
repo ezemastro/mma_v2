@@ -1,0 +1,12 @@
+titulo: Perón 2741 - San Justo ( Local Mostaza)
+anio: 2023
+cliente: Mostaza y Pan SA
+superficie: 500
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Azurra 109 -Tortugas
+anio: 2024
+cliente: Arq. Javier Manzano
+superficie: 400
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

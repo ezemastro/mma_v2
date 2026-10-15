@@ -1,0 +1,12 @@
+titulo: Av. J. B. Alberdi 2974 - CABA
+anio: 2016
+cliente: Arq. Enrique Botto
+superficie: 2500
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón armado
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Zamudio 5993 - CABA
+anio: 2021
+cliente: Arq. Dario Cegla
+superficie: 800
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

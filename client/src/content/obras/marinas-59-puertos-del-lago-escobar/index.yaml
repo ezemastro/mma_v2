@@ -1,0 +1,12 @@
+titulo: Marinas 59 - Puertos del Lago - Escobar
+anio: 2021
+cliente: Social Arquitectos
+superficie: 500
+ubicacion: ""
+categorias:
+  - puertos-del-lago
+descripcion: Estructura de hormigón con grandes voladizos.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

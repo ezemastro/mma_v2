@@ -1,0 +1,14 @@
+titulo: Puerto Almanza 3970 - Ushuaia
+anio: 2018
+cliente: Carlos Bustamante S.A.
+superficie: 1500
+ubicacion: ""
+categorias:
+  - edificios
+  - zona-sismica
+  - estructura-metalica
+descripcion: Estructura metálica en zona sísmica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

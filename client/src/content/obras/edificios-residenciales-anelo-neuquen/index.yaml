@@ -1,0 +1,14 @@
+titulo: Edificios Residenciales Añelo - Neuquén
+anio: 2020
+cliente: Es arq.
+superficie: 2200
+ubicacion: ""
+categorias:
+  - edificios
+  - estructura-metalica
+  - zona-sismica
+descripcion: Estructura Mixta en zona sísmica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

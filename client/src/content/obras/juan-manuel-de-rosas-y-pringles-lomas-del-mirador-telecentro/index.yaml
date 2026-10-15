@@ -1,0 +1,13 @@
+titulo: Juan Manuel de Rosas y Pringles - Lomas del Mirador ( Telecentro)
+anio: 2017
+cliente: Telecentro SA
+superficie: 2000
+ubicacion: ""
+categorias:
+  - grandes-edificios
+  - losas-alivianadas
+descripcion: Edificio de transformadores, con grandes cargas y grandes luces. Estructura alivianada. Fundación con pilotes.
+portada: ./portada.webp
+galeria: []
+destacada: true
+orden: 4

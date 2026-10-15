@@ -1,0 +1,12 @@
+titulo: Santa Inés 42 - Canning
+anio: 2020
+cliente: Proyectar Tu Casa
+superficie: 280
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

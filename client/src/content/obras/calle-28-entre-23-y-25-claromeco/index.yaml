@@ -1,0 +1,12 @@
+titulo: Calle 28 entre 23 y 25 - Claromecó
+anio: 2024
+cliente: Besonias Almeida Arq.
+superficie: 250
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura de hormigón visto
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

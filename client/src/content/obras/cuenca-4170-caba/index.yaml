@@ -1,0 +1,12 @@
+titulo: Cuenca 4170 - CABA
+anio: 2018
+cliente: Arq. Andrea Gagliano
+superficie: 300
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

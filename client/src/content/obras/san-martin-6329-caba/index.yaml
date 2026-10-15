@@ -1,0 +1,12 @@
+titulo: San Martín 6329 - CABA
+anio: 2019
+cliente: Arq. José Muro
+superficie: 1300
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

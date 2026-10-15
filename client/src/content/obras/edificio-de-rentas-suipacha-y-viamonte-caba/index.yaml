@@ -1,0 +1,12 @@
+titulo: Edificio de Rentas - Suipacha y Viamonte -CABA
+anio: 2016
+cliente: Ing. Carlos Fernández
+superficie: 10000
+ubicacion: ""
+categorias:
+  - grandes-edificios
+descripcion: Verificación estructural de todo el edificio
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

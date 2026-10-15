@@ -1,0 +1,12 @@
+titulo: Superi 4275 - CABA
+anio: 2010
+cliente: Nuñez - Pan Arq.
+superficie: 800
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de Hormigón con losas premoldeadas huecas.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

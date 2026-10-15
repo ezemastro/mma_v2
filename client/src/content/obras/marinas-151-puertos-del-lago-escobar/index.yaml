@@ -1,0 +1,12 @@
+titulo: Marinas 151 - Puertos del Lago - Escobar
+anio: 2024
+cliente: Social Arquitectos
+superficie: 500
+ubicacion: ""
+categorias:
+  - puertos-del-lago
+descripcion: Estructura de hormigón con grandes luces
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

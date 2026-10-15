@@ -1,0 +1,12 @@
+titulo: Talcahuano 365 - CABA
+anio: 2024
+cliente: Viarq Construcciones S.A.
+superficie: 5000
+ubicacion: ""
+categorias:
+  - grandes-edificios
+descripcion: Estructura de hormigón tradicional. Fundaciones con pilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

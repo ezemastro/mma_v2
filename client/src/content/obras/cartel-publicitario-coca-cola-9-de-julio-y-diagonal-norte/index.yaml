@@ -1,0 +1,12 @@
+titulo: Cartel publicitario Coca Cola 9 de Julio y Diagonal Norte
+anio: 2022
+cliente: Prina SA
+superficie: 250
+ubicacion: ""
+categorias:
+  - cartel-publicitario
+descripcion: Cartel con pantallas led moviles
+portada: ./portada.webp
+galeria: []
+destacada: true
+orden: 7

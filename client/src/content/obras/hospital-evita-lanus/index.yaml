@@ -1,0 +1,12 @@
+titulo: Hospital Evita - Lanús
+anio: 2024
+cliente: F4 Construcciones
+superficie: 400
+ubicacion: ""
+categorias:
+  - edificios-publicos
+descripcion: Refuerzos para apoyo de equipamiento pesado. Reformas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

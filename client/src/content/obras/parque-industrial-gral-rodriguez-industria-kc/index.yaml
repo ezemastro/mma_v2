@@ -1,0 +1,13 @@
+titulo: Parque Industrial Gral Rodriguez -Industria KC
+anio: 2015
+cliente: Arq. Guillermo Cossettini
+superficie: 9000
+ubicacion: ""
+categorias:
+  - galpones
+  - estructura-metalica
+descripcion: Estructura metálica congrandes luces y puentes grúa
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

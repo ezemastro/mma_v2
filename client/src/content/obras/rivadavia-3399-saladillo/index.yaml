@@ -1,0 +1,12 @@
+titulo: Rivadavia 3399 - Saladillo
+anio: 2024
+cliente: Arq. Rafael Caporale
+superficie: 1100
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional. Fundaciones con pilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,13 @@
+titulo: Terravista 672 - Gral Rodriguez
+anio: 2024
+cliente: Estudio Gonzalez
+superficie: 800
+ubicacion: ""
+categorias:
+  - barrios-privados
+  - losas-alivianadas
+descripcion: Estructura de hormigón con losas alivianadas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

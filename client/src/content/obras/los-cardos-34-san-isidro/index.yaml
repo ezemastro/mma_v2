@@ -1,0 +1,12 @@
+titulo: Los Cardos 34 - San Isidro
+anio: 2022
+cliente: Atelier Matias Mosquera
+superficie: 400
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura hormigón visto
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

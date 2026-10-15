@@ -1,0 +1,12 @@
+titulo: Estrada 1480 - Santos Lugares
+anio: 2022
+cliente: Arq. Andrea Gagliano
+superficie: 250
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

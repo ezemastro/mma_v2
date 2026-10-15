@@ -1,0 +1,12 @@
+titulo: Paseo Costero Villa La Ñata
+anio: 2024
+cliente: Arq. Adrián Bianconi
+superficie: 600
+ubicacion: ""
+categorias:
+  - grandes-obras
+descripcion: Nuevas pasarelas costeras.Nuevos baños. Nuevos pórticos de acceso
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

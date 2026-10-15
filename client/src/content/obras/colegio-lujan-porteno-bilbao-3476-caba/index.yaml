@@ -1,0 +1,12 @@
+titulo: Colegio Luján Porteño - Bilbao 3476 - CABA
+anio: 2011
+cliente: MMO Roberto Zurita
+superficie: 300
+ubicacion: ""
+categorias:
+  - edificios-publicos
+descripcion: Ampliación, pisos superiores. Estructura de hormigón con grandes luces
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

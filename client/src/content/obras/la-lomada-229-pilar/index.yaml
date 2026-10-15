@@ -1,0 +1,12 @@
+titulo: La Lomada 229 - Pilar
+anio: 2007
+cliente: Arq. Roberto Nicodemo
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional con vigas de fundación y pilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

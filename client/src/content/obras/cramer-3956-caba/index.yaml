@@ -1,0 +1,12 @@
+titulo: Crámer 3956 - CABA
+anio: 2014
+cliente: Estudio CFyA
+superficie: 300
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Ampliación, subsuelo nuevo, estructura de hormigón y viguetas.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

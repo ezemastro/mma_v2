@@ -1,0 +1,13 @@
+titulo: Lagos del Norte 140 - Don Torcuato
+anio: 2007
+cliente: Arq. Ariel Miotto
+superficie: 400
+ubicacion: ""
+categorias:
+  - barrios-privados
+  - losas-alivianadas
+descripcion: Estructura de hormigón con losa de fundación alivianada
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

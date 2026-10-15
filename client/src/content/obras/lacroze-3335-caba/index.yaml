@@ -1,0 +1,12 @@
+titulo: Lacroze 3335 - CABA
+anio: 2016
+cliente: Viarq. Construcciones S.A.
+superficie: 3000
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

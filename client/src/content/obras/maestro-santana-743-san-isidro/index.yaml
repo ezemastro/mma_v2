@@ -1,0 +1,12 @@
+titulo: Maestro Santana 743 - San Isidro
+anio: 2024
+cliente: Arq. Carlos Fulgencio
+superficie: 200
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Ampliación, refuerzos por demolición de columnas.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Araoz 1569 - CABA
+anio: 2019
+cliente: Estudio Escalas Arquitectura
+superficie: 1400
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

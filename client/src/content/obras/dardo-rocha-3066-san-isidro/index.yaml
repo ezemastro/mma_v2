@@ -1,0 +1,12 @@
+titulo: Dardo Rocha 3066 - San Isidro
+anio: 2016
+cliente: Arq. Mario Rube
+superficie: 800
+ubicacion: ""
+categorias:
+  - centro-medico
+descripcion: Centro de diágnostico con altas cargas de resonador. Estructura en hormigón armado.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

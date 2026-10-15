@@ -1,0 +1,12 @@
+titulo: Sanabria 2394 - CABA
+anio: 2011
+cliente: Arq. Leonardo Visciglia
+superficie: 800
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

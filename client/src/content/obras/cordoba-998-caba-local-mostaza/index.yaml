@@ -1,0 +1,12 @@
+titulo: Córdoba 998 - CABA ( Local Mostaza)
+anio: 2019
+cliente: Mostaza y Pan SA
+superficie: 300
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Adaptación de local. Refuerzos metálicos.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

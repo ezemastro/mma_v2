@@ -1,0 +1,13 @@
+titulo: colegio Santa Catalina - Piedras 1527 - CABA
+anio: 2016
+cliente: Viarq Construcciones S.A.
+superficie: 2500
+ubicacion: ""
+categorias:
+  - edificios-publicos
+  - losas-postensadas
+descripcion: Ampliación. Nuevo edificio con hormigón postensado.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

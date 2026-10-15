@@ -1,0 +1,14 @@
+titulo: Colegio St Jhons - Puertos del Lago - Escobar
+anio: 2025
+cliente: Colegio St Jhons
+superficie: 2500
+ubicacion: ""
+categorias:
+  - edificios-publicos
+  - losas-alivianadas
+  - grandes-obras
+descripcion: Estructura de hormigón con losas alivianadas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

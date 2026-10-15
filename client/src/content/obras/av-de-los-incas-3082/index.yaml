@@ -1,0 +1,12 @@
+titulo: Av. De los Incas 3082
+anio: 2015
+cliente: Arq. Mario Rube
+superficie: 300
+ubicacion: ""
+categorias:
+  - edificios-publicos
+descripcion: Reforma con demolicion de columnas existentes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

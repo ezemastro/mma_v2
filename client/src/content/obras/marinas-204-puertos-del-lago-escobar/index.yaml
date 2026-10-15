@@ -1,0 +1,12 @@
+titulo: Marinas 204 - Puertos del Lago - Escobar
+anio: 2022
+cliente: Social Arquitectos
+superficie: 700
+ubicacion: ""
+categorias:
+  - puertos-del-lago
+descripcion: Estructura de hormigón con grandes voladizos.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

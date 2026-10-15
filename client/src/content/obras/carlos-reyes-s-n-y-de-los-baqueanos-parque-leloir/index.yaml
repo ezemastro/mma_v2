@@ -1,0 +1,12 @@
+titulo: Carlos Reyes s/n y De los Baqueanos - Parque Leloir
+anio: 2021
+cliente: Besonias Almeida Arq.
+superficie: 600
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura hormigón visto
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

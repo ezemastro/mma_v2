@@ -1,0 +1,12 @@
+titulo: Córdoba 5001- CABA
+anio: 2022
+cliente: Botner-Pecina Arquitectos
+superficie: 2000
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

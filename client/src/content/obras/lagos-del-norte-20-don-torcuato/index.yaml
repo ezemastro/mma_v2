@@ -1,0 +1,12 @@
+titulo: Lagos del Norte 20 - Don torcuato
+anio: 2018
+cliente: Arq. Julieta Mayorca
+superficie: 500
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón con viguetas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

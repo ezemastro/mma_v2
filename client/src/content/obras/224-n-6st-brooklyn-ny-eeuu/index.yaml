@@ -1,0 +1,13 @@
+titulo: 224 N 6st Brooklyn - NY - EEUU
+anio: 2017
+cliente: Arq. Jorge Mastropietro
+superficie: 1000
+ubicacion: ""
+categorias:
+  - edificios
+  - internacional
+descripcion: Estructura de madera
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Blanco Encalada 2571 - CABA
+anio: 2013
+cliente: Arq. Mario Rube
+superficie: 1000
+ubicacion: ""
+categorias:
+  - centro-medico
+descripcion: Centro de diagnóstico Dr. Rossi - Estructura de hormigón tradicional, fundaciones con micropilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

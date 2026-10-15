@@ -1,0 +1,12 @@
+titulo: Pasaje Caldén 922 - CABA
+anio: 2017
+cliente: Arq. Mariana Pérez
+superficie: 200
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Ampliación PA.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

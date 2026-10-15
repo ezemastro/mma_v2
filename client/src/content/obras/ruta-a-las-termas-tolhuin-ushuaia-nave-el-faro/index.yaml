@@ -1,0 +1,14 @@
+titulo: Ruta a las Termas Tolhuin - Ushuaia ( Nave El Faro)
+anio: 2018
+cliente: Carlos Bustamante S.A.
+superficie: 1400
+ubicacion: ""
+categorias:
+  - galpones
+  - estructura-metalica
+  - zona-sismica
+descripcion: Estructura metálica construida en zona sísmica.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

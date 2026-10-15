@@ -1,0 +1,12 @@
+titulo: Paraná 3999 - Martinez (Local Mostaza)
+anio: 2018
+cliente: Mostaza y Pan SA
+superficie: 400
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Adaptación de local. Refuerzos metálicos y de hormigón
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

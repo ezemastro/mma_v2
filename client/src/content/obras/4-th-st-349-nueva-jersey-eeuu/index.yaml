@@ -1,0 +1,13 @@
+titulo: 4 th st  349 Nueva Jersey - EEUU
+anio: 2013
+cliente: Arq. Jorge Mastropietro
+superficie: 1000
+ubicacion: ""
+categorias:
+  - edificios
+  - internacional
+descripcion: Estructura de madera, fundaciones de hormigón.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

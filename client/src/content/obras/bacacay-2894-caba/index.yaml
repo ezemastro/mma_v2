@@ -1,0 +1,12 @@
+titulo: Bacacay 2894 - CABA
+anio: 2021
+cliente: DS Arquitectos
+superficie: 300
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Depositos de grandes cargas.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

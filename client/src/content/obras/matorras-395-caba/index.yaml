@@ -1,0 +1,12 @@
+titulo: Matorras 395 - CABA
+anio: 2004
+cliente: Arq. Guillermo Cossettini
+superficie: 900
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Ampliación, refuerzos en fundaciones, columnas PB, agregado de voladizos.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

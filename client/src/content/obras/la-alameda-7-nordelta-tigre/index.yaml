@@ -1,0 +1,12 @@
+titulo: La Alameda 7 - Nordelta - Tigre
+anio: 2017
+cliente: Arq. Ariel Miotto
+superficie: 300
+ubicacion: ""
+categorias:
+  - nordelta
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

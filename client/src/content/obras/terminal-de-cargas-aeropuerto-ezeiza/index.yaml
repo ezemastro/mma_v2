@@ -1,0 +1,12 @@
+titulo: Terminal de cargas - Aeropuerto Ezeiza
+anio: 2018
+cliente: Aeropuertos 2000
+superficie: 3500
+ubicacion: ""
+categorias:
+  - estructura-metalica
+descripcion: Nave estructura metálica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

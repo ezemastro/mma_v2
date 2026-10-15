@@ -1,0 +1,12 @@
+titulo: Ruiz Huidobro 2472 - CABA
+anio: 2022
+cliente: Arq. José Muro
+superficie: 2000
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional, fundaciones con micropilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

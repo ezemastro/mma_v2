@@ -1,0 +1,13 @@
+titulo: Bolivar 3650 - Lomas del Mirador
+anio: 2015
+cliente: Arq. Casiano Dominguez
+superficie: 1800
+ubicacion: ""
+categorias:
+  - local-comercial
+  - estructura-metalica
+descripcion: Locales multiusos, con estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

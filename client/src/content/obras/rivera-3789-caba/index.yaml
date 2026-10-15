@@ -1,0 +1,12 @@
+titulo: Rivera 3789 - CABA
+anio: 2023
+cliente: Atelier Matias Mosquera
+superficie: 350
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura de hormigón con grandes luces. Se mantiene fachada original
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

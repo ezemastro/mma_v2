@@ -1,0 +1,12 @@
+titulo: Los Cardos 22 - Pilar
+anio: 2025
+cliente: Tezevet Construcciones
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

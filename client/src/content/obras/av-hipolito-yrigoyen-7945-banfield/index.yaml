@@ -1,0 +1,12 @@
+titulo: Av.Hipólito Yrigoyen 7945 - Banfield
+anio: 2022
+cliente: Mostaza y Pan SA
+superficie: 10000
+ubicacion: ""
+categorias:
+  - grandes-edificios
+descripcion: Complejo de dos torres más local de comidas. Estructura de hormigón. Fundaciones con pilotes. Subsuelos.
+portada: ./portada.webp
+galeria: []
+destacada: true
+orden: 8

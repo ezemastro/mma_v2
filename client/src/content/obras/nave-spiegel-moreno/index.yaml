@@ -1,0 +1,13 @@
+titulo: Nave Spiegel - Moreno
+anio: 2016
+cliente: Viarq Construcciones S.A.
+superficie: 800
+ubicacion: ""
+categorias:
+  - galpones
+  - estructura-metalica
+descripcion: Estructura Metálica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

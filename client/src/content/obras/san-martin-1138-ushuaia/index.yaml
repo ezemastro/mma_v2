@@ -1,0 +1,14 @@
+titulo: San Martín 1138 - Ushuaia
+anio: 2017
+cliente: Carlos Bustamante S.A.
+superficie: 1000
+ubicacion: ""
+categorias:
+  - edificios
+  - zona-sismica
+  - estructura-metalica
+descripcion: Estructura metálica en zona sísmica. Losas Steel Deck
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

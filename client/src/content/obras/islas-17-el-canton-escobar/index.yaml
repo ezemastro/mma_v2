@@ -1,0 +1,12 @@
+titulo: Islas 17 - El Cantón - Escobar
+anio: 2021
+cliente: Latitud Sur
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón visto
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

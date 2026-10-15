@@ -1,0 +1,13 @@
+titulo: Casa Filipi - Neuquén
+anio: 2020
+cliente: FG&M SA
+superficie: 400
+ubicacion: ""
+categorias:
+  - residencial
+  - estructura-metalica
+descripcion: Estructura metálica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

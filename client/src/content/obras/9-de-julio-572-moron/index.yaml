@@ -1,0 +1,12 @@
+titulo: 9 de Julio 572 - Morón
+anio: 2012
+cliente: Arq. Mario Rube
+superficie: 500
+ubicacion: ""
+categorias:
+  - centro-medico
+descripcion: Centro de diágnostico con altas cargas de resonador. Estructura en hormigón armado.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

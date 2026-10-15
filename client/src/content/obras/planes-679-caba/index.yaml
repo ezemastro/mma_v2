@@ -1,0 +1,12 @@
+titulo: Planes 679 - CABA
+anio: 2013
+cliente: Vanguardia Propiedades
+superficie: 2500
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

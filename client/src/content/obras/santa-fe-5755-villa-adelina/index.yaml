@@ -1,0 +1,12 @@
+titulo: Santa Fé 5755 - Villa Adelina
+anio: 2022
+cliente: Atelier Brux
+superficie: 300
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: ampliación.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

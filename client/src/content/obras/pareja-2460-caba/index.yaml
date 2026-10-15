@@ -1,0 +1,12 @@
+titulo: Pareja 2460 - CABA
+anio: 2014
+cliente: Arq. Nadia Soria
+superficie: 150
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Reforma. Refuerzos en fundaciones, losas. Losas nuevas. Refuerzos metálicos
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

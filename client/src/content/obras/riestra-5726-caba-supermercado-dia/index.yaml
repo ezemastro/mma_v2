@@ -1,0 +1,13 @@
+titulo: Riestra 5726 - CABA ( Supermercado Dia)
+anio: 2021
+cliente: Acontec SRL
+superficie: 1500
+ubicacion: ""
+categorias:
+  - local-comercial
+  - estructura-metalica
+descripcion: Ampliación, reforma, nueva cubierta estructura metálica.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

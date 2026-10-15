@@ -1,0 +1,13 @@
+titulo: Roseti 27 - CABA
+anio: 2024
+cliente: Arq. Samuel Szusterman
+superficie: 1300
+ubicacion: ""
+categorias:
+  - edificios
+  - losas-alivianadas
+descripcion: Estructura de hormigón con losas alivianadas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

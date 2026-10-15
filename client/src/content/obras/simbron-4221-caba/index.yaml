@@ -1,0 +1,12 @@
+titulo: Simbrón 4221 - CABA
+anio: 2024
+cliente: Mónaco - Moreno Arqs
+superficie: 2000
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional. Fundaciones con pilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

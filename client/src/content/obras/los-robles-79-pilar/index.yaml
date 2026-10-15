@@ -1,0 +1,12 @@
+titulo: Los Robles 79 - Pilar
+anio: 2024
+cliente: MMO Cristian Moreno
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura con muros portantes y losa de viguetas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

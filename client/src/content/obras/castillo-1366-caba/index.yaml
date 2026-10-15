@@ -1,0 +1,13 @@
+titulo: Castillo 1366 - CABA
+anio: 2016
+cliente: Arq. Teodomiro Moralejo
+superficie: 1900
+ubicacion: ""
+categorias:
+  - edificios
+  - estructura-metalica
+descripcion: Estructura metalica, losas premoldeadas construidas sobra planta baja existente. Fundaciones por micropilotes.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

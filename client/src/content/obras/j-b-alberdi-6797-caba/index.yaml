@@ -1,0 +1,12 @@
+titulo: J.B.Alberdi 6797 - CABA
+anio: 2021
+cliente: Arq. Martin Palladino
+superficie: 2200
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,13 @@
+titulo: Santa Clara Al Sur - Retaurante - Canning
+anio: 2023
+cliente: Caputo Construcciones
+superficie: 400
+ubicacion: ""
+categorias:
+  - areas-comunes-de-barrios-privados
+  - estructura-metalica
+descripcion: Estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

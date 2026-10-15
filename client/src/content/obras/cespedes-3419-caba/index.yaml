@@ -1,0 +1,12 @@
+titulo: Céspedes 3419 - CABA
+anio: 2023
+cliente: Atelier Brux
+superficie: 300
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Reforma casa antigua, refuerzos por demolición de paredes portantes.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Planta depuradora Laferrere
+anio: 2022
+cliente: DECAVIAL SA
+superficie: 3500
+ubicacion: ""
+categorias:
+  - grandes-obras
+descripcion: Dimensionado Edificios administrativo,talleres, vigilancia, tanques, cisternas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

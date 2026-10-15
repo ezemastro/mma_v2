@@ -1,0 +1,12 @@
+titulo: Boating Club 325 - Beccar
+anio: 2024
+cliente: Alric Galindez Arqs.
+superficie: 600
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: casa con grandes luces , hormigón a la vista
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Don Bosco 2254 - Villa Luzuriaga
+anio: 2022
+cliente: Karibara
+superficie: 200
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Reforma con demolicion de columnas existentes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

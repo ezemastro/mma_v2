@@ -1,0 +1,12 @@
+titulo: Barbarita 263 - Tigre
+anio: 2016
+cliente: Arq. Ariel Miotto
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

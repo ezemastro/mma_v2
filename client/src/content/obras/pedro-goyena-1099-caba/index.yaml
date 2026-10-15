@@ -1,0 +1,12 @@
+titulo: Pedro Goyena 1099 - CABA
+anio: 2022
+cliente: DS Arquitectos
+superficie: 200
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Reforma con demolicion de columnas existentes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

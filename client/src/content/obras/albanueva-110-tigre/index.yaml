@@ -1,0 +1,12 @@
+titulo: Albanueva 110 - Tigre
+anio: 2023
+cliente: A + R Arquitectura
+superficie: 500
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

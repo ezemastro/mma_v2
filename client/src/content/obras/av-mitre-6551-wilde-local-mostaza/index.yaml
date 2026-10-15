@@ -1,0 +1,12 @@
+titulo: Av. Mitre 6551 - Wilde (Local Mostaza)
+anio: 2023
+cliente: Mostaza y Pan SA
+superficie: 600
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

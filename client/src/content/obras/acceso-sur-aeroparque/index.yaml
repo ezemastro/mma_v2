@@ -1,0 +1,12 @@
+titulo: Acceso Sur Aeroparque
+anio: 2017
+cliente: Estudio Graf SRL
+superficie: 500
+ubicacion: ""
+categorias:
+  - estructura-metalica
+descripcion: Estructura metálica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Miranda 4671 - CABA
+anio: 2018
+cliente: Viarq Construcciones S.A.
+superficie: 1400
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,13 @@
+titulo: Montgomey 227 - Jersey City - EEUU
+anio: 2014
+cliente: Arq. Jorge Mastropietro
+superficie: 800
+ubicacion: ""
+categorias:
+  - edificios
+  - internacional
+descripcion: Estructura nueva de madera , manteniendo fachada original.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

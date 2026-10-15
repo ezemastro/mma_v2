@@ -1,0 +1,12 @@
+titulo: Marinas 60 - Puertos del Lago - Escobar
+anio: 2020
+cliente: Arq. Florencia Gallazzi
+superficie: 400
+ubicacion: ""
+categorias:
+  - puertos-del-lago
+descripcion: Estructura Mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

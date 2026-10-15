@@ -1,0 +1,14 @@
+titulo: 9 de julio 128 - Ushuaia ( Jumping)
+anio: 2017
+cliente: Carlos Bustamante S.A.
+superficie: 1000
+ubicacion: ""
+categorias:
+  - edificios
+  - zona-sismica
+  - estructura-metalica
+descripcion: Estructura metálica construida en zona sísmica. Losas Steel Deck
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

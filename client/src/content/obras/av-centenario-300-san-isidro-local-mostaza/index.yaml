@@ -1,0 +1,12 @@
+titulo: Av. Centenario 300 - San Isidro ( Local Mostaza)
+anio: 2025
+cliente: Barsi Foods SA
+superficie: 600
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Adaptación para local de comidas. Reforma. Refuerzos
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

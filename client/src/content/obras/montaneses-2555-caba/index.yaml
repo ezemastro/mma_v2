@@ -1,0 +1,13 @@
+titulo: Montañeses 2555 - CABA
+anio: 2015
+cliente: Viarq Construcciones S.A.
+superficie: 2000
+ubicacion: ""
+categorias:
+  - edificios
+  - losas-postensadas
+descripcion: Estructura de hormigón con losas postesadas. Fundaciones con micropilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

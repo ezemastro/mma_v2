@@ -1,0 +1,12 @@
+titulo: Hipólito Yrigoyen 3916 - Lanús ( Local Mostaza)
+anio: 2018
+cliente: Mostaza y Pan SA
+superficie: 700
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Estructura mixta, con losas colgantes, losas premoldeadas huecas, tensores.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Horizonte 490 - Canning
+anio: 2021
+cliente: Proyectar Tu Casa
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

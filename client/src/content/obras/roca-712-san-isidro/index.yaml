@@ -1,0 +1,12 @@
+titulo: Roca 712 - San Isidro
+anio: 2025
+cliente: Alric Galindez Arqs.
+superficie: 600
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura de de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

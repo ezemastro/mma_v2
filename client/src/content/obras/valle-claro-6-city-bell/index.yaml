@@ -1,0 +1,12 @@
+titulo: Valle Claro 6 - City Bell
+anio: 2007
+cliente: Arq. Ariel Miotto
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

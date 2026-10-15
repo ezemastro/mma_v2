@@ -1,0 +1,13 @@
+titulo: Complejo habitacional Nº3 calle Mendoza - CABA
+anio: 2022
+cliente: FADU
+superficie: 5000
+ubicacion: ""
+categorias:
+  - edificios
+  - grandes-obras
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

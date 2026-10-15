@@ -1,0 +1,12 @@
+titulo: Mar del Plata esq. Calle 43- Mar Azul
+anio: 2021
+cliente: Arq. Guillermo Gauna
+superficie: 400
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

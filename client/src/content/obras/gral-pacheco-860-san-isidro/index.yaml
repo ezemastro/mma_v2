@@ -1,0 +1,12 @@
+titulo: Gral Pacheco  860 - San Isidro
+anio: 2017
+cliente: Arq. Mario Rube
+superficie: 300
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura hormigón y cubierta de tejas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

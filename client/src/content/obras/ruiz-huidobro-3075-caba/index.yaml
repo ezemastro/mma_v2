@@ -1,0 +1,12 @@
+titulo: Ruiz Huidobro 3075 - CABA
+anio: 2018
+cliente: Viarq Construcciones S.A.
+superficie: 2600
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional, fundaciones con micropilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

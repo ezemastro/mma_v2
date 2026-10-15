@@ -1,0 +1,12 @@
+titulo: Pedro Goyena 879 - Acassuso
+anio: 2022
+cliente: Latitud Sur
+superficie: 450
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

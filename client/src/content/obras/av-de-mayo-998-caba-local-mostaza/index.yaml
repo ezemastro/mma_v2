@@ -1,0 +1,12 @@
+titulo: Av. De Mayo 998 - CABA (Local Mostaza)
+anio: 2020
+cliente: Mostaza y Pan SA
+superficie: 350
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Adaptación de local. Refuerzos metálicos. Entrepiso metálico nuevo.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

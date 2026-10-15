@@ -1,0 +1,12 @@
+titulo: Paseo Costero Vicente Lopez
+anio: 2015
+cliente: Arq. Federico de Vicenzi
+superficie: 400
+ubicacion: ""
+categorias:
+  - estructura-metalica
+descripcion: Edificios sanitarios con estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

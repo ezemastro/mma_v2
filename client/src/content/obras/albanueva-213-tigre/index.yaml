@@ -1,0 +1,13 @@
+titulo: Albanueva 213 - Tigre
+anio: 2022
+cliente: Pacifica Arquitectura
+superficie: 800
+ubicacion: ""
+categorias:
+  - barrios-privados
+  - losas-alivianadas
+descripcion: Estructura de hormigóncon losas alivianadas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

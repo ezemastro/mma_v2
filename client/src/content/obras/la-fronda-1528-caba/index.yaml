@@ -1,0 +1,12 @@
+titulo: La Fronda 1528 - CABA
+anio: 2018
+cliente: Ing. Carlos Fernández
+superficie: 800
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura de hormigón con viguetas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Arieta 4108 - San Justo
+anio: 2025
+cliente: Xencal SRL
+superficie: 400
+ubicacion: ""
+categorias:
+  - galpones
+descripcion: Depósitos. Estructura con grandes cargas.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

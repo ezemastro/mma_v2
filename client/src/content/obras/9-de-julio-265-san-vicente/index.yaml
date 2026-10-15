@@ -1,0 +1,16 @@
+titulo: 9 de Julio 265- San vicente
+anio: 2022
+cliente: Proyectar Tu Casa
+superficie: 1500
+ubicacion: ""
+categorias:
+  - edificios
+  - losas-alivianadas
+descripcion: |-
+  Losas alivianadas con bloques de telgopor
+
+  fundaciones con micropilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

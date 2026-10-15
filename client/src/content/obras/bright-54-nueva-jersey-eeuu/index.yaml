@@ -1,0 +1,13 @@
+titulo: Bright 54 - Nueva Jersey - EEUU
+anio: 2016
+cliente: Arq. Jorge Mastropietro
+superficie: 800
+ubicacion: ""
+categorias:
+  - edificios
+  - internacional
+descripcion: Estructura de madera con grandes muros de contensión.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

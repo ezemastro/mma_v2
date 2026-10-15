@@ -1,0 +1,12 @@
+titulo: Gamboa 6796 - CABA
+anio: 2000
+cliente: Arq. Jorge Mastropietro
+superficie: 200
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

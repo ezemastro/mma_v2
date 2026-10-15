@@ -1,0 +1,13 @@
+titulo: Hipólito Yrigoyen 550 - Quilmes (Supermercado Día)
+anio: 2023
+cliente: Acontec SRL
+superficie: 500
+ubicacion: ""
+categorias:
+  - local-comercial
+  - estructura-metalica
+descripcion: Estructura metálica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Santa Bárbara 2002 - Tigre
+anio: 2022
+cliente: Arq. Solana Papasaragas
+superficie: 400
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Ampliación, reforma, refuerzos.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

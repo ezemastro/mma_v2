@@ -1,0 +1,12 @@
+titulo: General Paz 208 - Villa Carlos Paz - Córdoba
+anio: 2018
+cliente: Mostaza y Pan SA
+superficie: 600
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Grandes luces, grandes cargas. Estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

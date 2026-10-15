@@ -1,0 +1,12 @@
+titulo: Riberas 59 - Puertos del Lago - Escobar
+anio: 2023
+cliente: Latitud Sur
+superficie: 350
+ubicacion: ""
+categorias:
+  - puertos-del-lago
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

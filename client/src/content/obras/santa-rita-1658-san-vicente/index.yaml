@@ -1,0 +1,12 @@
+titulo: Santa Rita 1658 - San Vicente
+anio: 2021
+cliente: Proyectar Tu Casa
+superficie: 500
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

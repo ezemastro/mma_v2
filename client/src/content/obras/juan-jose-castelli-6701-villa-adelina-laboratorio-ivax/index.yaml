@@ -1,0 +1,13 @@
+titulo: Juan José Castelli 6701 - Villa Adelina ( Laboratorio Ivax)
+anio: 2017
+cliente: Ing. Ricardo Taba
+superficie: 800
+ubicacion: ""
+categorias:
+  - local-comercial
+  - estructura-metalica
+descripcion: Ampliación con cubierta metálica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

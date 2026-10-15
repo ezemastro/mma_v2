@@ -1,0 +1,12 @@
+titulo: San Marco 253 - Tigre
+anio: 2022
+cliente: Pacifica Arquitectura
+superficie: 700
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional con grandes voladizos
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

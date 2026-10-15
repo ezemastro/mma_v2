@@ -1,0 +1,13 @@
+titulo: Av. Varela 1801 - CABA (AYSA)
+anio: 2021
+cliente: Xencal SRL
+superficie: 600
+ubicacion: ""
+categorias:
+  - galpones
+  - estructura-metalica
+descripcion: Estructura Metálica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

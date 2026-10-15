@@ -1,0 +1,12 @@
+titulo: Juncal 1125 - CABA
+anio: 2016
+cliente: Arq. Carlos Oddone
+superficie: 1400
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Edificio antiguo que se demuele y mantiene su fachada historica.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

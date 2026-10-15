@@ -1,0 +1,12 @@
+titulo: Altos de Horqueta - Lote 15
+anio: 2018
+cliente: Pedro Podestá S.A.
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

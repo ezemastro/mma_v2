@@ -1,0 +1,13 @@
+titulo: Estadio Ferrocarril Oeste  (Tribunas) - Caballito
+anio: 2016
+cliente: Viarq Construcciones S.A.
+superficie: 2500
+ubicacion: ""
+categorias:
+  - edificios-publicos
+  - grandes-obras
+descripcion: Estructura de Hormigón con arcos de compresión. Fundaciones con pilotes
+portada: ./portada.webp
+galeria: []
+destacada: true
+orden: 1

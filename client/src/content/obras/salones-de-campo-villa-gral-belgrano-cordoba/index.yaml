@@ -1,0 +1,12 @@
+titulo: Salones de Campo - Villa Gral. Belgrano - córdoba
+anio: 2024
+cliente: Atelier Brux
+superficie: 500
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Banco Provincia 1360 - Moreno
+anio: 2021
+cliente: Arq. Juan Manuel Talarico
+superficie: 200
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Grandes luces, entrepisos sin vigas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

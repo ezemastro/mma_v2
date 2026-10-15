@@ -1,0 +1,12 @@
+titulo: Norte 267 - El Cantón - Escobar
+anio: 2025
+cliente: MMO Cristian Moreno
+superficie: 250
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura con muros portantes y losa de viguetas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

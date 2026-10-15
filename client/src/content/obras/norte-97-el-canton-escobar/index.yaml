@@ -1,0 +1,12 @@
+titulo: Norte 97 - El Cantón - Escobar
+anio: 2021
+cliente: Tarq Construcciones
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

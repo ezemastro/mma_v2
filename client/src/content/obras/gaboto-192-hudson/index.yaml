@@ -1,0 +1,13 @@
+titulo: Gaboto 192 - Hudson
+anio: 2022
+cliente: Proyectar Tu Casa
+superficie: 400
+ubicacion: ""
+categorias:
+  - barrios-privados
+  - losas-alivianadas
+descripcion: Estructura de hormigón con losas alivianadas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

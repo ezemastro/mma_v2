@@ -1,0 +1,12 @@
+titulo: Venezuela 1380 - CABA
+anio: 2016
+cliente: Arq. Mario Rube
+superficie: 600
+ubicacion: ""
+categorias:
+  - centro-medico
+descripcion: Centro de diágnostico con altas cargas de resonador. Estructura en hormigón armado.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

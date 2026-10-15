@@ -1,0 +1,12 @@
+titulo: Albanueva 202 - Tigre
+anio: 2016
+cliente: Arq. Ariel Miotto
+superficie: 500
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

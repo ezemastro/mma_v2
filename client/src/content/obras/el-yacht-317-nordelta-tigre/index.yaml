@@ -1,0 +1,12 @@
+titulo: El Yacht 317 - Nordelta - Tigre
+anio: 2021
+cliente: Arq. Ariel Miotto
+superficie: 500
+ubicacion: ""
+categorias:
+  - nordelta
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

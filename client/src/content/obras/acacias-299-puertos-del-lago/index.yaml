@@ -1,0 +1,15 @@
+titulo: Acacias 299- Puertos del Lago
+anio: 2021
+cliente: Latitud Sur
+superficie: 300
+ubicacion: ""
+categorias:
+  - puertos-del-lago
+descripcion: |-
+  Entrepisos sin vigas en PB con HºVº
+
+  Losas de viguetas en PA
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

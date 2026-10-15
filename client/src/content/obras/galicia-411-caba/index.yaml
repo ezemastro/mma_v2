@@ -1,0 +1,12 @@
+titulo: Galicia 411 - CABA
+anio: 2025
+cliente: Habitart + RBK
+superficie: 900
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

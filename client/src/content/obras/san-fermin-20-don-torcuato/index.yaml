@@ -1,0 +1,12 @@
+titulo: San Fermín 20- Don torcuato
+anio: 2023
+cliente: Arq. Gonzalo Bardach
+superficie: 400
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

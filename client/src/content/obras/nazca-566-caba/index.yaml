@@ -1,0 +1,12 @@
+titulo: Nazca 566 - CABA
+anio: 2024
+cliente: Arq. Felix Clavijo
+superficie: 1200
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Ampliación de varios pisos sobre estructura existente.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

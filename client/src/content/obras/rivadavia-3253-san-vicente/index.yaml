@@ -1,0 +1,13 @@
+titulo: Rivadavia 3253 - San Vicente
+anio: 2023
+cliente: Es arq.
+superficie: 2000
+ubicacion: ""
+categorias:
+  - galpones
+  - estructura-metalica
+descripcion: Estructura Metálica
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,13 @@
+titulo: CIMA - Ciudad Universitaria - CABA
+anio: 2020
+cliente: Arq. Pablo Corral / Arq. Emiliano Saénz
+superficie: 2500
+ubicacion: ""
+categorias:
+  - edificios-publicos
+  - losas-alivianadas
+descripcion: Proyecto de Oficinas para Instituto del Mar del Conicet. Estructura de grandes luces, resueltas con losas Prenova
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

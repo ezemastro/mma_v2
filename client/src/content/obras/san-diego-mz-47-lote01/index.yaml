@@ -1,0 +1,12 @@
+titulo: San diego Mz 47 lote01
+anio: 2019
+cliente: Besonias Almeida Arq.
+superficie: 400
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura hormigón visto
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: Artigas 3132 - CABA
+anio: 2014
+cliente: Arq. AnalíaThier
+superficie: 1400
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón armado. Fundaciones con bases aisladas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

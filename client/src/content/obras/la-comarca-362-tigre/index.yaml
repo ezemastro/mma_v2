@@ -1,0 +1,12 @@
+titulo: La Comarca 362 - Tigre
+anio: 2014
+cliente: Arq. Sebastián Quinteros
+superficie: 300
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

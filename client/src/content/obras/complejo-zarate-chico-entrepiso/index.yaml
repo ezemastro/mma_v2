@@ -1,0 +1,12 @@
+titulo: Complejo Zárate Chico -Entrepiso
+anio: 2020
+cliente: Arq. Martín Rabuini
+superficie: 200
+ubicacion: ""
+categorias:
+  - estructura-metalica
+descripcion: Entrepisos colgantes interior a Centro Comercial
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

@@ -1,0 +1,12 @@
+titulo: J.B.Alberdi 7388 - CABA
+anio: 2022
+cliente: Arq. Martín Palladino
+superficie: 2000
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional, fundaciones con micropilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

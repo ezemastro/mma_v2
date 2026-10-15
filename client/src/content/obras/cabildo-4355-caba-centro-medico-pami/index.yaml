@@ -1,0 +1,12 @@
+titulo: Cabildo 4355 - CABA (Centro Médico PAMI)
+anio: 2022
+cliente: Acontec SRL
+superficie: 2500
+ubicacion: ""
+categorias:
+  - edificios-publicos
+descripcion: Recuperación de edificios existente. Adaptación para edificio sanitario
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

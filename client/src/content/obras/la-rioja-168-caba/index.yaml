@@ -1,0 +1,13 @@
+titulo: La Rioja 168 - CABA
+anio: 2016
+cliente: Arq. Adrián Murphi
+superficie: 18000
+ubicacion: ""
+categorias:
+  - edificios
+  - grandes-obras
+descripcion: Estructura de hormigón tradicional, fundaciones con micropilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

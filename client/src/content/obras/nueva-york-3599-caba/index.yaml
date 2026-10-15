@@ -1,0 +1,12 @@
+titulo: Nueva york 3599 - CABA
+anio: 2023
+cliente: Arq. Daniel Vega
+superficie: 1500
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

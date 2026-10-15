@@ -1,0 +1,12 @@
+titulo: Casa en San Bernardo
+anio: 2016
+cliente: Arq. Fabián Garay
+superficie: 250
+ubicacion: ""
+categorias:
+  - residencial
+descripcion: Estructura mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

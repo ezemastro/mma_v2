@@ -1,0 +1,13 @@
+titulo: Almafuerte 1232 - San Isidro
+anio: 2022
+cliente: Commar Group
+superficie: 300
+ubicacion: ""
+categorias:
+  - residencial
+  - losas-alivianadas
+descripcion: Entrepisos alivianados Prenova
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

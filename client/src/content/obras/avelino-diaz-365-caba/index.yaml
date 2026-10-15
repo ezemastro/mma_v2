@@ -1,0 +1,14 @@
+titulo: Avelino Díaz 365 - CABA
+anio: 2014
+cliente: Viarq Construcciones S.A.
+superficie: 2000
+ubicacion: ""
+categorias:
+  - edificios
+  - local-comercial
+  - losas-postensadas
+descripcion: Estructura con losas postensadas y alivianadas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

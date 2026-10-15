@@ -1,0 +1,12 @@
+titulo: Pte Perón 8561 - Villa Udaondo (Local Mostaza)
+anio: 2022
+cliente: Mostaza y Pan SA
+superficie: 1500
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Estructura de hormigón tradicional con grandes luces y cargas. Local con subsuelo.
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

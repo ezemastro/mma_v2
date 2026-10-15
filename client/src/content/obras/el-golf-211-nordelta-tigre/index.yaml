@@ -1,0 +1,12 @@
+titulo: El Golf 211 - Nordelta - Tigre
+anio: 2022
+cliente: Arq. Ariel Miotto
+superficie: 600
+ubicacion: ""
+categorias:
+  - nordelta
+descripcion: Estructura de hormigón tradicional
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

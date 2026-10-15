@@ -1,0 +1,12 @@
+titulo: Rivadavia 5776 - CABA (Local Mostaza)
+anio: 2022
+cliente: Mostaza y Pan SA
+superficie: 500
+ubicacion: ""
+categorias:
+  - local-comercial
+descripcion: Estructura Mixta
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

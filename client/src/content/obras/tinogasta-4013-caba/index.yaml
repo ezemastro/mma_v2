@@ -1,0 +1,12 @@
+titulo: Tinogasta 4013 - CABA
+anio: 2023
+cliente: Arq. Jorge Leo
+superficie: 700
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón con losas de viguetas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

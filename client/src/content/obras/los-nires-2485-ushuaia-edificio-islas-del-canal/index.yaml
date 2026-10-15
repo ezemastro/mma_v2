@@ -1,0 +1,14 @@
+titulo: Los Ñires 2485 - Ushuaia ( Edificio Islas del Canal)
+anio: 2018
+cliente: Carlos Bustamante S.A.
+superficie: 2000
+ubicacion: ""
+categorias:
+  - edificios
+  - zona-sismica
+  - estructura-metalica
+descripcion: Estructura metálica construida en zona sísmica. Losas Steel Deck
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

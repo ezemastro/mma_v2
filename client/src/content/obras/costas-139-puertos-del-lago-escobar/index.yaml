@@ -1,0 +1,12 @@
+titulo: Costas 139 - Puertos del Lago - Escobar
+anio: 2022
+cliente: Latitud Sur
+superficie: 350
+ubicacion: ""
+categorias:
+  - puertos-del-lago
+descripcion: Estructura de hormigón visto
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

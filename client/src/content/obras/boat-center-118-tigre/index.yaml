@@ -1,0 +1,12 @@
+titulo: Boat Center 118 - Tigre
+anio: 2023
+cliente: Odra Arq. S.A.
+superficie: 200
+ubicacion: ""
+categorias:
+  - barrios-privados
+descripcion: Ampliación con losa de viguetas
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null

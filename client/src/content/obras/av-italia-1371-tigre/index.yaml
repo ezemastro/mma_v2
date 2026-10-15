@@ -1,0 +1,12 @@
+titulo: Av. Italia 1371 - Tigre
+anio: 2007
+cliente: Arq. Roberto Nicodemo
+superficie: 1200
+ubicacion: ""
+categorias:
+  - edificios
+descripcion: Estructura de hormigón tradicional. Fundación con micropilotes
+portada: ./portada.webp
+galeria: []
+destacada: false
+orden: null
