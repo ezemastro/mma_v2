@@ -182,9 +182,96 @@ content (obras included) from `/keystatic` without touching code.
       (confirmed via a fresh capture: headings now bold/larger, paragraphs now have visible gaps, the
       inline "Mercado Libre" markdown link in Publicaciones now reads in primary orange instead of
       Typography's default black-underline).
-- [ ] T6 SEO + docs: sitemap, robots, JSON-LD, redirects; `docs/EDITAR-CONTENIDO.md` (client guide) and
-      `docs/DEPLOY.md` (Cloudflare + GitHub app + DNS).
-- [ ] T7 Visual QA: desktop + mobile captures of every route, CLS check on `/obras`.
+- [x] T6 SEO + docs: sitemap, robots, JSON-LD, redirects; `docs/EDITAR-CONTENIDO.md` (client guide) and
+      `docs/DEPLOY.md` (Cloudflare + GitHub app + DNS). Commits `1ce0640` (T6a style), `e836620`
+      (T6b SEO), `3246dd9` (T6c fix), `83b8583` (T6d docs).
+      Checks observed: `npm run build` green after every commit; `npx astro check` 0 errors (same
+      pre-existing hint) after every commit.
+      T6a (spacing polish): headless captures of `/` at 1440 (full page) and the Diferenciales
+      section; confirmed card/feature descriptions no longer show the markdoc-prose first-child top
+      margin under their h3 titles (replaced with a deliberate ~0.5rem gap via
+      `[&>*:first-child]:mt-2`), confirmed no more double hairline+padding gap before
+      Servicios/Publicaciones (Section.astro's `border-t pt-8` branch removed, the `tono`
+      background alternation is now the only separation system), confirmed the Diferenciales ISO
+      certificate image is centered on both axes within its column.
+      T6b (SEO): sitemap integration given an explicit `filter` (excludes `/descarga`, `/404`,
+      `/keystatic*`, `/api/*`); verified in the built `dist/client/sitemap-0.xml`: 462 URLs
+      (`/`, `/contacto/`, `/obras/`, 458 obra details, `/software/`), none of the excluded paths
+      present. `public/robots.txt` added (allow all, disallow `/keystatic` and `/api/`, real
+      `Sitemap:` URL). JSON-LD added via a new `Layout` `jsonLd` prop: `ProfessionalService` on
+      home (verified rendered in `dist/client/index.html`, every value from the `settings`
+      singleton or the hero obra's own photo) and `CreativeWork` on every obra detail (verified in
+      a sample `dist/client/obras/<slug>/index.html`). Verified (not assumed, per CLAUDE.md):
+      every page already had a unique title/description/canonical and each obra's og:image already
+      used its own portada as an absolute URL (confirmed in built HTML, T3/T5 already did this
+      correctly); Cloudflare's static-asset default `html_handling` is `auto-trailing-slash`
+      (307-redirects `/obras` to `/obras/`), so v1's no-trailing-slash URLs keep working without a
+      `_redirects` file; `/servicios` only appears in v1's orphaned sitemap *generator script*, not
+      in the actually-deployed `sitemap.xml` (fetched live) or as a real route (always just a
+      same-page anchor), and v2's Home has no `servicios` anchor id either, so no redirect was
+      added for it. 404 page given `noindex` (was defaulting to `index,follow` despite being
+      excluded from the sitemap).
+      T6c (Keystatic round trip, dev/local storage): drove the admin via CDP end to end. Found and
+      worked around a real `@astrojs/cloudflare` 14.4.0 dev-mode-only bug first (confirmed via a
+      bisect against pre-T6 config and against a no-adapter dev run, and by reading
+      `astro/dist/core/environment/dev-nonrunnable.js`): `/api/keystatic/*` 500s
+      ("exports is not defined") under `astro dev`'s non-runnable/workerd dev facade, which put the
+      admin's data-dependent pages in a reload loop; this is dev-only scaffolding per the file's own
+      comments and does not run in the deployed Worker, so production is unaffected. Verified with
+      the adapter temporarily commented out for the admin session only (restored before every
+      build): obras collection list loads (458 entries, Slug/Título/Año/Cliente columns,
+      virtualized rows); opened an existing obra (`11-de-septiembre-2916-caba`) and saw its real
+      stored data (portada preview, all fields) render correctly. Created a new obra "Obra de
+      prueba" (año 2026, cliente Prueba, 1 categoría, portada uploaded via
+      `DOM.setFileInputFiles`) through the admin create form: found a real bug, Keystatic's own
+      image-field writer stored `portada: ./obra-de-prueba/portada.webp` (one directory level too
+      deep) instead of `./portada.webp`, even though the uploaded file itself landed in the correct
+      per-entry folder -- root-caused to `fields.image({ publicPath: "./" })` always prepending the
+      entry's slug (read directly in `node_modules/@keystatic/core/dist/index-3c244051.js`
+      `getSrcPrefix()`), fixed by dropping `publicPath` from `obraImage()` in `src/schemas/obra.ts`
+      (commit `3246dd9`), re-tested: new entry's `portada` now stores the bare filename, confirmed
+      `npm run build` renders `/obras/obra-de-prueba/` with an optimized responsive image (459
+      output dirs). Edited the homepage hero subtext and the settings phone text through the admin,
+      confirmed both YAMLs changed on disk, reverted both via `git checkout`. Deleted the test obra;
+      `git status` clean of test artifacts (verified).
+      Real risk found, not fixed (out of this task's scope, flagged in `client/README.md`'s
+      "Known dev-mode gotcha" and above): saving the homepage singleton once (just to change the
+      hero subtext) reshuffled roughly 90 Clientes-section logo files to different array-index-based
+      paths under `src/assets/cms/sections/7/value/content/`; fully reverted via `git checkout` +
+      `git clean` and confirmed clean, but not root-caused with confidence (the array item's
+      position-based "slug" used for its image path should be stable across a no-op array edit;
+      whether this is a genuine Keystatic large-array bug or an artifact of the severe shared-host
+      memory pressure present for this entire session could not be conclusively isolated without
+      risking another live reproduction). Recommend treating any future homepage/software edit that
+      touches Clientes or Publicaciones as worth a `git diff --stat` check before committing.
+- [x] T7 Visual QA: desktop + mobile captures of every route, CLS check on `/obras`. No commit (no
+      real defects found to fix).
+      `npm run build` + `npm run preview` (Wrangler-backed local Worker), headless captures at
+      1440x900 and 390x844 for `/`, `/obras/` (viewport-only -- its full-page height is ~40,000px
+      at 1440/~178,000px at 390 given all 458 cards render in one unpaginated grid, so a
+      beyond-viewport screenshot capture was impractically slow on this host; CLS/overflow numbers
+      don't depend on scroll position so they're still valid), `/obras/?categoria=barrios-privados`,
+      one obra detail (`peron-2741-san-justo-local-mostaza`), `/software/`, `/contacto/`,
+      `/descarga/`, and a real 404 URL (confirmed 404 status via curl). Read every capture: no
+      horizontal overflow on any route (`sw === cw` everywhere), CLS well under 0.1 throughout (see
+      table below). One false alarm chased down and ruled out: `/contacto`'s Google Maps embed
+      looked empty in the automated capture because the iframe is `loading="lazy"` and the tool's
+      default ~2.5s wait wasn't enough for an external Maps tile load; a longer-wait retest showed
+      the pin rendering correctly, so no fix was needed.
+      | Route | 1440 cls | 1440 overflow | 390 cls | 390 overflow |
+      |---|---|---|---|---|
+      | `/` | 0.0054 | none | 0 | none |
+      | `/obras/` (viewport) | 0.00064 | none | 0 | none |
+      | `/obras/?categoria=barrios-privados` | 0.0104 | none | 0 | none |
+      | obra detail | 0.00064 | none | 0 | none |
+      | `/software/` | 0.00064 | none | 0 | none |
+      | `/contacto/` | 0.0256 | none | 0 | none |
+      | `/descarga/` | 0.0038 | none | 0 | none |
+      | 404 | 0.0038 | none | 0 | none |
+      Network (Wrangler preview, first load at 1440, no scroll, via CDP Network domain):
+      `/` 750 KB / 24 requests / 11 image requests; `/obras/` 1199 KB / 36 requests / 23 image
+      requests (out of 458 obras -- confirms lazy loading only fetches the first few rows, not the
+      whole catalog).
 
 ## Checks (per task)
 
@@ -200,8 +287,35 @@ content (obras included) from `/keystatic` without touching code.
 
 ## Progress
 
-(updated per task)
+All 7 tasks (T1-T7) done. The v1 React site is fully ported to Astro + Keystatic: every route
+(`/`, `/obras`, `/obras/[slug]`, `/software`, `/descarga`, `/contacto`, 404), 458 migrated obras
+plus a working client-facing create/edit flow, redesigned sections keeping the v1 brand identity,
+SEO (sitemap, robots, JSON-LD, per-page metadata), and the client-editing + deploy docs. `npm run
+build` and `npx astro check` are green on every commit on this branch. The Keystatic admin round
+trip was verified for real against local storage in dev (not just assumed from the build passing),
+which is also how a real, fixed bug (obra portada path) and a flagged-but-unresolved risk
+(Clientes array image reshuffling on singleton save, see T6c) were found -- exactly the kind of
+thing a build-only check would have missed.
 
 ## Next step
 
-T6.
+Implementation is done; what's left is the user's decisions, not more code:
+
+- **Push / PR strategy**: every commit on this branch is still local-only per the delivery
+  strategy (`ask-on-risk`, RDD off, nothing pushed). Decide whether to push `feat/astro-migration`
+  directly, open a PR against `ezemastro/mma_v2`'s default branch, or slice it into stacked PRs
+  given its size (see `work-unit-commits`/`chained-pr` conventions if slicing).
+- **Cloudflare setup**: `docs/DEPLOY.md` is the step-by-step (Workers + Workers Builds project,
+  Keystatic GitHub App + its env vars, custom domain, editor GitHub access). None of this can be
+  done from here -- it needs a human with access to the Cloudflare account, the GitHub repo
+  settings, and the domain's DNS (Hostinger vs moving to Cloudflare, including whether email MX
+  records need to move too).
+- **The obras without photos**: per `scripts/migrate-obras.mjs`'s own migration report, a small
+  number of v1 CSV rows (3, per the orchestrator's own count) have no matching source image and
+  were skipped entirely rather than migrated with a placeholder, since `portada` is a required
+  field. Getting real photos for those from the client (or deciding to drop them permanently) is a
+  content decision, not a code one.
+- **The Clientes-array image-reshuffling risk** (T6c): worth a clean-environment retest (edit +
+  save the homepage singleton, check `git diff --stat` for unrelated changes under
+  `src/assets/cms/sections/7/`) before anyone relies on editing that section in production, since
+  it was reverted here but not conclusively root-caused.
