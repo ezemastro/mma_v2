@@ -146,7 +146,42 @@ content (obras included) from `/keystatic` without touching code.
       by regenerating the slug from title on every load, so this is safe -- only an editor manually
       clicking "regenerate slug" in the Keystatic UI after editing titulo would create a mismatch, which
       is expected/acceptable per the task brief).
-- [ ] T5 `/software`, `/descarga`, `/contacto`, 404.
+- [x] T5 `/software`, `/descarga`, `/contacto`, 404. Commit `1fe9ca1` (plus `0cd526f`, a fix found
+      while building it: see below).
+      Checks observed: `npm run build` green (~30-50s); `npx astro check` 0 errors (same pre-existing
+      hint). Headless chromium captures of `/software`, `/descarga`, `/contacto` at 1440x900 and 390x844
+      (full-page), plus `/contacto/?gracias` at 1440x900; read back directly. CLS: software 1440 0.00064,
+      software 390 0, descarga 1440 0.0038, descarga 390 0, contacto 1440 0.00064, contacto 390 0,
+      contacto?gracias 1440 0.026 (slightly higher because the inline success banner inserts content above
+      the fold on load, still well under 0.1) -- no horizontal overflow on any capture.
+      New `software` Keystatic singleton (intro, 3 feature cards, audience/characteristics markdoc,
+      screenshot image, version, installer URL, download-form texts) backs both `/software` and
+      `/descarga` so the version label and installer link live in one place. Forms verified to keep the
+      same formsubmit.co endpoint, hidden `_subject`/`_captcha` fields and exact field names as v1
+      (Nombre/Actividad/Organización/Email for software, nombre/email/tel/asunto/mensaje/attachment for
+      contacto); `_next` is now a static absolute URL per the brief instead of v1's runtime
+      `window.location.href` computation. Contact info (phone/WhatsApp/email/address) reads from the
+      existing `settings` singleton. Google Maps swapped from v1's JS SDK (needed an API key) to a
+      key-less `maps?...&output=embed` iframe in a fixed-aspect box (confirmed it actually renders the
+      pin via the `/contacto/?gracias` capture, not just an empty placeholder). `?gracias` shows an inline
+      banner (not `alert()`) and strips the query param via `history.replaceState`; confirmed both in one
+      capture. `/descarga` sends `noindex,follow` via a new `Layout` `noindex` prop. 404.astro (already
+      existed from T1) now links to both Home and Obras.
+      Real bug found and fixed while reading the rendered Software page (commit `0cd526f`, not part of
+      the feat commit): `tailwind.config.mjs` imported `@tailwindcss/typography` as a plugin, but it was
+      never installed AND Tailwind v4's CSS-first config (this project uses `@import "tailwindcss"` in
+      global.css) never reads a JS config file without an explicit `@config` directive, which was never
+      added either. Every `prose` class on `MarkdocRender.astro` had therefore been a complete no-op since
+      T1: markdown headings rendered as unstyled plain text, and Tailwind's preflight strips default
+      paragraph margins, so every multi-paragraph markdoc block (Política de Calidad, the newly-split Bio
+      paragraphs from T4b, and this task's Software audiencia text) rendered as a dense wall of text with
+      zero space between paragraphs. Installed the package and wired it the v4-native way
+      (`@plugin "@tailwindcss/typography";` in global.css), deleted the dead config file, and tuned
+      `prose-a`/`prose-headings` to the site's primary-orange/dark instead of Typography's generic
+      defaults. Re-verified the home page and Política de Calidad still look correct after the fix
+      (confirmed via a fresh capture: headings now bold/larger, paragraphs now have visible gaps, the
+      inline "Mercado Libre" markdown link in Publicaciones now reads in primary orange instead of
+      Typography's default black-underline).
 - [ ] T6 SEO + docs: sitemap, robots, JSON-LD, redirects; `docs/EDITAR-CONTENIDO.md` (client guide) and
       `docs/DEPLOY.md` (Cloudflare + GitHub app + DNS).
 - [ ] T7 Visual QA: desktop + mobile captures of every route, CLS check on `/obras`.
@@ -169,4 +204,4 @@ content (obras included) from `/keystatic` without touching code.
 
 ## Next step
 
-T5.
+T6.
