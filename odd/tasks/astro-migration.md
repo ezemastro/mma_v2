@@ -315,7 +315,9 @@ Implementation is done; what's left is the user's decisions, not more code:
   were skipped entirely rather than migrated with a placeholder, since `portada` is a required
   field. Getting real photos for those from the client (or deciding to drop them permanently) is a
   content decision, not a code one.
-- **The Clientes-array image-reshuffling risk** (T6c): worth a clean-environment retest (edit +
-  save the homepage singleton, check `git diff --stat` for unrelated changes under
-  `src/assets/cms/sections/7/`) before anyone relies on editing that section in production, since
-  it was reverted here but not conclusively root-caused.
+- **Clientes reshuffle (T6c), resolved in `9b76aa8`**: not a Keystatic bug. Keystatic stores
+  block images at index-based paths and renames them on save; the files still carried old indexes
+  after a duplicate logo was removed and blocks were reordered. Paths are now canonical, the
+  software singleton has its own image directory, and the Cloudflare adapter is attached only for
+  builds so the admin works under `npm run dev` (verified: obras list with columns and the homepage
+  editor render). Same commit splits one-sided dash titles ("Acacias 299- Puertos del Lago").

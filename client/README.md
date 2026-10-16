@@ -55,20 +55,11 @@ collection.
 
 `.env.example` lists the GitHub-mode environment variables.
 
-**Known dev-mode gotcha**: `npm run dev` + the Keystatic admin can hit a `@astrojs/cloudflare`
-14.4.0 dev-mode limitation where `/api/keystatic/*` returns a 500 ("exports is not defined",
-from `astro/dist/core/environment/dev-nonrunnable.js`) instead of routing the request, which
-makes the admin's data-dependent pages (the obras list, any entry editor) reload in a loop. This
-is confirmed dev-only scaffolding (the file name and its own comments say so) and does not run in
-the deployed Worker, so it does not affect production. If you hit it: temporarily comment out the
-`adapter: cloudflare({...})` line in `astro.config.mjs` while testing the admin locally (plain
-pages keep working either way since `output: 'static'` doesn't need an adapter in dev), then
-restore it before building. Also double-check `git diff` after saving a homepage/software edit
-that touches an array of images (Clientes, Publicaciones) before committing -- one save during
-this investigation reshuffled ~90 client logo files to different array-index-based paths; it was
-fully reverted and not root-caused with confidence (plausibly tied to the same dev-mode
-instability, given how loaded the box was while reproducing it), but hasn't been proven safe
-under normal conditions either.
+**Dev mode note**: `astro.config.mjs` attaches the Cloudflare adapter only for builds, because
+its dev integration makes `/api/keystatic/*` return 500 under `astro dev`. Nothing to toggle by
+hand. Images inside homepage blocks are stored at the index-based paths Keystatic itself writes
+(`src/assets/cms/sections/<block>/value/...`); reordering or deleting blocks or list items makes
+Keystatic rename those files on the next save, which is expected.
 
 ## Deploy docs
 
