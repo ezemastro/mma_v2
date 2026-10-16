@@ -29,6 +29,8 @@ if (content && typeof content === "function") {
 }
 ---
 
-<div class="tarjeta-descripcion prose prose-slate max-w-none">
+<div
+  class="tarjeta-descripcion prose prose-slate max-w-none prose-headings:text-dark prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
+>
   <Fragment set:html={htmlDescription} />
 </div>
