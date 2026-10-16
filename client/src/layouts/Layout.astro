@@ -13,9 +13,18 @@ interface Props {
   ogImage?: string;
   /** Keeps a post-form page (e.g. /descarga) out of search results. */
   noindex?: boolean;
+  /** Structured data object(s) rendered as a JSON-LD <script> in <head>. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[] | null;
 }
 
-const { title, description, transparentNav = false, ogImage, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  transparentNav = false,
+  ogImage,
+  noindex = false,
+  jsonLd,
+} = Astro.props;
 
 const settings = await reader.singletons.settings.read();
 
@@ -74,6 +83,8 @@ const gtmId = settings?.gtmId;
     <meta name="twitter:title" content={pageTitle} />
     {pageDescription && <meta name="twitter:description" content={pageDescription} />}
     <meta name="twitter:image" content={resolvedOgImage} />
+
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
     {

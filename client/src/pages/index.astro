@@ -1,4 +1,6 @@
 ---
+import { getEntry } from "astro:content";
+import { getImage } from "astro:assets";
 import { reader } from "../lib/keystatic-reader";
 import Hero from "../components/sections/Hero.astro";
 import Cards from "../components/sections/Cards.astro";
@@ -8,13 +10,39 @@ import Layout from "../layouts/Layout.astro";
 import Text from "../components/sections/Text.astro";
 import Publicaciones from "../components/sections/Publicaciones.astro";
 import FeaturedObras from "../components/sections/FeaturedObras.astro";
+import { absoluteUrl, buildOrganization } from "../lib/json-ld";
+import logoMark from "../assets/brand/logo-mark.png";
 
 const homeData = await reader.singletons.homepage.read();
 
 if (!homeData) return Astro.redirect("/404");
+
+const settings = await reader.singletons.settings.read();
+const heroObraEntry = homeData.header.heroObra
+  ? await getEntry("obras", homeData.header.heroObra)
+  : undefined;
+
+const logoImage = await getImage({ src: logoMark, width: 512 });
+const logoUrl = absoluteUrl(logoImage.src);
+const heroImage = heroObraEntry ? await getImage({ src: heroObraEntry.data.portada, width: 1200 }) : undefined;
+
+// ProfessionalService: every value traces back to the settings singleton
+// (edited by the client in /keystatic) or the hero obra's own photo, no
+// invented facts.
+const jsonLd = settings && {
+  "@context": "https://schema.org",
+  ...buildOrganization(settings, logoUrl),
+  image: heroImage ? absoluteUrl(heroImage.src) : logoUrl,
+  founder: {
+    "@type": "Person",
+    name: "Marcelo Mastropietro",
+    jobTitle: "Ingeniero civil",
+  },
+  sameAs: [settings.redes.youtubeUrl].filter(Boolean),
+};
 ---
 
-<Layout title={homeData.header.title}>
+<Layout title={homeData.header.title} jsonLd={jsonLd}>
   <Hero
     headline={homeData.header.headline}
     subtext={homeData.header.subtext}

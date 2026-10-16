@@ -3,6 +3,9 @@ import { getCollection } from "astro:content";
 import { Image, getImage } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import ObraCard from "../../components/obras/ObraCard.astro";
+import { reader } from "../../lib/keystatic-reader";
+import { absoluteUrl, buildOrganization } from "../../lib/json-ld";
+import logoMark from "../../assets/brand/logo-mark.png";
 
 export async function getStaticPaths() {
   const obras = await getCollection("obras");
@@ -35,9 +38,24 @@ const relatedObras = firstCategoria
 const description = paragraphs[0] ?? `${titulo}, ${cliente}, ${anio}.`;
 const ogImage = await getImage({ src: portada, width: 1200 });
 const galeriaFull = await Promise.all(galeria.map((image) => getImage({ src: image, width: 1600 })));
+
+const settings = await reader.singletons.settings.read();
+const logoImage = await getImage({ src: logoMark, width: 512 });
+
+// CreativeWork: only fields backed by this obra's own migrated data (no
+// invented facts). locationCreated only renders when ubicacion is set.
+const jsonLd = settings && {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: titulo,
+  image: absoluteUrl(ogImage.src),
+  dateCreated: String(anio),
+  ...(ubicacion ? { locationCreated: { "@type": "Place", name: ubicacion } } : {}),
+  creator: buildOrganization(settings, absoluteUrl(logoImage.src)),
+};
 ---
 
-<Layout title={titulo} description={description} ogImage={ogImage.src}>
+<Layout title={titulo} description={description} ogImage={ogImage.src} jsonLd={jsonLd}>
   <article class="px-4 pb-20 pt-10 md:px-12">
     <div class="mx-auto max-w-5xl">
       <a href="/obras" class="text-sm font-semibold text-primary hover:text-primary-dark">&larr; Volver a obras</a>

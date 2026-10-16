@@ -28,7 +28,26 @@ export default defineConfig({
   // Cloudflare adapter.
   output: 'static',
 
-  integrations: [react(), markdoc(), keystatic(), icon(), sitemap()],
+  integrations: [
+    react(),
+    markdoc(),
+    keystatic(),
+    icon(),
+    sitemap({
+      // The sitemap integration collects every emitted page regardless of
+      // rendering mode, so Keystatic's on-demand admin/API routes and the
+      // post-form /descarga and 404 pages need an explicit filter to stay
+      // out of what we ask search engines to index.
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        if (path === '/descarga' || path === '/descarga/') return false;
+        if (path === '/404' || path === '/404/') return false;
+        if (path.startsWith('/keystatic')) return false;
+        if (path.startsWith('/api/')) return false;
+        return true;
+      },
+    }),
+  ],
 
   adapter: cloudflare({
     // 'compile' optimizes images with sharp at build time for every
