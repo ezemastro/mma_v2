@@ -1,15 +1,25 @@
 import { fields } from "@keystatic/core";
 import { slugify } from "../lib/slugify";
 
-// Images are stored alongside each obra's index.yaml (directory left
-// unset so Keystatic writes into the entry's own folder) and referenced
-// with a relative publicPath. That relative string ("./portada.webp") is
-// exactly the format Astro's content-collection image() helper resolves
-// against the entry's own file location (see src/content.config.ts).
+// Images are stored alongside each obra's index.yaml (directory left unset
+// so Keystatic writes the file into the entry's own folder) and referenced
+// with a bare relative filename ("portada.webp"), which is the format
+// Astro's content-collection image() helper resolves against the entry's
+// own file location (see src/content.config.ts).
+//
+// publicPath is intentionally omitted: Keystatic's getSrcPrefix() treats a
+// string publicPath as "shared directory, namespaced by a `<slug>/`
+// subfolder" and always prepends the entry's slug to it (confirmed by
+// reading node_modules/@keystatic/core/dist/index-3c244051.js
+// getSrcPrefix()). With publicPath: "./" that produced a stored value of
+// "./<slug>/portada.webp" when creating an entry through the admin UI --
+// one directory level too deep for our "colocated in the entry's own
+// folder" convention, even though the uploaded file itself still landed in
+// the right place on disk. Leaving publicPath unset makes getSrcPrefix()
+// return "" instead, so the stored value is just the bare filename.
 const obraImage = (label: string, isRequired: boolean) =>
   fields.image({
     label,
-    publicPath: "./",
     validation: { isRequired },
   });
 
