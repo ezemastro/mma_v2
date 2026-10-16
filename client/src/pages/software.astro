@@ -1,0 +1,150 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/common/Icon.astro";
+import MarkdocRender from "../components/common/MarkdocRender.astro";
+import { reader } from "../lib/keystatic-reader";
+import { resolveCmsImage } from "../lib/cms-image";
+
+const software = await reader.singletons.software.read();
+
+if (!software) return Astro.redirect("/404");
+
+const captura = resolveCmsImage(software.captura);
+const description =
+  "MASCalculador: programa de cálculo de bases, columnas, vigas y losas en hormigón, del Ing. Marcelo Mastropietro.";
+---
+
+<Layout title="Software MASCalculador" description={description}>
+  <header class="px-4 pb-10 pt-12 md:px-12 md:pb-14 md:pt-16">
+    <div class="mx-auto max-w-5xl">
+      <h1 class="text-4xl font-bold tracking-tight text-dark md:text-5xl">MASCalculador</h1>
+      <p class="mt-3 max-w-2xl text-sm font-semibold uppercase tracking-wide text-primary">
+        Programa para el cálculo de estructuras
+      </p>
+      <div class="mt-6 max-w-3xl text-lg text-muted">
+        <MarkdocRender content={software.intro} />
+      </div>
+
+      {
+        software.caracteristicas.length > 0 && (
+          <ul class="mt-10 grid grid-cols-1 gap-6 border-t border-slate-200 pt-8 sm:grid-cols-3">
+            {software.caracteristicas.map((item) => (
+              <li class="flex items-center gap-3">
+                <Icon name={item.icon} class="size-8 shrink-0 text-primary" />
+                <span class="font-semibold text-dark">{item.title}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </header>
+
+  <section class="bg-[#f7f7f7] px-4 py-16 md:px-12 md:py-20">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="text-2xl font-bold tracking-tight text-dark md:text-3xl">¿A quién está dirigido?</h2>
+      <div class="mt-6 max-w-3xl">
+        <MarkdocRender content={software.audiencia} />
+      </div>
+
+      {
+        captura && (
+          <div class="mt-10 overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-white">
+            <Image
+              src={captura}
+              alt="Pantalla de inicio de la aplicación MASCalculador del Ing. Marcelo Mastropietro"
+              width={1600}
+              widths={[640, 960, 1280, 1600]}
+              sizes="(min-width: 1024px) 896px, 100vw"
+              loading="lazy"
+              decoding="async"
+              class="h-auto w-full"
+            />
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section id="descargar" class="px-4 py-16 md:px-12 md:py-20">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-2xl font-bold tracking-tight text-dark md:text-3xl">{software.formulario.titulo}</h2>
+      {software.formulario.subtitulo && <p class="mt-2 text-lg text-muted">{software.formulario.subtitulo}</p>}
+      {software.formulario.destacado && (
+        <p class="mt-6 text-lg font-semibold text-dark">{software.formulario.destacado}</p>
+      )}
+
+      <form
+        action="https://formsubmit.co/marcelomastropietro@gmail.com"
+        method="POST"
+        class="mt-8 flex flex-col gap-4 text-left"
+      >
+        <input type="hidden" name="_subject" value="Descarga MASCalculador" />
+        <input type="hidden" name="_next" value="https://mastropietro.com.ar/descarga" />
+        <input type="hidden" name="_captcha" value="true" />
+
+        <div>
+          <label for="software-nombre" class="mb-1.5 block text-sm font-semibold text-dark">
+            Nombre y apellido <span class="text-primary">*</span>
+          </label>
+          <input
+            id="software-nombre"
+            type="text"
+            name="Nombre"
+            required
+            class="w-full rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-dark focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="software-actividad" class="mb-1.5 block text-sm font-semibold text-dark">
+            Actividad <span class="text-primary">*</span>
+          </label>
+          <input
+            id="software-actividad"
+            type="text"
+            name="Actividad"
+            required
+            placeholder="Ingeniero, Arquitecto, Estudiante, otro"
+            class="w-full rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-dark placeholder:text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="software-organizacion" class="mb-1.5 block text-sm font-semibold text-dark">
+            Organización
+          </label>
+          <input
+            id="software-organizacion"
+            type="text"
+            name="Organización"
+            class="w-full rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-dark focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="software-email" class="mb-1.5 block text-sm font-semibold text-dark">
+            Correo electrónico <span class="text-primary">*</span>
+          </label>
+          <input
+            id="software-email"
+            type="email"
+            name="Email"
+            required
+            class="w-full rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-dark focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="mt-2 rounded-[var(--radius)] bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
+        >
+          {software.formulario.boton}
+        </button>
+      </form>
+
+      <p class="mt-6 text-sm text-muted">{software.version}</p>
+    </div>
+  </section>
+</Layout>

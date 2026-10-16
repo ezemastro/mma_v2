@@ -10,11 +10,19 @@ import Layout from "../layouts/Layout.astro";
       El contenido que buscás no existe o fue movido. Volvé al inicio para
       seguir navegando.
     </p>
-    <a
-      href="/"
-      class="mt-2 inline-block rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
-    >
-      Volver al inicio
-    </a>
+    <div class="mt-2 flex flex-wrap items-center justify-center gap-3">
+      <a
+        href="/"
+        class="inline-block rounded-[var(--radius)] bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
+      >
+        Volver al inicio
+      </a>
+      <a
+        href="/obras"
+        class="inline-block rounded-[var(--radius)] border border-slate-300 px-6 py-3 font-semibold text-dark transition-colors hover:border-primary hover:text-primary"
+      >
+        Ver obras
+      </a>
+    </div>
   </div>
 </Layout>

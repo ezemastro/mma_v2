@@ -1,0 +1,184 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import { reader } from "../lib/keystatic-reader";
+
+const settings = await reader.singletons.settings.read();
+const contacto = settings?.contacto;
+
+const mapSrc =
+  contacto?.mapaLat != null && contacto?.mapaLng != null
+    ? `https://www.google.com/maps?q=${contacto.mapaLat},${contacto.mapaLng}&z=12&output=embed`
+    : null;
+---
+
+<Layout
+  title="Contacto"
+  description="Comunicate con el Ing. Marcelo Mastropietro por consultas o presupuestos de cálculo estructural."
+>
+  <header class="px-4 pb-6 pt-12 md:px-12 md:pt-16">
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-dark md:text-5xl">Contacto</h1>
+      <p class="mt-4 text-lg text-muted">
+        Comunicate con nosotros por consultas o presupuestos y respondemos a la brevedad.
+      </p>
+    </div>
+  </header>
+
+  <section class="px-4 pb-20 pt-10 md:px-12">
+    <div class="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
+      <div>
+        <p
+          id="contacto-gracias"
+          hidden
+          class="mb-6 flex items-start gap-3 rounded-[var(--radius)] border border-primary/30 bg-primary/5 px-4 py-3 text-dark"
+        >
+          <Icon name="material-symbols:check-circle-outline-rounded" class="mt-0.5 size-5 shrink-0 text-primary" />
+          <span>Gracias por contactarnos, te responderemos a la brevedad.</span>
+        </p>
+
+        <h2 class="text-2xl font-bold tracking-tight text-dark">Envianos un mensaje</h2>
+
+        <form
+          action="https://formsubmit.co/marcelomastropietro@gmail.com"
+          enctype="multipart/form-data"
+          method="POST"
+          class="mt-6 flex flex-col gap-4"
+        >
+          <input type="hidden" name="_subject" value="Formulario de contacto" />
+          <input type="hidden" name="_next" value="https://mastropietro.com.ar/contacto?gracias" />
+          <input type="hidden" name="_captcha" value="true" />
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="contacto-nombre" class="mb-1.5 block text-sm font-semibold text-dark">Nombre</label>
+              <input
+                id="contacto-nombre"
+                type="text"
+                name="nombre"
+                class="w-full rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-dark focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+              />
+            </div>
+            <div>
+              <label for="contacto-email" class="mb-1.5 block text-sm font-semibold text-dark">
+                Correo electrónico
+              </label>
+              <input
+                id="contacto-email"
+                type="email"
+                name="email"
+                class="w-full rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-dark focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="contacto-tel" class="mb-1.5 block text-sm font-semibold text-dark">Teléfono</label>
+            <input
+              id="contacto-tel"
+              type="tel"
+              name="tel"
+              class="w-full rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-dark focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+            />
+          </div>
+
+          <div>
+            <label for="contacto-asunto" class="mb-1.5 block text-sm font-semibold text-dark">Asunto</label>
+            <input
+              id="contacto-asunto"
+              type="text"
+              name="asunto"
+              class="w-full rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-dark focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+            />
+          </div>
+
+          <div>
+            <label for="contacto-mensaje" class="mb-1.5 block text-sm font-semibold text-dark">Mensaje</label>
+            <textarea
+              id="contacto-mensaje"
+              name="mensaje"
+              rows="5"
+              class="w-full resize-y rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-dark focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="contacto-adjunto" class="mb-1.5 block text-sm font-semibold text-dark">
+              Adjuntar archivo (opcional)
+            </label>
+            <input
+              id="contacto-adjunto"
+              type="file"
+              name="attachment"
+              class="w-full rounded-[var(--radius)] border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-dark file:mr-3 file:rounded-[var(--radius)] file:border-0 file:bg-slate-100 file:px-3 file:py-1.5 file:text-sm file:font-semibold focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="mt-2 rounded-[var(--radius)] bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
+          >
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+
+      <div class="flex flex-col gap-8">
+        <div class="flex flex-col gap-5">
+          <div class="flex items-center gap-3">
+            <Icon name="material-symbols:call-outline" class="size-6 shrink-0 text-primary" />
+            <div>
+              <a href={`tel:${contacto?.telefonoNumero}`} class="font-semibold text-dark hover:text-primary">
+                {contacto?.telefonoTexto}
+              </a>
+              <a
+                href={`https://wa.me/${contacto?.whatsappNumero}`}
+                aria-label="Enviar mensaje por WhatsApp"
+                title="Enviar mensaje por WhatsApp"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="ml-3 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+              >
+                <Icon name="simple-icons:whatsapp" class="size-3.5" />
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <Icon name="material-symbols:mail-outline" class="size-6 shrink-0 text-primary" />
+            <a href={`mailto:${contacto?.email}`} class="font-semibold text-dark hover:text-primary">
+              {contacto?.email}
+            </a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <Icon name="material-symbols:location-on-outline-rounded" class="size-6 shrink-0 text-primary" />
+            <p class="text-dark">{contacto?.direccionTexto}</p>
+          </div>
+        </div>
+
+        {
+          mapSrc && (
+            <div class="aspect-[4/3] overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-slate-100 sm:aspect-video">
+              <iframe
+                src={mapSrc}
+                title="Ubicación de Marcelo Mastropietro Ingeniería en el mapa"
+                loading="lazy"
+                class="h-full w-full border-0"
+              />
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  if (params.has("gracias")) {
+    document.getElementById("contacto-gracias")?.removeAttribute("hidden");
+    history.replaceState(null, "", location.pathname);
+  }
+</script>

@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/common/Icon.astro";
+import { reader } from "../lib/keystatic-reader";
+
+const software = await reader.singletons.software.read();
+
+if (!software) return Astro.redirect("/404");
+---
+
+<Layout title="Descarga MASCalculador" description="Descarga del instalador de MASCalculador." noindex>
+  <section class="px-4 py-20 md:px-12 md:py-28">
+    <div class="mx-auto max-w-xl text-center">
+      <div class="mx-auto flex size-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <Icon name="material-symbols:check-circle-outline-rounded" class="size-8" />
+      </div>
+      <h1 class="mt-6 text-3xl font-bold tracking-tight text-dark md:text-4xl">Descarga MASCalculador</h1>
+      <p class="mt-4 text-lg text-muted">¡Gracias! Hacé clic para descargar el instalador.</p>
+
+      <a
+        href={software.instaladorUrl}
+        class="mt-8 inline-block rounded-[var(--radius)] bg-primary px-8 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
+      >
+        Descargar instalador
+      </a>
+
+      <p class="mt-6 text-sm text-muted">{software.version}</p>
+    </div>
+  </section>
+</Layout>

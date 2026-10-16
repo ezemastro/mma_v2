@@ -2,6 +2,7 @@ import { config, collection } from "@keystatic/core";
 import { iconCollectionSchema } from "./src/schemas/icons";
 import { homepageSchema } from "./src/schemas/homepage";
 import { settingsSchema } from "./src/schemas/settings";
+import { softwareSchema } from "./src/schemas/software";
 import { categoriaSchema } from "./src/schemas/categoria";
 import { obraSchema } from "./src/schemas/obra";
 
@@ -32,6 +33,7 @@ export default config({
   singletons: {
     homepage: homepageSchema,
     settings: settingsSchema,
+    software: softwareSchema,
   },
   collections: {
     icons: collection({

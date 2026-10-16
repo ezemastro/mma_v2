@@ -1,0 +1,16 @@
+caracteristicas:
+  - title: Intuitivo
+    icon: software-intuitivo
+  - title: Sencillo
+    icon: software-sencillo
+  - title: Responde al Reglamento CIRSOC 201-05
+    icon: software-reglamento
+captura: /src/assets/cms/software/captura.png
+version: Actualización 1.0.1
+instaladorUrl: >-
+  https://www.dropbox.com/scl/fi/swpssoz14ioea3h9vhzkq/INSTALADOR.msi?rlkey=28ng6xmty41d53ql3yjn16msm&dl=1
+formulario:
+  titulo: Descargalo gratis
+  subtitulo: Completá el formulario
+  destacado: Resolvé el cálculo estructural en hormigón de manera simple y conveniente.
+  boton: Enviar

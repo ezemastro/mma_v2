@@ -11,9 +11,11 @@ interface Props {
   transparentNav?: boolean;
   /** Absolute URL to a specific og:image; falls back to the site logo. */
   ogImage?: string;
+  /** Keeps a post-form page (e.g. /descarga) out of search results. */
+  noindex?: boolean;
 }
 
-const { title, description, transparentNav = false, ogImage } = Astro.props;
+const { title, description, transparentNav = false, ogImage, noindex = false } = Astro.props;
 
 const settings = await reader.singletons.settings.read();
 
@@ -50,7 +52,7 @@ const gtmId = settings?.gtmId;
 
     <title>{pageTitle}</title>
     {pageDescription && <meta name="description" content={pageDescription} />}
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content={noindex ? "noindex,follow" : "index,follow"} />
     <link rel="canonical" href={canonicalUrl} />
     {
       settings?.seo.googleSiteVerification && (
