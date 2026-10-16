@@ -299,6 +299,9 @@ thing a build-only check would have missed.
 
 ## Next step
 
+Delivered 2026-10-16: `feat/astro-migration` pushed and fast-forwarded into `main` (`ccaaba6`), at the user's explicit request, no PR.
+
+
 Implementation is done; what's left is the user's decisions, not more code:
 
 - **Push / PR strategy**: every commit on this branch is still local-only per the delivery
