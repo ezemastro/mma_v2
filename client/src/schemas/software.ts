@@ -28,7 +28,7 @@ export const softwareSchema = singleton({
       label: "A quién está dirigido y características",
       description: "Texto largo: a quién está dirigido el programa y cómo funciona.",
     }),
-    captura: astroImage("Captura de pantalla del programa"),
+    captura: astroImage("Captura de pantalla del programa", "software"),
     version: fields.text({
       label: "Versión",
       description: 'Ej: "Actualización 1.0.1"',

@@ -3,8 +3,8 @@ header:
   subtitle: Ingeniería
   headline: No existe proyecto de arquitectura sin estructura.
   subtext: >-
-    Diseño y cálculo estructural en hormigón y acero para arquitectos y empresas, desde hace más de
-    30 años.
+    Diseño y cálculo estructural en hormigón y acero para arquitectos y
+    empresas, desde hace más de 30 años.
   heroObra: estadio-ferrocarril-oeste-tribunas-caballito
 sections:
   - discriminant: stats
@@ -52,7 +52,7 @@ sections:
       title: Ing. Marcelo Mastropietro
       variante: simple
       link: {}
-      image: /src/assets/cms/sections/4/value/image.webp
+      image: /src/assets/cms/sections/3/value/image.webp
   - discriminant: cards
     value:
       title: Curriculum
@@ -111,183 +111,183 @@ sections:
         - name: A+R Arquitectos
           logo: /src/assets/cms/sections/7/value/content/0/logo.jpg
         - name: Abadgadano arquitectos
-          logo: /src/assets/cms/sections/7/value/content/2/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/1/logo.jpg
         - name: Acontec
-          logo: /src/assets/cms/sections/7/value/content/3/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/2/logo.jpg
         - name: Alric Galindez arqs
-          logo: /src/assets/cms/sections/7/value/content/4/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/3/logo.jpg
         - name: Altermedios - admira
-          logo: /src/assets/cms/sections/7/value/content/5/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/4/logo.jpg
         - name: Atelier Brux
-          logo: /src/assets/cms/sections/7/value/content/6/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/5/logo.jpg
         - name: BG Arqs
-          logo: /src/assets/cms/sections/7/value/content/7/logo.png
+          logo: /src/assets/cms/sections/7/value/content/6/logo.png
         - name: BK arqs
-          logo: /src/assets/cms/sections/7/value/content/8/logo.png
+          logo: /src/assets/cms/sections/7/value/content/7/logo.png
         - name: BMA arqs
-          logo: /src/assets/cms/sections/7/value/content/9/logo.png
+          logo: /src/assets/cms/sections/7/value/content/8/logo.png
         - name: Baek y asociados
-          logo: /src/assets/cms/sections/7/value/content/10/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/9/logo.jpg
         - name: Besonias Almeida
-          logo: /src/assets/cms/sections/7/value/content/11/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/10/logo.jpg
         - name: Brandplus
-          logo: /src/assets/cms/sections/7/value/content/12/logo.png
+          logo: /src/assets/cms/sections/7/value/content/11/logo.png
         - name: Capisto bienes raices
-          logo: /src/assets/cms/sections/7/value/content/13/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/12/logo.jpg
         - name: Carteleria CIC
-          logo: /src/assets/cms/sections/7/value/content/14/logo.png
+          logo: /src/assets/cms/sections/7/value/content/13/logo.png
         - name: Commar Group
-          logo: /src/assets/cms/sections/7/value/content/15/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/14/logo.jpg
         - name: Comunidad CO3
-          logo: /src/assets/cms/sections/7/value/content/16/logo.png
+          logo: /src/assets/cms/sections/7/value/content/15/logo.png
         - name: Consultora Better
-          logo: /src/assets/cms/sections/7/value/content/17/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/16/logo.jpg
         - name: Craft
-          logo: /src/assets/cms/sections/7/value/content/18/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/17/logo.jpg
         - name: Crissa arq
-          logo: /src/assets/cms/sections/7/value/content/19/logo.png
+          logo: /src/assets/cms/sections/7/value/content/18/logo.png
         - name: DS arqs
-          logo: /src/assets/cms/sections/7/value/content/20/logo.png
+          logo: /src/assets/cms/sections/7/value/content/19/logo.png
         - name: Danone
-          logo: /src/assets/cms/sections/7/value/content/21/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/20/logo.jpg
         - name: De Pike
-          logo: /src/assets/cms/sections/7/value/content/22/logo.png
+          logo: /src/assets/cms/sections/7/value/content/21/logo.png
         - name: Decavial
-          logo: /src/assets/cms/sections/7/value/content/23/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/22/logo.jpg
         - name: Delfino Magnus
-          logo: /src/assets/cms/sections/7/value/content/24/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/23/logo.jpg
         - name: Dep estudio arq
-          logo: /src/assets/cms/sections/7/value/content/25/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/24/logo.jpg
         - name: Dipsa estudio
-          logo: /src/assets/cms/sections/7/value/content/26/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/25/logo.jpg
         - name: En concreto casas
-          logo: /src/assets/cms/sections/7/value/content/27/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/26/logo.jpg
         - name: Estudio Artagaveytia - Mantel Arquitectos
-          logo: /src/assets/cms/sections/7/value/content/28/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/27/logo.jpg
         - name: Estudio Gambotto arq
-          logo: /src/assets/cms/sections/7/value/content/29/logo.webp
+          logo: /src/assets/cms/sections/7/value/content/28/logo.webp
         - name: Estudio Gonzalez y Asociados
-          logo: /src/assets/cms/sections/7/value/content/30/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/29/logo.jpg
         - name: Estudio Gonzalo Bardach Arq
-          logo: /src/assets/cms/sections/7/value/content/31/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/30/logo.jpg
         - name: Estudio Karibara
-          logo: /src/assets/cms/sections/7/value/content/32/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/31/logo.jpg
         - name: Estudio Luee
-          logo: /src/assets/cms/sections/7/value/content/33/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/32/logo.jpg
         - name: Estudio Monaco Moreno
-          logo: /src/assets/cms/sections/7/value/content/34/logo.jpg
-        - name: "Estudio\_Szlazer"
-          logo: /src/assets/cms/sections/7/value/content/35/logo.jpeg
+          logo: /src/assets/cms/sections/7/value/content/33/logo.jpg
+        - name: "Estudio Szlazer"
+          logo: /src/assets/cms/sections/7/value/content/34/logo.jpeg
         - name: F4 construcciones
-          logo: /src/assets/cms/sections/7/value/content/36/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/35/logo.jpg
         - name: Flota 86
-          logo: /src/assets/cms/sections/7/value/content/37/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/36/logo.jpg
         - name: GCF Arquitectura
-          logo: /src/assets/cms/sections/7/value/content/38/logo.png
+          logo: /src/assets/cms/sections/7/value/content/37/logo.png
         - name: GLC homes
-          logo: /src/assets/cms/sections/7/value/content/39/logo.webp
+          logo: /src/assets/cms/sections/7/value/content/38/logo.webp
         - name: Global investments
-          logo: /src/assets/cms/sections/7/value/content/40/logo.png
+          logo: /src/assets/cms/sections/7/value/content/39/logo.png
         - name: Gm arqs
-          logo: /src/assets/cms/sections/7/value/content/41/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/40/logo.jpg
         - name: Go building
-          logo: /src/assets/cms/sections/7/value/content/42/logo.webp
+          logo: /src/assets/cms/sections/7/value/content/41/logo.webp
         - name: Gonzalez asociados
-          logo: /src/assets/cms/sections/7/value/content/43/logo.png
+          logo: /src/assets/cms/sections/7/value/content/42/logo.png
         - name: Grandwich
-          logo: /src/assets/cms/sections/7/value/content/44/logo.png
+          logo: /src/assets/cms/sections/7/value/content/43/logo.png
         - name: Grupo 8.66
-          logo: /src/assets/cms/sections/7/value/content/45/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/44/logo.jpg
         - name: Grupo Daca
-          logo: /src/assets/cms/sections/7/value/content/46/logo.png
+          logo: /src/assets/cms/sections/7/value/content/45/logo.png
         - name: Grupo Girola
-          logo: /src/assets/cms/sections/7/value/content/47/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/46/logo.jpg
         - name: Grupo Provemet
-          logo: /src/assets/cms/sections/7/value/content/48/logo.png
+          logo: /src/assets/cms/sections/7/value/content/47/logo.png
         - name: GyE Construcciones
-          logo: /src/assets/cms/sections/7/value/content/49/logo.png
+          logo: /src/assets/cms/sections/7/value/content/48/logo.png
         - name: Habitat Urbano Arquitectos
-          logo: /src/assets/cms/sections/7/value/content/50/logo.png
+          logo: /src/assets/cms/sections/7/value/content/49/logo.png
         - name: Housing Construcciones
-          logo: /src/assets/cms/sections/7/value/content/51/logo.png
+          logo: /src/assets/cms/sections/7/value/content/50/logo.png
         - name: INCAA
-          logo: /src/assets/cms/sections/7/value/content/52/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/51/logo.jpg
         - name: Indus Homes arq
-          logo: /src/assets/cms/sections/7/value/content/53/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/52/logo.jpg
         - name: Inmec
-          logo: /src/assets/cms/sections/7/value/content/54/logo.png
+          logo: /src/assets/cms/sections/7/value/content/53/logo.png
         - name: Kombu design
-          logo: /src/assets/cms/sections/7/value/content/55/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/54/logo.jpg
         - name: LUV estudio
-          logo: /src/assets/cms/sections/7/value/content/56/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/55/logo.jpg
         - name: Latitud Sur Arquitectura
-          logo: /src/assets/cms/sections/7/value/content/57/logo.webp
+          logo: /src/assets/cms/sections/7/value/content/56/logo.webp
         - name: Matias Mosquera atelier
-          logo: /src/assets/cms/sections/7/value/content/58/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/57/logo.jpg
         - name: Micelio Desarrollos Inmobiliarios
-          logo: /src/assets/cms/sections/7/value/content/59/logo.png
+          logo: /src/assets/cms/sections/7/value/content/58/logo.png
         - name: Mostaza
-          logo: /src/assets/cms/sections/7/value/content/60/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/59/logo.jpg
         - name: PC Publicidad
-          logo: /src/assets/cms/sections/7/value/content/61/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/60/logo.jpg
         - name: Pacifica Arquitectura
-          logo: /src/assets/cms/sections/7/value/content/62/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/61/logo.jpg
         - name: Pampamix
-          logo: /src/assets/cms/sections/7/value/content/63/logo.png
+          logo: /src/assets/cms/sections/7/value/content/62/logo.png
         - name: Pedro Podestá
-          logo: /src/assets/cms/sections/7/value/content/64/logo.png
+          logo: /src/assets/cms/sections/7/value/content/63/logo.png
         - name: Prenova
-          logo: /src/assets/cms/sections/7/value/content/65/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/64/logo.jpg
         - name: Proyectar Tu Casa
-          logo: /src/assets/cms/sections/7/value/content/66/logo.png
+          logo: /src/assets/cms/sections/7/value/content/65/logo.png
         - name: Pucara Original arq
-          logo: /src/assets/cms/sections/7/value/content/67/logo.png
+          logo: /src/assets/cms/sections/7/value/content/66/logo.png
         - name: Punto y Coma
-          logo: /src/assets/cms/sections/7/value/content/68/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/67/logo.jpg
         - name: Punto y Coma
-          logo: /src/assets/cms/sections/7/value/content/69/logo.png
+          logo: /src/assets/cms/sections/7/value/content/68/logo.png
         - name: Q arqs
-          logo: /src/assets/cms/sections/7/value/content/70/logo.png
+          logo: /src/assets/cms/sections/7/value/content/69/logo.png
         - name: Queija - grifería Peirano
-          logo: /src/assets/cms/sections/7/value/content/71/logo.webp
+          logo: /src/assets/cms/sections/7/value/content/70/logo.webp
         - name: Rosbaco
-          logo: /src/assets/cms/sections/7/value/content/72/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/71/logo.jpg
         - name: San Giuliano Proyecto y Construccion
-          logo: /src/assets/cms/sections/7/value/content/73/logo.png
+          logo: /src/assets/cms/sections/7/value/content/72/logo.png
         - name: Sentrisense
-          logo: /src/assets/cms/sections/7/value/content/74/logo.png
+          logo: /src/assets/cms/sections/7/value/content/73/logo.png
         - name: Social Arquitectos
-          logo: /src/assets/cms/sections/7/value/content/75/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/74/logo.jpg
         - name: Tarq
-          logo: /src/assets/cms/sections/7/value/content/76/logo.png
+          logo: /src/assets/cms/sections/7/value/content/75/logo.png
         - name: Telecentro
-          logo: /src/assets/cms/sections/7/value/content/77/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/76/logo.jpg
         - name: Tolder
-          logo: /src/assets/cms/sections/7/value/content/78/logo.webp
+          logo: /src/assets/cms/sections/7/value/content/77/logo.webp
         - name: Topyed - Ver
-          logo: /src/assets/cms/sections/7/value/content/79/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/78/logo.jpg
         - name: Tri tankers
-          logo: /src/assets/cms/sections/7/value/content/80/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/79/logo.jpg
         - name: UAI
-          logo: /src/assets/cms/sections/7/value/content/81/logo.webp
+          logo: /src/assets/cms/sections/7/value/content/80/logo.webp
         - name: Universidad Nacional de San Antonio de Areco
-          logo: /src/assets/cms/sections/7/value/content/82/logo.png
+          logo: /src/assets/cms/sections/7/value/content/81/logo.png
         - name: Urban Box
-          logo: /src/assets/cms/sections/7/value/content/83/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/82/logo.jpg
         - name: VGM arquitectura
-          logo: /src/assets/cms/sections/7/value/content/84/logo.png
+          logo: /src/assets/cms/sections/7/value/content/83/logo.png
         - name: Vacker Hus
-          logo: /src/assets/cms/sections/7/value/content/85/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/84/logo.jpg
         - name: Valdemarin
-          logo: /src/assets/cms/sections/7/value/content/86/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/85/logo.jpg
         - name: Viarq
-          logo: /src/assets/cms/sections/7/value/content/87/logo.png
+          logo: /src/assets/cms/sections/7/value/content/86/logo.png
         - name: Villazala Elias arqs
-          logo: /src/assets/cms/sections/7/value/content/88/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/87/logo.jpg
         - name: Xencal Estructuras
-          logo: /src/assets/cms/sections/7/value/content/89/logo.jpg
+          logo: /src/assets/cms/sections/7/value/content/88/logo.jpg
         - name: Yacoub Developers
-          logo: /src/assets/cms/sections/7/value/content/90/logo.jpeg
+          logo: /src/assets/cms/sections/7/value/content/89/logo.jpeg
   - discriminant: text
     value:
       title: Conversemos tu próximo proyecto

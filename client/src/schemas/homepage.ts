@@ -48,8 +48,8 @@ export const homepageSchema = singleton({
   schema: {
     header: fields.object(
       {
-        title: fields.text({ label: "Title", description: "Usado como <title> de la página." } ),
-        subtitle: fields.text({ label: "Subtitle" }),
+        title: fields.text({ label: "Título de la página", description: "Usado como <title> de la página." } ),
+        subtitle: fields.text({ label: "Subtítulo" }),
         headline: fields.text({
           label: "Título del hero",
           description: "Frase principal del hero, ej: \"No existe proyecto de arquitectura sin estructura.\"",

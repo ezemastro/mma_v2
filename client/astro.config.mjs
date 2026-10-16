@@ -19,6 +19,12 @@ import tailwindcss from '@tailwindcss/vite';
 // URL there) -- see src/lib/keystatic-reader.ts.
 const projectRoot = fileURLToPath(new URL('.', import.meta.url));
 
+// The Cloudflare adapter's dev integration breaks Keystatic's API routes
+// under `astro dev` (/api/keystatic/* returns 500 "exports is not defined"),
+// so the adapter is only attached for builds. Astro's dev server renders the
+// on-demand Keystatic routes on its own.
+const isDev = process.argv.includes('dev');
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mastropietro.com.ar',
@@ -49,7 +55,7 @@ export default defineConfig({
     }),
   ],
 
-  adapter: cloudflare({
+  adapter: isDev ? undefined : cloudflare({
     // 'compile' optimizes images with sharp at build time for every
     // prerendered page; on-demand routes (Keystatic's admin) fall back to a
     // no-op passthrough, which is fine since they are not image-heavy pages.

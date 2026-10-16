@@ -255,7 +255,16 @@ function cleanParens(str) {
  *    `titulo` and get no `ubicacion` (e.g. "Peajes autopista AUSUR").
  */
 function splitTituloUbicacion(rawTitulo) {
-  const collapsed = cleanParens(rawTitulo.replace(/\s+/g, " ").trim());
+  // Some rows space the separator on one side only ("Acacias 299- Puertos
+  // del Lago", "Albanueva 07- Tigre"); normalize those to " - " first. A
+  // hyphen with no space on either side (e.g. "12-73") is left alone.
+  const collapsed = cleanParens(
+    rawTitulo
+      .replace(/\s+/g, " ")
+      .trim()
+      .replace(/(\S)- /g, "$1 - ")
+      .replace(/ -(\S)/g, " - $1"),
+  );
   const segments = splitOutsideParens(collapsed, " - ")
     .map((segment) => segment.trim())
     .filter(Boolean);
